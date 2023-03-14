@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "11da15fb-a31e-463b-87e4-a5511afb29d3",
+		"name": "Proyecto_Ciclo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FormCommunity",
+			"item": [
+				{
+					"name": "Create FormCommunity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"name\":\"Federico\",\r\n    \"last_name\":\"Argumedo\",\r\n    \"email\":\"federico@gmail.com\",\r\n    \"cell_phone\":\"2616595344\",\r\n    \"location\":\"Godoy Cruz\",\r\n    \"province\":\"Mendoza\",\r\n    \"occupation\":\"estudiante\",\r\n    \"date_create\":\"2023-03-14\",\r\n    \"date_update\":\"1900-01-01\",\r\n    \"date_delete\":\"1900-01-01\",\r\n    \"state\":\"activo\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/formCommunity/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"formCommunity",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FormProject",
+			"item": [
+				{
+					"name": "Create FormProject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"name\":\"Federico\",\r\n    \"last_name\":\"Sabatini\",\r\n    \"email\":\"federico@gmail.com\",\r\n    \"cell_phone\":\"2616595344\",\r\n    \"project_type\":\"construccion\",\r\n    \"date_create\":\"2023-03-14\",\r\n    \"date_update\":\"1900-01-01\",\r\n    \"date_delete\":\"1900-01-01\",\r\n    \"state\":\"activo\"\r\n\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/formProject/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"formProject",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Person",
+			"item": [
+				{
+					"name": "Create Person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"name\":\"Federico\",\r\n    \"last_name\":\"Sabatini\",\r\n    \"dni\":\"31029020\",\r\n    \"cuil\":\"20310290204\",\r\n    \"birth_date\":\"1984-09-03\",\r\n    \"email\":\"federico@gmail.com\",\r\n    \"cell_phone\":\"2616595344\",\r\n    \"second_phone\":\"2616595344\",\r\n    \"date_create\":\"2023-03-14\",\r\n    \"date_update\":\"1900-01-01\",\r\n    \"date_delete\":\"1900-01-01\",\r\n    \"state\":\"activo\"\r\n\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/person/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"person",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Residence",
+			"item": [
+				{
+					"name": "Create Residence",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"street\":\"25 de mayo\",\r\n    \"number\":\"652\",\r\n    \"location\":\"Las Heras\",\r\n    \"province\":\"Mendoza\",\r\n    \"country\":\"Argentina\",\r\n    \"date_create\":\"2023-03-14\",\r\n    \"date_update\":\"1900-01-01\",\r\n    \"date_delete\":\"1900-01-01\",\r\n    \"state\":\"activo\",\r\n    \"person\":{\r\n\r\n        \"id\":1\r\n\r\n    }\r\n\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/residence/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"residence",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"user\":\"fsabatini\",\r\n    \"password\":\"1234\",\r\n    \"role\":\"admin\",\r\n    \"date_create\":\"2023-03-14\",\r\n    \"date_update\":\"1900-01-01\",\r\n    \"date_delete\":\"1900-01-01\",\r\n    \"state\":\"activo\",\r\n    \"person\":{\r\n\r\n        \"id\":1\r\n\r\n    }\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
