@@ -1,6 +1,6 @@
 
 
-export default function NosotrosWrapper(props):JSX.Element{
+export default function NosotrosWrapper(props:any):JSX.Element{
 
     return(
     <div>
