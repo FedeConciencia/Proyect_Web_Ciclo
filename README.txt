@@ -1,6 +1,6 @@
 Desarrollo Web Ciclo =>
 
-Tecnologias =>
+Tecnologias Aplicadas =>
 
 BackEnd: Java, SpringBoot
 FrontEnd: ReactJs, NextJs
