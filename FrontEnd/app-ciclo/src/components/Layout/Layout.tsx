@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
+import Footer from "../Footer/Footer";
 
 type Props = {
   children?: ReactNode;
@@ -21,7 +22,7 @@ const Layout = ({
   }​​​​​​${asPath}​​​​​​`;
 
   return (
-    <div>
+    <>
       <Head>
         <title>{title}​​​​​​</title>
         <meta charSet="utf-8" />
@@ -44,11 +45,8 @@ const Layout = ({
         </nav>
       </header>
       {children}​​​​​​ {/* Aca se re renderiza el componente hijo */}
-      <footer>
-        {" "}
-        <hr /> <span>I'm here to stay (Footer)</span>{" "}
-      </footer>
-    </div>
+      <Footer/>
+    </>
   );
 };
 

@@ -1,0 +1,24 @@
+.container{
+  display: flex;
+  max-width: 1440px;
+  padding: 90px 186.5px 90.8px 187px;
+  background-color: #ffb71b;
+  position: relative;
+}
+
+.line {
+  width: 2px;
+  height: 109px;
+  margin: auto;
+  border: solid 2px #ebeaed;
+}
+
+.banners{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100vw;
+  img{
+    margin: 0 30px 25.2px 28px;
+  }
+}

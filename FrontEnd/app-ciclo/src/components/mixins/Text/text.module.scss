@@ -1,0 +1,36 @@
+.text {
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.normal {
+  font-weight: 400;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.bolder {
+  font-weight: 800;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.center {
+  text-align: center;
+}
+
+.colored {
+  color: var(--color-primary);
+}
