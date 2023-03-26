@@ -1,24 +1,45 @@
 .container{
+  transform: rotate(0deg);
+  transition: all 0.5s ease-in-out;
   display: flex;
   max-width: 1440px;
-  padding: 90px 186.5px 90.8px 187px;
+  padding: 8%;
   background-color: #ffb71b;
   position: relative;
 }
 
 .line {
   width: 2px;
-  height: 109px;
+  height: 120px;
   margin: auto;
   border: solid 2px #ebeaed;
 }
 
 .banners{
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width:100vw;
   img{
     margin: 0 30px 25.2px 28px;
+  }
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+
+  .banners {
+    flex-direction: column;
+  }
+  .line {
+    width: 170px;
+    height: 2px;
+    margin: 15px 0 15px 0;
+  }
+  .text {
+    max-width: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }

@@ -1,5 +1,25 @@
-.info{
+.info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
+}
+
+.logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 35px;
+  padding-bottom: 35px;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.main_info{
+  max-width: 300px;
+  min-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }

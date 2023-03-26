@@ -14,7 +14,7 @@ const Servicios = () => {
               width={169}
               height={110}
             />
-            <Text variant="span" center={true}>
+            <Text variant="span" center={true} className={styles.text}>
               Encontrá tu solución constructiva
             </Text>
           </div>
@@ -26,7 +26,7 @@ const Servicios = () => {
               width={169}
               height={110}
             />
-            <Text variant="span" center={true}>
+            <Text variant="span" center={true} className={styles.text}>
               Seguí el avance de tu proyecto
             </Text>
           </div>
@@ -38,7 +38,7 @@ const Servicios = () => {
               width={169}
               height={110}
             />
-            <Text variant="span" center={true}>
+            <Text variant="span" center={true} className={styles.text}>
               Disfrutá tu inversión
             </Text>
           </div>

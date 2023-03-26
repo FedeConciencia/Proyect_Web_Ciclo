@@ -1,13 +1,13 @@
+import Layout from "../Layout/Layout";
 
-
-export default function NosotrosWrapper(props:any):JSX.Element{
+export default function NosotrosWrapper():JSX.Element{
 
     return(
-    <div>
-        
-        "Hola Mundo"
+    <Layout>
+        Soy un 
+        Wrapper
 
-    </div>
+    </Layout>
 
     );
 

@@ -11,7 +11,13 @@ const Info = () => {
       <MaxContainer>
         <Servicios />
         <div className={styles.info}>
-          <Text variant="span" center={true} textSize="l" weight="bold">
+          <Text
+            variant="span"
+            center={true}
+            textSize="l"
+            weight="bold"
+            className={styles.main_info}
+          >
             {" "}
             Comienza un nuevo ciclo para la construccion en mendoza
           </Text>
@@ -36,21 +42,23 @@ const Info = () => {
           >
             Telefono
           </Text>
-
           <Text variant="span" center={true}>
             <a href="tel:+5492612765262">+549 261 276 5262</a>
           </Text>
+          <Text weight="bold" center={true}>
+            Redes Sociales:
+          </Text>
         </div>
+        <br />
         <div className={styles.logos}>
-          <Text weight="bold">Redes Sociales:</Text>
           <Link href="" noWidth target="_blank">
-            <FacebookIcon />
-          </Link>
-          <Link href="" noWidth={true} target="_blank">
-            <InstagramIcon />
+            <FacebookIcon className={styles.logo} />
           </Link>
           <Link href="" noWidth target="_blank">
-            <LinkedInIcon />
+            <InstagramIcon className={styles.logo} />
+          </Link>
+          <Link href="" noWidth target="_blank">
+            <LinkedInIcon className={styles.logo} />
           </Link>
         </div>
       </MaxContainer>
