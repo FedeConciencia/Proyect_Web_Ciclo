@@ -1,0 +1,19 @@
+@mixin for-desktop-up {
+  // @media (orientation: landscape) {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-up {
+  // @media (orientation: landscape) {
+  @media (min-width: 800px) {
+    @content;
+  }
+}
+@mixin for-container-up {
+  // @media (orientation: landscape) {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
