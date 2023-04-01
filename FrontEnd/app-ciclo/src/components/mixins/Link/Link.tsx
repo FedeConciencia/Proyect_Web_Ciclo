@@ -7,6 +7,7 @@ type Props = {
   href: string;
   children: ReactNode;
   noWidth?: boolean;
+  passHref?: boolean;
   target?: string;
   className?: any;
   linkStyle?: object;

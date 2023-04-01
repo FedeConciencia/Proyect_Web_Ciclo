@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Link from "next/link";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
 type Props = {
   children?: ReactNode;
@@ -36,14 +36,7 @@ const Layout = ({
         <link rel="canonical" href={`${canonicalURL}​​​​​​`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <nav>
-          <Link href="/">Home</Link> |<Link href="/about">About</Link> |{" "}
-          <Link href="/"> Nuestra Propuesta</Link> |{" "}
-          <Link href="/"> Nostros </Link> | <Link href="/"> Obras</Link> |{" "}
-          <Link href="/"> Contacto</Link> |{" "}
-        </nav>
-      </header>
+      <Header/>
       {children}​​​​​​ {/* Aca se re renderiza el componente hijo */}
       <Footer/>
     </>
