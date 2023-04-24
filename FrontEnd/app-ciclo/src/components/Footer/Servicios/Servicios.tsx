@@ -10,7 +10,7 @@ const Servicios = () => {
           <div>
             <Image
               src="/servicio_1.webp"
-              alt="asdasd"
+              alt="soluciones creativas"
               width={169}
               height={110}
             />
@@ -22,7 +22,7 @@ const Servicios = () => {
           <div>
             <Image
               src="/servicio_2.webp"
-              alt="asdasd"
+              alt="seguí tu proyecto"
               width={169}
               height={110}
             />
@@ -34,7 +34,7 @@ const Servicios = () => {
           <div>
             <Image
               src="/servicio_3.webp"
-              alt="asdasd"
+              alt="disfruta tu inversión"
               width={169}
               height={110}
             />
