@@ -1,0 +1,168 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  padding: 1rem;
+}
+
+.navbarBrand{
+  position: absolute;
+  left: 20px;
+}
+
+.navbarLinks ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navLink {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.navLink:hover,
+.navLink:focus,
+.navLink.active {
+  color: #ffb71b;
+}
+
+.dropdownLink {
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.dropdownLink:hover,
+.dropdownLink:focus {
+  color: #ffb71b;
+}
+
+.dropdown {
+  position: relative;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  background-color: transparent;
+  border-radius: 8px;
+  border-top: none;
+}
+.dropdown.opened{
+  top: 80px;
+}
+
+.dropdown.list{
+  background-color: #ffffff;
+}
+
+
+
+.social_icons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-right: 50px;
+  padding: 40px;
+}
+.socialMediaIcon {
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+
+  /* Apply a hover effect to the icons */
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.navbarSocial {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.socialLinksList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.socialLinksList li:not(:last-child) {
+  margin-right: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbarLinks {
+    margin-top: 1rem;
+  }
+
+  .navLink {
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .navLink:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown {
+    position: static;
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    border: none;
+    margin-top: 1rem;
+  }
+
+  .dropdownLink {
+    display: inline-block;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+  }
+
+  .dropdownLink:hover,
+  .dropdownLink:focus {
+    color: #000000;
+  }
+
+  .dropdownLink.active {
+    color: #ffb71b;
+  }
+
+  .dropdownLink:not(.active):hover,
+  .dropdownLink:not(.active):focus {
+    background-color: #e5e5e5;
+  }
+
+  .dropdownLink.active:hover,
+  .dropdownLink.active:focus {
+    background-color: transparent;
+  }
+
+  .dropdown.open {
+    display: block;
+  }
+}

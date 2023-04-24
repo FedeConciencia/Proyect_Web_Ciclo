@@ -1,32 +1,11 @@
-.container{
-  height: 120px;
+.container {
+  display: flex; 
+  justify-content: center; /* center everything */
+  align-items: center;
+  margin-top: 20px;
+  padding: 0 260px; /* prevent crawling on the logo */
+  height: 200px;
   padding: 40px;
-}
-.logo{
-  z-index: 1000;
-  position: absolute;
-  object-fit: contain;
-  width: 1398px;
-  height: 100px;
-}
-
-.navbar{
+  background-color: transparent;
   position: relative;
-  display: flex;
-  flex-direction: row;
-  margin-left: 250px;
-  overflow: hidden;
-}
-
-.social_networks{
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-
-/* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 800px) {
-  .container{
-    padding: 40px;
-  }
 }
