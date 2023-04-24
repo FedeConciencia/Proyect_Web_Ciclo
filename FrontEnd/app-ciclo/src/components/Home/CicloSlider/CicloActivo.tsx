@@ -7,7 +7,7 @@ import Image from "next/image";
 import FormUnirme from "@/components/FormUnirme/FormUnirme";
 
 type option_ciclo_list = {
-  key: number;
+  key: string;
   text: string;
 };
 type ciclo_list = {
@@ -15,13 +15,6 @@ type ciclo_list = {
   options: Array<option_ciclo_list>;
 };
 
-type second_column = {
-  alt?: string;
-  href?: string;
-  src?: string;
-  height?: string;
-  width?: string;
-};
 type props = {
   title?: string;
   subtitle?: string;
@@ -29,7 +22,6 @@ type props = {
   className?: string;
   first_list?: ciclo_list;
   second_list?: ciclo_list;
-  second_column?: second_column;
 };
 function CicloActivo({
   title,
@@ -37,7 +29,6 @@ function CicloActivo({
   description,
   first_list,
   second_list,
-  second_column,
 }: props) {
   const { isDesktop } = useDeviceType();
 
@@ -92,7 +83,7 @@ function CicloActivo({
       </div>
       {isDesktop && (
         <div className={styles2.second_column}>
-          <FormUnirme/>
+          <FormUnirme />
         </div>
       )}
     </div>

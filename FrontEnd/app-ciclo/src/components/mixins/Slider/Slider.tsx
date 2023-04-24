@@ -5,7 +5,7 @@ import sliderStyles from "./slider.module.scss";
 import useDeviceType from "@/hooks/useDeviceType";
 
 type sliderProps = {
-  children: ReactNode;
+  children?: ReactNode;
   interval?: number;
   automatic: boolean;
   hightlight: boolean;
@@ -19,16 +19,16 @@ const Slider = ({
   hightlight = false,
   color = "white",
 }: sliderProps) => {
-  const ref = useRef(null);
-  const container = useRef(null);
+  const ref = useRef<any>(null);
+  const container = useRef<any>(null);
   const [autoplay, setAutoplay] = useState(true);
   const { isDesktop } = useDeviceType();
   const next = () => {
     const slider = ref.current;
     if (
       slider &&
-      slider.scrollLeft >=
-        slider.children[0].offsetWidth - slider.offsetWidth - 20
+      slider?.scrollLeft >=
+        slider.children[0]?.offsetWidth - slider.offsetWidth - 20
     ) {
       slider?.scrollTo({
         left: 0,
@@ -59,7 +59,7 @@ const Slider = ({
     const slider = ref.current;
     if (slider.scrollLeft <= 0) {
       slider.scrollTo({
-        left: wrapper.clientWidth * children.length,
+        left: wrapper.clientWidth * (children as ReactNode[]).length,
         behavior: "smooth",
       });
     } else {
@@ -85,7 +85,7 @@ const Slider = ({
       <div className={sliderStyles.slider} ref={ref}>
         <div className={sliderStyles.sliderContainer}>{children}</div>
       </div>
-      {children.length > 1 && isDesktop && (
+      {(children as ReactNode[]).length > 1 && isDesktop && (
         <button
           onClick={() => {
             back();
@@ -97,7 +97,7 @@ const Slider = ({
           <BiChevronLeft color={color} fontSize={40} />
         </button>
       )}
-      {children.length > 1 && isDesktop && (
+      {(children as ReactNode[]).length > 1 && isDesktop && (
         <button
           onClick={() => {
             next();
@@ -112,4 +112,6 @@ const Slider = ({
     </div>
   );
 };
+
+Slider.displayName = "Slider";
 export default Slider;

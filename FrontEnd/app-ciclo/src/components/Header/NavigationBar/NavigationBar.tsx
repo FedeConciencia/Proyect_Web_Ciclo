@@ -110,4 +110,5 @@ const NavigationBar = () => {
   );
 };
 
+NavigationBar.displayName = 'NavigationBar';
 export default NavigationBar;

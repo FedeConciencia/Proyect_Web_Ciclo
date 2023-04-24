@@ -27,7 +27,9 @@ const Obra = (props: any) => (
       <div className={styles.brand_image}>
         <div>
           <Link href={props.href}>
-            <Text variant="span" textSize="s" textColor="#ffffff">Leer Mas...</Text>
+            <Text variant="span" textSize="s" textColor="#ffffff">
+              Leer Mas...
+            </Text>
           </Link>
         </div>
         <Image {...props.brand_image} />

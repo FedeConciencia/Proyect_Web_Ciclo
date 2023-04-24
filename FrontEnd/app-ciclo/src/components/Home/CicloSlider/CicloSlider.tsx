@@ -1,32 +1,35 @@
-import { MaxContainer, Button, Text, Link } from "@/components/mixins";
+import { Text } from "@/components/mixins";
 import useDeviceType from "@/hooks/useDeviceType";
 import { BiChevronDown } from "react-icons/bi";
 import styles from "./cicloslider.module.scss";
 import Image from "next/image";
 
 type option_ciclo_list = {
-  key: number;
+  key: string;
   text: string;
 };
 type ciclo_list = {
   title?: string;
-  options: Array<option_ciclo_list>;
+  options: option_ciclo_list[] | undefined;
 };
 
+type SafeNumber = number | `${number}`;
+
 type second_column = {
-  alt?: string;
-  href?: string;
-  src?: string;
-  height?: string;
-  width?: string;
+  alt: string;
+  href: string | undefined;
+  src: string;
+  height: SafeNumber | undefined;
+  width: SafeNumber | undefined;
 };
+
 type props = {
   title?: string;
   subtitle?: string;
   description?: string;
   className?: string;
-  first_list?: ciclo_list;
-  second_list?: ciclo_list;
+  first_list: ciclo_list;
+  second_list: ciclo_list;
   second_column?: second_column;
 };
 function CicloSlider({
@@ -68,7 +71,7 @@ function CicloSlider({
             <BiChevronDown color={"#ffb71b"} fontSize={20} />
           </div>
           <ul>
-            {first_list?.options.map((option) => {
+            {first_list.options?.map((option) => {
               return <li key={option.key}>{option.text}</li>;
             })}
           </ul>
@@ -82,7 +85,7 @@ function CicloSlider({
             <BiChevronDown color={"#ffb71b"} fontSize={20} />
           </div>
           <ul>
-            {second_list?.options.map((option) => {
+            {second_list.options?.map((option) => {
               return <li key={option.key}>{option.text}</li>;
             })}
           </ul>
@@ -93,7 +96,6 @@ function CicloSlider({
           {second_column && (
             <Image
               alt={second_column.alt}
-              href={second_column.href}
               src={second_column.src}
               height={second_column.height}
               width={second_column.width}

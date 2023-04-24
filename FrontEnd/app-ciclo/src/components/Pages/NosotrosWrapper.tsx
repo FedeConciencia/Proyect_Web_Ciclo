@@ -155,4 +155,5 @@ const NosotrosWrapper = () => {
   );
 };
 
+NosotrosWrapper.displayName = 'NosotrosWrapper';
 export default NosotrosWrapper;

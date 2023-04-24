@@ -48,4 +48,5 @@ const Servicios = () => {
   );
 };
 
+Servicios.displayName = 'Servicios';
 export default Servicios;

@@ -4,14 +4,14 @@ import { BiChevronDown } from "react-icons/bi";
 import styles from "./cicloslider.module.scss";
 import Image from "next/image";
 
-type option_ciclo_list = {
-  key: number;
+type option_ciclo_estrategico_list = {
+  key: string;
   text: string;
   title: string;
 };
 type ciclo_list = {
   title?: string;
-  options: Array<option_ciclo_list>;
+  options: Array<option_ciclo_estrategico_list>;
 };
 
 type props = {

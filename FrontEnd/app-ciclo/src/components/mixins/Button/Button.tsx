@@ -1,9 +1,37 @@
-import PropTypes from 'prop-types';
-import cn from 'classnames';
-import styles from './button.module.scss';
-import Text from '../Text/Text';
+import { ReactNode } from "react";
+import cn from "classnames";
+import styles from "./button.module.scss";
+import Text from "../Text/Text";
 
-const Button = (props:any) => {
+interface ButtonProps {
+  id: string;
+  border?: string;
+  badge?: string;
+  variant:
+    | "primary"
+    | "secondary"
+    | "terciary"
+    | "transparent"
+    | "icon"
+    | "disabled";
+  textCase?: "uppercase" | "capitalize" | "none";
+  textWeight?: "bold" | "bolder" | "normal";
+  textColor?: string;
+  textStyle?: object;
+  label?: string;
+  onClick?: () => void;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
+  br?: "soft" | "hard";
+  width: "none" | "sm" | "md" | "lg" | "fullWidth";
+  withOutPadding?: boolean;
+  justify?: "center" | "flex-start" | "flex-end" | "space-between";
+  submit?: boolean;
+  className: string;
+  style?: object;
+}
+
+const Button = (props: ButtonProps) => {
   const {
     br,
     border,
@@ -23,38 +51,38 @@ const Button = (props:any) => {
     variant,
     width,
     withOutPadding,
-    style
+    style,
   } = props;
   const buttonClass = cn({
     [styles.button]: true,
     [styles[variant]]: true,
-    [styles.brHard]: br === 'hard',
-    [className]: !!className
+    [styles.brHard]: br === "hard",
+    [className]: !!className,
   });
 
   const widthOptions = {
-    fullWidth: '100%',
-    none: 'auto',
-    sm: '25%',
-    md: '50%',
-    lg: '75%'
+    fullWidth: "100%",
+    none: "auto",
+    sm: "25%",
+    md: "50%",
+    lg: "75%",
   };
 
   // TODO: agregar spinner cuando cargue la accion
 
   return (
     <button
-      type={submit ? 'submit' : 'button'}
+      type={submit ? "submit" : "button"}
       id={id}
       onClick={onClick}
       className={buttonClass}
-      disabled={variant === 'disabled'}
+      disabled={variant === "disabled"}
       style={{
         width: `${widthOptions[width]}`,
         justifyContent: justify,
-        padding: withOutPadding ? '0px' : ' 15px 25px',
-        border: border ? `1px solid ${border}` : '',
-        ...style
+        padding: withOutPadding ? "0px" : " 15px 25px",
+        border: border ? `1px solid ${border}` : "",
+        ...style,
       }}
     >
       {startIcon}
@@ -74,117 +102,15 @@ const Button = (props:any) => {
       {badge && (
         <div
           className={styles.badge}
-          style={{ backgroundColor: border || 'white' }}
+          style={{ backgroundColor: border || "white" }}
         >
-          <Text
-            variant="span"
-            weight="semibold"
-            textColor="black"
-            textSize="m"
-          >
+          <Text variant="span" weight="semibold" textColor="black" textSize="m">
             {badge}
           </Text>
         </div>
       )}
     </button>
   );
-};
-
-Button.propTypes = {
-  id: PropTypes.string.isRequired,
-  border: PropTypes.string,
-  badge: PropTypes.string,
-  /**
-   * Las variantes del botón son:
-   */
-  variant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'terciary',
-    'transparent',
-    'icon',
-    'disabled'
-  ]),
-  /**
-   * Cambia el texto (en caso de existir) según:
-   */
-  textCase: PropTypes.oneOf(['uppercase', 'capitalize', 'none']),
-  /**
-   * Cambia el peso de las letras a:
-   */
-  textWeight: PropTypes.oneOf(['bold', 'bolder', 'normal']),
-  /**
-   * Cambia el color del texto:
-   */
-  textColor: PropTypes.string,
-  /**
-   * Cambia el stilo del texto:
-   */
-  textStyle: PropTypes.object,
-  /**
-   * El botón renderiza un texto dentro si se le pasa:
-   */
-  label: PropTypes.string,
-  /**
-   * El botón ejecuta la función que se le pase por el evento onClick:
-   */
-  onClick: PropTypes.func,
-  /**
-   * Se renderiza un ícono dentro del botón ubicado a la izquierda:
-   */
-  startIcon: PropTypes.node,
-  /**
-   * Se renderiza un ícono dentro del botón ubicado a la derecha:
-   */
-  endIcon: PropTypes.node,
-  /**
-   * Ésta prop cambia la intensidad del borde:
-   */
-  br: PropTypes.oneOf(['soft', 'hard']),
-  /**
-   * Ésta prop cambia el tamaño del botón a medidas estándars:
-   */
-  width: PropTypes.oneOf(['none', 'sm', 'md', 'lg', 'fullWidth']),
-  /**
-   * El botón trae padding por defecto, con ésta prop se eliminan:
-   */
-  withOutPadding: PropTypes.bool,
-  /**
-   * Cuando el botón renderiza hijos internamente, éstos se disponen con flex según éstos parámetros:
-   */
-  justify: PropTypes.oneOf([
-    'center',
-    'flex-start',
-    'flex-end',
-    'space-between'
-  ]),
-  /**
-   * Si se quiere que el botón sea del tipo submit se le debe pasar ésta prop como true:
-   */
-  submit: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object
-};
-
-Button.defaultProps = {
-  badge: '',
-  border: '',
-  br: 'soft',
-  className: '',
-  endIcon: null,
-  justify: 'center',
-  label: '',
-  onClick: () => {},
-  startIcon: null,
-  submit: false,
-  textCase: 'none',
-  textColor: '',
-  textStyle: {},
-  textWeight: 'normal',
-  variant: 'transparent',
-  width: 'fullWidth',
-  withOutPadding: false,
-  style: {}
 };
 
 export default Button;

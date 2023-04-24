@@ -10,14 +10,12 @@ const FormUnirme = () => {
   return (
     <form className={styles.form} noValidate onSubmit={handleSubmit}>
       <Input
-        id={1}
+        id="1"
         name="fullname"
         placeholder="Luis Esteban Graso"
         required
         title="Nombre y Apellido"
         className="fullWidth"
-        validations={[noOnlyNumbers]}
-        defaultValue={""}
         br="hard"
         textColor="black"
         filled
@@ -25,7 +23,7 @@ const FormUnirme = () => {
       />
 
       <Input
-        id={2}
+        id="2"
         name="telefono"
         placeholder="+54 9 261 3871088"
         title="Telefono"
@@ -37,7 +35,7 @@ const FormUnirme = () => {
       />
 
       <Input
-        id={3}
+        id="3"
         name="email"
         placeholder="email"
         title="luis@laproa.com"
@@ -50,7 +48,7 @@ const FormUnirme = () => {
       />
 
       <Input
-        id={4}
+        id="4"
         name="provincia"
         placeholder="Mendoza"
         required
@@ -62,7 +60,7 @@ const FormUnirme = () => {
       />
 
       <Input
-        id={5}
+        id="5"
         name="localidad"
         required
         placeholder="Rodeo del Medio"
@@ -74,7 +72,7 @@ const FormUnirme = () => {
       />
 
       <Input
-        id={6}
+        id="6"
         name="ocupacion"
         placeholder="Tecnico"
         required
@@ -93,12 +91,12 @@ const FormUnirme = () => {
         </Text>
       </div>
       <Input
-        id={7}
+        id="7"
         name="requirments"
         required
         label="Sí, cumplo con los requisitos requeridos."
-        type="checkbox"
         className="fullWidth"
+        type="checkbox"
         filled
         labelColor="#ffffff"
         textSize="s"
@@ -109,7 +107,7 @@ const FormUnirme = () => {
           onClick={() => {}}
           textWeight="bold"
           label="Quiero Unirme"
-          fullWidth
+          width="fullWidth"
           variant="primary"
           br="hard"
           style={{ height: "40px", width: "200px" }}
@@ -123,4 +121,5 @@ const FormUnirme = () => {
   );
 };
 
+FormUnirme.displayName = "FormUnirme";
 export default FormUnirme;

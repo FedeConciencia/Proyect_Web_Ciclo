@@ -8,5 +8,5 @@ const Copyright = () => {
     </div>
   );
 };
-
+Copyright.displayName = 'Copyright';
 export default Copyright;

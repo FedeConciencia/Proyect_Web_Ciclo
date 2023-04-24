@@ -5,6 +5,17 @@ import CicloSlider from "./CicloSlider/CicloSlider";
 import CicloEstrategico from "./CicloSlider/CicloEstrategico";
 import CicloActivo from "./CicloSlider/CicloActivo";
 
+type option_ciclo_list = {
+  key: string;
+  text: string;
+};
+
+type option_ciclo_estrategico_list = {
+  key: string;
+  text: string;
+  title: string;
+};
+
 const sliders = [
   {
     key: "1",
@@ -102,7 +113,7 @@ const sliders = [
           key: "ciclo_colaborativol_5",
           text: "Implementar prácticas de sostenibilidad y economia circular.",
         },
-      ],
+      ] as option_ciclo_list[],
     },
     second_list: {
       title: "Cadena de valor de Ciclo",
@@ -163,7 +174,7 @@ const ciclo_estrategico = {
         title: "Valores",
         text: "Transpariencia, Integridad, colaboración, compromiso.",
       },
-    ],
+    ] as option_ciclo_estrategico_list[],
   },
 };
 
@@ -200,7 +211,7 @@ const ciclo_activo = {
         key: "ciclo_activo_6",
         text: "Ciclo App (MVP): herramientas de comunicación, presupuestos y gestión de tareas.",
       },
-    ],
+    ] as option_ciclo_list[],
   },
   second_list: {
     title: "Publico Ciclo",
@@ -217,7 +228,7 @@ const ciclo_activo = {
         key: "ciclo_activo_publico_3",
         text: "Constructoras residenciales.",
       },
-    ],
+    ] as option_ciclo_list[],
   },
 };
 function Home() {
@@ -286,17 +297,13 @@ function Home() {
             )
           )}
           <CicloEstrategico
-            id="slider_3"
             key={ciclo_estrategico.key}
             title={ciclo_estrategico.title}
             subtitle={ciclo_estrategico.subtitle}
             description={ciclo_estrategico.description}
             first_list={ciclo_estrategico.first_list}
-            second_list={ciclo_estrategico.second_list}
-            second_column={ciclo_estrategico.second_column}
           />
           <CicloActivo
-            id="slider_4"
             key={ciclo_activo.key}
             title={ciclo_activo.title}
             subtitle={ciclo_activo.subtitle}

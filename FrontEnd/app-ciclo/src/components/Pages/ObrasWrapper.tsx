@@ -110,4 +110,5 @@ const ObrasWrapper = () => {
   );
 };
 
+ObrasWrapper.displayName = 'ObrasWrapper';
 export default ObrasWrapper;

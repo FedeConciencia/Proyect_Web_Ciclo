@@ -15,12 +15,12 @@ interface InputProps {
   placeholder?: string;
   startIcon?: React.ReactNode;
   textColor?: string;
-  type?: "email" | "password" | "text" | "number";
+  type?: "email" | "password" | "text" | "number" | "checkbox";
   width?: "none" | "sm" | "md" | "lg" | "fullWidth";
   title?: string;
   titleColor?: string;
   filled?: boolean;
-  className?: string;
+  className: string;
   value?: string;
   disabled?: boolean;
   name?: string;
@@ -67,7 +67,7 @@ const Input = forwardRef((props: InputProps, ref) => {
     required,
     onFocus,
     onKeyPress,
-    mask,
+    mask = "",
     maskChar,
     label,
     labelColor,
@@ -110,7 +110,6 @@ const Input = forwardRef((props: InputProps, ref) => {
         onFocus={onFocus}
         name={name}
         type={type}
-        ref={ref}
         onClick={onClick}
         onKeyPress={onKeyPress}
         style={{
