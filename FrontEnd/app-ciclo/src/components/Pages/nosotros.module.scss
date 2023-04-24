@@ -1,0 +1,48 @@
+.container{
+  width: 1440px;
+  position: relative;
+  text-align: center;
+  margin-top: -220px;
+  z-index: -10;
+}
+
+.about_us{
+  z-index: 100;
+  position: relative;
+  background-color: white;
+  color: black;
+  padding: auto;
+}
+
+.wrapper{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 100px 0px 100px;
+  align-items: center;
+  text-align: center;
+}
+.text_span{
+  text-align: left;
+  padding: 50px;
+  color: rgba(21, 20, 57, 0.4);
+}
+.text_title{
+  color: #ffb71b;
+  text-align: left;
+  padding-left: 50px;
+}
+
+.image_right{
+  float: right;
+  padding: 50px;
+}
+.view_more{
+  width: 175px;
+  height: 35px;
+  margin: 21px 419px 44px 0.2px;
+  padding: 5px 52px 4px 53px;
+  border-radius: 100px;
+  border: solid 2px #ebeaed;
+
+}

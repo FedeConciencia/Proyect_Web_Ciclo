@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import styles from "./text.module.scss";
 import cn from "classnames";
 
@@ -10,10 +9,11 @@ const sizes = {
   l: "1.125rem",
   xl: "1.25rem",
   xxl: "1.375rem",
+  xxxl: "44px",
 };
 
 type Props = {
-  children: any ;
+  children: any;
   variant?: "p" | "h1" | "h2" | "h3" | "h4" | "span";
   weight?: "light" | "normal" | "semibold" | "bold" | "bolder";
   textColor?: string;
@@ -21,10 +21,12 @@ type Props = {
   textStyle?: object;
   strike?: boolean;
   center?: boolean;
+  left?: boolean;
+  right?: boolean;
   colored?: boolean;
   className?: string;
   forInput?: string | null;
-  textSize?: "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
+  textSize?: "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
 };
 
 const Text = ({
@@ -37,11 +39,12 @@ const Text = ({
   strike = false,
   className = "",
   center = false,
+  left = false,
+  right = false,
   colored = false,
   forInput = null,
   textSize = "m",
 }: Props) => {
-
   const textClass = cn({
     [styles.text]: true,
     [styles.light]: weight === "light",
@@ -52,6 +55,8 @@ const Text = ({
     [className]: !!className,
     [styles.strike]: strike,
     [styles.center]: center,
+    [styles.left]: left,
+    [styles.right]: right,
     [styles.colored]: colored,
   });
 
@@ -62,7 +67,7 @@ const Text = ({
       typeof children === "string" ? children : children?.join(" ")
     }`.toUpperCase();
 
-  if (textCase === "capitalize" && typeof children === "string" ) {
+  if (textCase === "capitalize" && typeof children === "string") {
     const capital = children[0].toUpperCase();
     const text = children.substring(1);
     render = capital + text;

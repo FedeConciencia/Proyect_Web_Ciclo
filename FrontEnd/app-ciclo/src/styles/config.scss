@@ -1,1 +1,22 @@
-@import 'config/mixins';
+@import "config/mixins";
+@import "config/variables";
+
+.fullWidth {
+  grid-column: span 4;
+}
+
+.halfWidth {
+  grid-column: span 4;
+
+  @include for-tablet-up {
+    grid-column: span 2;
+  }
+}
+
+.quarterWidth {
+  grid-column: span 2;
+
+  @include for-tablet-up {
+    grid-column: span 1;
+  }
+}
