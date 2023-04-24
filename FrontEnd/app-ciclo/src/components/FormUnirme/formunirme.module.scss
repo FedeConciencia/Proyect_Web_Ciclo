@@ -1,0 +1,21 @@
+.form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 1rem;
+  column-gap: 2rem;
+  align-items: end;
+  padding: 45px;
+}
+
+.legend {
+  grid-column: span 4;
+  padding-top: 10px;
+}
+
+
+.buttonWrapper {
+  padding-top: 10px;
+  grid-column: 2/4;
+  justify-self: center;
+}
