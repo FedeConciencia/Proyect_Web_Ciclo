@@ -5,11 +5,11 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
-const Info = () => {
+const Info = ({ servicios }: any) => {
   return (
     <div className={styles.wrapper}>
       <MaxContainer>
-        <Servicios />
+        {servicios && <Servicios />}
         <div className={styles.info}>
           <Text
             variant="span"
@@ -18,7 +18,6 @@ const Info = () => {
             weight="bold"
             className={styles.main_info}
           >
-            {" "}
             Comienza un nuevo ciclo para la construccion en mendoza
           </Text>
           <Text
