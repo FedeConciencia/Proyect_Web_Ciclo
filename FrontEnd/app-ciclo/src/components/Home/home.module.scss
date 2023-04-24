@@ -3,5 +3,81 @@
   height: 700px;
   background-color: #2f1893;
   position: relative;
+  margin-top: -220px;
+  padding-top: 200px;
   z-index: -10;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: 'Poppins';
+  max-width: 800px;
+}
+
+.title__text{
+  padding-left: 200px;
+}
+
+
+.buttons{
+  display: flex;
+  gap: 4px;
+  margin-bottom: 48px;
+  padding-left: 200px;
+  align-items: center;
+}
+.learn_more__button {
+  width: 249.6px;
+  height: 60px;
+  margin: 57px 48.7px 0 0;
+  padding: 17px 29.6px 17px 30px;
+  border-radius: 100px;
+  background-color: #e93a7d;
+
+}
+.sign_up__button {
+  width: 250px;
+  height: 60px;
+  margin: 57px 167.7px 0 48.7px;
+  padding: 17px 23px;
+  border-radius: 100px;
+  border: solid 2px #fff;
+}
+
+.vector {
+  width: 350px;
+  height: 708.8px;
+  margin: 152px 0 575.2px 1050px;
+  padding: 173.6px 0px 173.6px 176.4px;
+  background-image: linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.form{
+  width: 580px;
+  height: 750px;
+}
+
+@media (max-width: 768px) {
+  .title{
+    max-width: 400px;
+  }
+  .title__text{
+    padding-left: 100px;
+  }
+  .buttons{
+    padding-left: 100px;
+    margin-bottom: 48px;
+  }
+  .learn_more__button{
+    margin: 20px 0 0 0;
+  }
+  .sign_up__button{
+    margin: 20px 0 0 0;
+  }
 }

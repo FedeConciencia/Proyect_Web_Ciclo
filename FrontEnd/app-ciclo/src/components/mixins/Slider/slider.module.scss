@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.chevrons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  height: 4rem;
+  width: 3rem;
+}
+
+.chevronHighlight {
+  color: #17ff00;
+  font-size: 4rem;
+  background: #121212;
+  border-radius: 0 15px 15px 0;
+}
+
+.slider {
+  width: fit-content;
+  height: 100%;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  transition: scroll 1s;
+  scroll-snap-type: x mandatory;
+}
+
+.sliderContainer {
+  display: flex;
+  height: 98%;
+}
+
+.bannerWrapper {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.logos {
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoImg {
+  display: flex;
+  justify-content: center;
+  height: 25px;
+  width: 47vw;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  img {
+    height: 99%;
+    width: 100%;
+  }
+}
