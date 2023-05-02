@@ -1,9 +1,9 @@
 .container {
-  height: 750px;
+  height: 700px;
   background-color: #ffff;
   color: gray;
   font-family: "Poppins";
-  padding: 40px;
+  padding: 40px 40px 40px 100px;
   display: flex;
   flex-direction: row;
   gap: 0px;
@@ -40,21 +40,26 @@
 }
 
 .first_column {
-  width: 800px;
+  width: 960px;
   height: 700px;
 }
 .second_column {
-  width: 560px;
+  max-width: 860px;
+  width: 860px;
   height: 700px;
   display: flex;
   flex-direction: column;
   img {
-    width: 100%;
+    width: 80%;
     object-fit: cover;
   }
 }
 
 .second_column_with_images{
+  width: 860px;
+}
+
+.second_column_images{
   width: 560px;
   height: 700px;
   display: flex;

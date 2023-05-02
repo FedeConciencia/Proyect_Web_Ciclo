@@ -3,7 +3,6 @@ import useDeviceType from "@/hooks/useDeviceType";
 import { BiChevronDown } from "react-icons/bi";
 import styles from "./cicloslider.module.scss";
 import styles2 from "./cicloactivo.module.scss";
-import Image from "next/image";
 import FormUnirme from "@/components/FormUnirme/FormUnirme";
 
 type option_ciclo_list = {
@@ -83,7 +82,9 @@ function CicloActivo({
       </div>
       {isDesktop && (
         <div className={styles2.second_column}>
-          <FormUnirme />
+          <div className={styles2.form_background}>
+            <FormUnirme />
+          </div>
         </div>
       )}
     </div>

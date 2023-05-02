@@ -70,45 +70,47 @@ function CicloEstrategico({ title, subtitle, description, first_list }: props) {
         </div>
       </div>
       <div className={styles.second_column_with_images}>
-        <div>
-          <Image
-            src="/aliados/grupo_ltn.png"
-            alt="Grupo LTN"
-            width={170}
-            height={100}
-          />
-          <Image
-            src="/aliados/extra_brut.png"
-            alt="Extra Brut Construir Mejor"
-            width={170}
-            height={100}
-          />
-          <Image
-            src="/aliados/extra_brut.png"
-            alt="Extra Brut Construir Mejor"
-            width={170}
-            height={100}
-          />
-        </div>
-        <div>
-          <Image
-            src="/aliados/extra_brut.png"
-            alt="Extra Brut Construir Mejor"
-            width={170}
-            height={100}
-          />
-          <Image
-            src="/aliados/extra_brut.png"
-            alt="Extra Brut Construir Mejor"
-            width={170}
-            height={100}
-          />
-          <Image
-            src="/aliados/colegio_tecnicos_mdz.png"
-            alt="Colegios Tecnicos Mendoza"
-            width={170}
-            height={100}
-          />
+        <div className={styles.second_column_images}>
+          <div>
+            <Image
+              src="/aliados/grupo_ltn.png"
+              alt="Grupo LTN"
+              width={170}
+              height={100}
+            />
+            <Image
+              src="/aliados/extra_brut.png"
+              alt="Extra Brut Construir Mejor"
+              width={170}
+              height={100}
+            />
+            <Image
+              src="/aliados/extra_brut.png"
+              alt="Extra Brut Construir Mejor"
+              width={170}
+              height={100}
+            />
+          </div>
+          <div>
+            <Image
+              src="/aliados/extra_brut.png"
+              alt="Extra Brut Construir Mejor"
+              width={170}
+              height={100}
+            />
+            <Image
+              src="/aliados/extra_brut.png"
+              alt="Extra Brut Construir Mejor"
+              width={170}
+              height={100}
+            />
+            <Image
+              src="/aliados/colegio_tecnicos_mdz.png"
+              alt="Colegios Tecnicos Mendoza"
+              width={170}
+              height={100}
+            />
+          </div>
         </div>
       </div>
     </div>

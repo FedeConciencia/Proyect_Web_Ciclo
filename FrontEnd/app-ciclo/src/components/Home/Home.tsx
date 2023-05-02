@@ -4,6 +4,7 @@ import styles from "./home.module.scss";
 import CicloSlider from "./CicloSlider/CicloSlider";
 import CicloEstrategico from "./CicloSlider/CicloEstrategico";
 import CicloActivo from "./CicloSlider/CicloActivo";
+import Image from "next/image";
 
 type option_ciclo_list = {
   key: string;
@@ -73,10 +74,10 @@ const sliders = [
     },
     second_column: {
       href: "#",
-      src: "/slider_1.png",
+      src: "/ciclos/ciclo_integral.png",
       alt: "Ciclo Integral",
       height: 700,
-      width: 560,
+      width: 860,
     },
   },
   {
@@ -142,10 +143,10 @@ const sliders = [
     },
     second_column: {
       href: "#",
-      src: "/ciclo_colaborativo.png",
+      src: "/ciclos/ciclo_colaborativo.png",
       alt: "Ciclo Colaborativo",
-      height: 570,
-      width: 570,
+      height: 700,
+      width: 860,
     },
   },
 ];
@@ -239,42 +240,53 @@ function Home() {
     >
       <MaxContainer>
         <div className={styles.home}>
-          <div className={styles.title}>
-            <Text
-              variant="h1"
-              left={true}
-              weight="bold"
-              textColor="#e93a7d"
-              textSize={"xxxl"}
-              className={styles.title__text}
-            >
-              Comienza un nuevo ciclo
-            </Text>
-            <Text
-              variant="span"
-              left={true}
-              weight="bold"
-              textColor="#fff"
-              textSize={"xxxl"}
-              className={styles.title__text}
-            >
-              para la construcción en Mendoza.
-            </Text>
+          <div className={styles.hero}>
+            <div className={styles.title}>
+              <Text
+                variant="h1"
+                left={true}
+                weight="bold"
+                textColor="#e93a7d"
+                textSize={"xxxl"}
+                className={styles.title__text}
+              >
+                Comienza un nuevo ciclo
+              </Text>
+              <Text
+                variant="span"
+                left={true}
+                weight="bold"
+                textColor="#fff"
+                textSize={"xxxl"}
+                className={styles.title__text}
+              >
+                para la construcción en Mendoza.
+              </Text>
+            </div>
+            <div className={styles.buttons}>
+              <Text className={styles.learn_more__button}>
+                <Text variant="span" center={true} weight="bold" colored>
+                  Empezá tu proyecto
+                </Text>
+              </Text>
+              <Text className={styles.sign_up__button}>
+                <Text variant="span" center={true} weight="bold" colored>
+                  Unite a la Comunidad
+                </Text>
+              </Text>
+            </div>
           </div>
-          <div className={styles.buttons}>
-            <Text className={styles.learn_more__button}>
-              <Text variant="span" center={true} weight="bold">
-                Empezá tu proyecto
-              </Text>
-            </Text>
-            <Text className={styles.sign_up__button}>
-              <Text variant="span" center={true} weight="bold">
-                Unite a la Comunidad
-              </Text>
-            </Text>
+          <div className={styles.hero_background}>
+            <Image
+              src={"/ciclos/ciclo_detail.png"}
+              alt="Unite a la comunidad"
+              width={400}
+              height={700}
+              priority
+            />
           </div>
         </div>
-        <Slider color="white" automatic={false} hightlight>
+        <Slider hightlight>
           {sliders.map(
             ({
               key,

@@ -1,6 +1,5 @@
-.home{
-  width: 1440px;
-  height: 700px;
+.home {
+  max-width: 1920px;
   background-color: #2f1893;
   position: relative;
   margin-top: -220px;
@@ -9,29 +8,43 @@
   transition: all 0.3s ease-in-out;
 }
 
+.hero {
+  padding: 30px 0 0 100px;
+}
+.hero_background {
+  margin-top: -340px;
+  text-align: right;
+}
 
 .title {
   display: flex;
   flex-direction: column;
-  gap: 0px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-family: 'Poppins';
+  gap: 10px;
+  font-family: "Poppins" !important;
   max-width: 800px;
+  h1 {
+    color: #e93a7d !important;
+  }
+  span {
+    letter-spacing: -1px;
+    line-height: 46px;
+  }
 }
 
-.title__text{
+.title__text {
   padding-left: 200px;
 }
 
-
-.buttons{
+.buttons {
   display: flex;
+  flex-direction: row;
   gap: 4px;
-  margin-bottom: 48px;
   padding-left: 200px;
   align-items: center;
+  margin-top: 20px;
+  font-family: 'Montserrat' !important;
 }
+
 .learn_more__button {
   width: 249.6px;
   height: 60px;
@@ -39,13 +52,11 @@
   padding: 17px 29.6px 17px 30px;
   border-radius: 100px;
   background-color: #e93a7d;
-
 }
 .sign_up__button {
   width: 250px;
   height: 60px;
-  margin: 57px 167.7px 0 48.7px;
-  padding: 17px 23px;
+  padding: 17px 29.6px 17px 30px;
   border-radius: 100px;
   border: solid 2px #fff;
 }
@@ -55,29 +66,37 @@
   height: 708.8px;
   margin: 152px 0 575.2px 1050px;
   padding: 173.6px 0px 173.6px 176.4px;
-  background-image: linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(
+    to bottom,
+    #fff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
-.form{
+.form {
   width: 580px;
   height: 750px;
 }
 
-@media (max-width: 768px) {
-  .title{
+@media (max-width: 800px) {
+  .title {
     max-width: 400px;
   }
-  .title__text{
-    padding-left: 100px;
+  .title__text {
+    padding-left: 0;
   }
-  .buttons{
-    padding-left: 100px;
+  .buttons {
+    padding-left: 0;
     margin-bottom: 48px;
   }
-  .learn_more__button{
+  .learn_more__button {
     margin: 20px 0 0 0;
   }
-  .sign_up__button{
+  .sign_up__button {
     margin: 20px 0 0 0;
+  }
+  .hero_background {
+    margin-top: -600px;
+    opacity: 0.2;
   }
 }
