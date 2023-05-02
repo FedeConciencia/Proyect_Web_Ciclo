@@ -4,7 +4,7 @@ import styles from './copyright.module.scss'
 const Copyright = () => {
   return (
     <div className={styles.container}>
-      <Text variant="span" center={true}> @ 2023 Ciclo Soluciones Creativas </Text>
+      <Text variant="span" center={true} colored> @ 2023 Ciclo Soluciones Creativas </Text>
     </div>
   );
 };
