@@ -1,6 +1,6 @@
 import Layout from "../Layout/Layout";
 import { MaxContainer, Text } from "@/components/mixins";
-import Footer from "../Footer/Footer";
+import { Button } from "semantic-ui-react";
 import Image from "next/image";
 import styles from "./nosotros.module.scss";
 
@@ -8,22 +8,41 @@ const NosotrosWrapper = () => {
   return (
     <Layout title="Ciclo" description="Sobre Nosotros" servicios={false}>
       <MaxContainer>
-        <div className={styles.container}>
-          <div>
-            <Image
-              src={"/nosotros_hero.jpg"}
-              alt="Unite a la comunidad"
-              width={1440}
-              height={700}
-              priority
-            />
+        <div className={styles.hero}>
+          <Image
+            src={"/ciclos/nosotros_hero.jpg"}
+            alt="Unite a la comunidad"
+            width={1920}
+            height={700}
+            priority
+          />
+          <div className={styles.hero_title}>
+            <Text
+              variant="h1"
+              textCase="capitalize"
+              colored
+              textColor="#fff"
+              textSize="xxxl"
+              weight="medium"
+              left
+            >
+              Somos un equipo joven, interdisciplinario y comprometido con los
+              desafíos que plantea la industria de l construcción
+            </Text>
+            <Button color="pink" circular className={styles.hero__button}>
+              <Button.Content>Unite a la Comunidad</Button.Content>
+            </Button>
           </div>
+        </div>
+        <div className={styles.container}>
           <div className={styles.about_us}>
             <div className={styles.wrapper}>
               <div className={styles.text_left}>
                 <Text
                   variant="h2"
                   textCase="uppercase"
+                  weight="bold"
+                  textSize="xxl"
                   className={styles.text_title}
                 >
                   TECLAB
@@ -67,6 +86,8 @@ const NosotrosWrapper = () => {
                 <Text
                   variant="h2"
                   textCase="uppercase"
+                  textSize="xxl"
+                  weight="bold"
                   className={styles.text_title}
                 >
                   DESARROLLO EMPRENDEDOR
@@ -110,9 +131,11 @@ const NosotrosWrapper = () => {
                 <Text
                   variant="h2"
                   textCase="uppercase"
+                  textSize="xxl"
+                  weight="bold"
                   className={styles.text_title}
                 >
-                  TECLAB
+                  Vinculación itu
                 </Text>
                 <Text
                   variant="span"
@@ -155,5 +178,5 @@ const NosotrosWrapper = () => {
   );
 };
 
-NosotrosWrapper.displayName = 'NosotrosWrapper';
+NosotrosWrapper.displayName = "NosotrosWrapper";
 export default NosotrosWrapper;
