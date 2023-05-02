@@ -1,22 +1,24 @@
 import Layout from "../Layout/Layout";
-import { MaxContainer } from "@/components/mixins";
+import { MaxContainer, Text } from "@/components/mixins";
 import styles from "./obras.module.scss";
 import Obra from "../Obra/Obra";
+import { Button } from "semantic-ui-react";
+import Image from "next/image";
 
 const first_row_obras = [
   {
     key: "first_obra",
     hero_image: {
-      src: "/obra_1.png",
+      src: "/ciclos/los_teros_img.png",
       alt: "sistema SIP",
-      width: 170,
-      height: 100,
+      width: 570,
+      height: 247,
     },
     brand_image: {
-      src: "/aliados/extra_brut.png",
+      src: "/ciclos/newpanel_brand_dark.png",
       alt: "Extra Brut Construir Mejor",
-      width: 170,
-      height: 100,
+      width: 120,
+      height: 45,
     },
     title: "vivienda los teros",
     technology: "Sistema S.I.P",
@@ -26,20 +28,20 @@ const first_row_obras = [
   {
     key: "second_obra",
     hero_image: {
-      src: "/obra_1.png",
-      alt: "sistema SIP",
-      width: 170,
-      height: 100,
+      src: "/ciclos/extrabrut_img.png",
+      alt: "Steel Framing",
+      width: 570,
+      height: 247,
     },
     brand_image: {
-      src: "/aliados/extra_brut.png",
+      src: "/ciclos/extrabrut_brand_dark.png",
       alt: "Extra Brut Construir Mejor",
-      width: 170,
-      height: 100,
+      width: 120,
+      height: 45,
     },
-    title: "vivienda los teros",
-    technology: "Sistema S.I.P",
-    city: "Guaymallen, Mendoza",
+    title: "vivienda unifamliar 2 plantas",
+    technology: "Sistema Steel Framing",
+    city: "Maipú, Mendoza",
     href: "",
   },
 ];
@@ -48,39 +50,39 @@ const second_row_obras = [
   {
     key: "third_obra",
     hero_image: {
-      src: "/obra_1.png",
-      alt: "sistema SIP",
-      width: 170,
-      height: 100,
+      src: "/ciclos/ltn_img.png",
+      alt: "Paneles Aislantes PUR",
+      width: 570,
+      height: 247,
     },
     brand_image: {
-      src: "/aliados/extra_brut.png",
+      src: "/ciclos/ltn_brand_dark.png",
       alt: "Extra Brut Construir Mejor",
-      width: 170,
-      height: 100,
+      width: 120,
+      height: 45,
     },
-    title: "vivienda los teros",
-    technology: "Sistema S.I.P",
-    city: "Guaymallen, Mendoza",
+    title: "vivienda unifamiliar 1 planta",
+    technology: "Paneles Aislantes PUR",
+    city: "Lujan de Cuyo, Mendoza",
     href: "",
   },
   {
     key: "fourth_obra",
     hero_image: {
-      src: "/obra_1.png",
+      src: "/ciclos/cassaforma_img.png",
       alt: "sistema SIP",
-      width: 170,
-      height: 100,
+      width: 570,
+      height: 247,
     },
     brand_image: {
-      src: "/aliados/extra_brut.png",
-      alt: "Extra Brut Construir Mejor",
-      width: 170,
-      height: 100,
+      src: "/ciclos/cassaforma_brand_dark.png",
+      alt: "Sistema Cassaforma",
+      width: 120,
+      height: 45,
     },
-    title: "vivienda los teros",
-    technology: "Sistema S.I.P",
-    city: "Guaymallen, Mendoza",
+    title: "vivienda unifamiliar 2 plantas",
+    technology: "Sistema Cassaforma",
+    city: "Godoy Cruz, Mendoza",
     href: "",
   },
 ];
@@ -89,6 +91,30 @@ const ObrasWrapper = () => {
   return (
     <Layout title="Ciclo" description="Nuestras Obras">
       <MaxContainer>
+        <div className={styles.hero}>
+          <Image
+            src={"/ciclos/obras_hero.jpg"}
+            alt="Unite a la comunidad"
+            width={1920}
+            height={700}
+            priority
+          />
+          <div className={styles.hero_title}>
+            <Text
+              variant="h1"
+              textCase="capitalize"
+              colored
+              textColor="#fff"
+              textSize="xxxl"
+              weight="medium"
+            >
+              Obras realizadas
+            </Text>
+            <Button color="pink" circular className={styles.hero__button}>
+              <Button.Content>Empezá tu Proyecto</Button.Content>
+            </Button>
+          </div>
+        </div>
         <div className={styles.container}>
           <div>
             {first_row_obras.map((obra) => (
@@ -110,5 +136,5 @@ const ObrasWrapper = () => {
   );
 };
 
-ObrasWrapper.displayName = 'ObrasWrapper';
+ObrasWrapper.displayName = "ObrasWrapper";
 export default ObrasWrapper;

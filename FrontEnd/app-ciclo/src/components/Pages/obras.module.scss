@@ -1,5 +1,5 @@
-.container{
-  width: 1440px;
+.container {
+  max-width: 1920px;
   z-index: -10;
   background-color: $color-white-absolute;
   display: flex;
@@ -7,9 +7,46 @@
   justify-content: center;
 }
 
+.hero {
+  margin-top: -220px;
+  z-index: -10;
+  h1 {
+    padding-left: 300px;
+    font-family: "Poppins" !important;
+  }
+  button {
+    margin-left: 300px !important;
+  }
+  img{
+    z-index: -10;
+  }
+}
 
+.hero_title {
+  margin-top: -360px;
+  margin-bottom: 360px;
+  position: relative;
+}
+
+.hero__button{
+  width: 250px !important;
+  height: 60px;
+  margin: 44px 936px 0 214.5px;
+  padding: 17px 29.5px 17px 30px;
+  font-family: Montserrat;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
 @media (max-width: 768px) {
-  .container{
+  .container {
     flex-direction: column;
+  }
+  .hero {
+    h1 {
+      padding-left: 40px;
+    }
+    button {
+      margin-left: 40px !important;
+    }
   }
 }

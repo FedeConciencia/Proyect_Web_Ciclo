@@ -25,14 +25,16 @@ const Obra = (props: any) => (
         <Text variant="span"> {props.city} </Text>
       </div>
       <div className={styles.brand_image}>
-        <div>
+        <div className={styles.brand_button}>
           <Link href={props.href}>
             <Text variant="span" textSize="s" textColor="#ffffff">
               Leer Mas...
             </Text>
           </Link>
         </div>
-        <Image {...props.brand_image} />
+        <div className={styles.brand_icon}>
+          <Image {...props.brand_image} />
+        </div>
       </div>
     </div>
   </div>
