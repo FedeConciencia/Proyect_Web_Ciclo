@@ -9,13 +9,14 @@ const sizes = {
   l: "1.125rem",
   xl: "1.25rem",
   xxl: "1.375rem",
+  large: "36px",
   xxxl: "44px",
 };
 
 type Props = {
   children: any;
   variant?: "p" | "h1" | "h2" | "h3" | "h4" | "span";
-  weight?: "light" | "normal" | "semibold" | "bold" | "bolder";
+  weight?: "light" | "normal" | "semibold" | "bold" | "bolder" | "medium";
   textColor?: string;
   textCase?: "uppercase" | "capitalize" | "none";
   textStyle?: object;
@@ -26,7 +27,7 @@ type Props = {
   colored?: boolean;
   className?: string;
   forInput?: string | null;
-  textSize?: "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
+  textSize?: "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl" | "large";
 };
 
 const Text = ({
@@ -49,6 +50,7 @@ const Text = ({
     [styles.text]: true,
     [styles.light]: weight === "light",
     [styles.normal]: weight === "normal",
+    [styles.medium]: weight === "medium",
     [styles.semibold]: weight === "semibold",
     [styles.bold]: weight === "bold",
     [styles.bolder]: weight === "bolder",
@@ -79,7 +81,7 @@ const Text = ({
         <h1
           className={textClass}
           style={{
-            color: colored ? "" : textColor,
+            color: colored ? "" : `${textColor} !important`,
             fontSize: sizes[textSize],
             ...textStyle,
           }}
