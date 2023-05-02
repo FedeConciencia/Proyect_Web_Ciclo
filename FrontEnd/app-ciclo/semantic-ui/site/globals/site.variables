@@ -1,0 +1,9 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@fontName           : 'Montserrat';
+
+@primaryColor       : #ffffff;
+@pageBackground     : #eff0f1;
+@pink               : #e93a7d;

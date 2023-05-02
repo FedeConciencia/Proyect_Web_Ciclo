@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 
 const path = require("path");
+const withLess = require("next-with-less");
+const withPlugins = require("next-compose-plugins");
 const ContentSecurityPolicy = `
   upgrade-insecure-requests;
 `;
-
 // Es posible revisar las politicas de Seguridad
 // En la siguiente URL https://securityheaders.com/
 const securityHeaders = [
@@ -43,6 +44,7 @@ const securityHeaders = [
     value: "1; mode=block",
   },
 ];
+
 const nextConfig = {
   async headers() {
     return [
@@ -68,6 +70,33 @@ const nextConfig = {
     /* con functions obtenemos la info de las variables de entorno
   para inyectar como variables de css */
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.(png|svg|eot|otf|ttf|woff|woff2)$/,
+      use: {
+        loader: "url-loader",
+        options: {
+          limit: 8192,
+          publicPath: "/_next/static/",
+          outputPath: "static/",
+          name: "[name].[ext]",
+        },
+      },
+    });
+    config.resolve.alias["../../theme.config$"] = path.join(
+      config.context,
+      "/semantic-ui/theme.config"
+    );
+    return config;
+  },
 };
 
-module.exports = nextConfig;
+const plugins = [
+  [
+    withLess,
+    {
+      lessLoaderOptions: { lessOptions: { math: "always" } },
+    },
+  ],
+];
+module.exports = withPlugins(plugins, nextConfig);
