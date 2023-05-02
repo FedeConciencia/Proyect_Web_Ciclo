@@ -17,6 +17,7 @@ const Slider = ({ children, hightlight = false }: sliderProps) => {
     const wrapper = container.current;
     const slider = ref.current;
     const slideWidth = wrapper.clientWidth;
+    console.log(slideWidth)
     const position = index * slideWidth;
     slider?.scrollTo({
       left: position,

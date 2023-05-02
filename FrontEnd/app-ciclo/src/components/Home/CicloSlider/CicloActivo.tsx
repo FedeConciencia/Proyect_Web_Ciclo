@@ -32,7 +32,10 @@ function CicloActivo({
   const { isDesktop } = useDeviceType();
 
   return (
-    <div className={`${styles.container} ${styles.slider}`}>
+    <div
+      className={`${styles.container} ${styles.slider}`}
+      style={{ padding: '0 0 0 8rem' }}
+    >
       <div className={styles.first_column}>
         <div className={styles.title}>
           <Text

@@ -79,6 +79,7 @@ const sliders = [
       height: 700,
       width: 860,
     },
+    rem: '1rem',
   },
   {
     key: "2",
@@ -148,6 +149,7 @@ const sliders = [
       height: 700,
       width: 860,
     },
+    rem: '3rem',
   },
 ];
 
@@ -296,6 +298,7 @@ function Home() {
               first_list,
               second_list,
               second_column,
+              rem,
             }) => (
               <CicloSlider
                 key={key}
@@ -305,6 +308,7 @@ function Home() {
                 first_list={first_list}
                 second_list={second_list}
                 second_column={second_column}
+                rem={rem}
               />
             )
           )}

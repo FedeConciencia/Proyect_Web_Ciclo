@@ -25,7 +25,10 @@ function CicloEstrategico({ title, subtitle, description, first_list }: props) {
   const { isDesktop } = useDeviceType();
 
   return (
-    <div className={`${styles.container} ${styles.estrategico}`}>
+    <div
+      className={`${styles.container} ${styles.estrategico}`}
+      style={{ padding: "0 0 0 5rem" }}
+    >
       <div className={styles.first_column}>
         <div className={styles.title}>
           <Text
@@ -69,50 +72,52 @@ function CicloEstrategico({ title, subtitle, description, first_list }: props) {
           </ul>
         </div>
       </div>
-      <div className={styles.second_column_with_images}>
-        <div className={styles.second_column_images}>
-          <div>
-            <Image
-              src="/aliados/grupo_ltn.png"
-              alt="Grupo LTN"
-              width={170}
-              height={100}
-            />
-            <Image
-              src="/aliados/extra_brut.png"
-              alt="Extra Brut Construir Mejor"
-              width={170}
-              height={100}
-            />
-            <Image
-              src="/aliados/extra_brut.png"
-              alt="Extra Brut Construir Mejor"
-              width={170}
-              height={100}
-            />
-          </div>
-          <div>
-            <Image
-              src="/aliados/extra_brut.png"
-              alt="Extra Brut Construir Mejor"
-              width={170}
-              height={100}
-            />
-            <Image
-              src="/aliados/extra_brut.png"
-              alt="Extra Brut Construir Mejor"
-              width={170}
-              height={100}
-            />
-            <Image
-              src="/aliados/colegio_tecnicos_mdz.png"
-              alt="Colegios Tecnicos Mendoza"
-              width={170}
-              height={100}
-            />
+      {isDesktop && (
+        <div className={styles.second_column_with_images}>
+          <div className={styles.second_column_images}>
+            <div>
+              <Image
+                src="/aliados/grupo_ltn.png"
+                alt="Grupo LTN"
+                width={170}
+                height={100}
+              />
+              <Image
+                src="/aliados/extra_brut.png"
+                alt="Extra Brut Construir Mejor"
+                width={170}
+                height={100}
+              />
+              <Image
+                src="/aliados/extra_brut.png"
+                alt="Extra Brut Construir Mejor"
+                width={170}
+                height={100}
+              />
+            </div>
+            <div>
+              <Image
+                src="/aliados/extra_brut.png"
+                alt="Extra Brut Construir Mejor"
+                width={170}
+                height={100}
+              />
+              <Image
+                src="/aliados/extra_brut.png"
+                alt="Extra Brut Construir Mejor"
+                width={170}
+                height={100}
+              />
+              <Image
+                src="/aliados/colegio_tecnicos_mdz.png"
+                alt="Colegios Tecnicos Mendoza"
+                width={170}
+                height={100}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

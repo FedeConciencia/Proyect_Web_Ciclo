@@ -108,3 +108,14 @@
     width: 100%;
   }
 }
+
+
+@media (max-width: 500px) {
+  .sliderContainer{
+    height: 900px;
+  }
+  .slider {
+    width: fit-content;
+    width: 375px;
+  }
+}

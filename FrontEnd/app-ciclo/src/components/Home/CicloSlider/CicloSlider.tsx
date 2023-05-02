@@ -31,6 +31,7 @@ type props = {
   first_list: ciclo_list;
   second_list: ciclo_list;
   second_column?: second_column;
+  rem: string;
 };
 function CicloSlider({
   title,
@@ -39,11 +40,14 @@ function CicloSlider({
   first_list,
   second_list,
   second_column,
+  rem,
 }: props) {
   const { isDesktop } = useDeviceType();
 
   return (
-    <div className={`${styles.container} ${styles.slider}`}>
+    <div className={`${styles.container} ${styles.slider}`}
+    style={{ padding: `0 0 0 ${rem}` }}
+    >
       <div className={styles.first_column}>
         <div className={styles.title}>
           <Text

@@ -100,3 +100,31 @@
     opacity: 0.2;
   }
 }
+
+@media (max-width: 500px) {
+  .buttons {
+    flex-direction: column;
+  }
+  .title {
+    max-width: 250px;
+    padding: 0;
+  }
+  .title__text {
+    padding-left: 0;
+    margin: 0 60px 0 -30px;
+  }
+  .buttons {
+    padding-left: 0;
+    margin-bottom: 48px;
+  }
+  .learn_more__button {
+    margin: 0 60px 0 0;
+  }
+  .sign_up__button {
+    margin: 0 60px 0 0;
+  }
+  .hero_background {
+    margin-top: -600px;
+    opacity: 0.2;
+  }
+}
