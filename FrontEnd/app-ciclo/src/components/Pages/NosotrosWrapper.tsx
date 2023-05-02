@@ -27,7 +27,7 @@ const NosotrosWrapper = () => {
               left
             >
               Somos un equipo joven, interdisciplinario y comprometido con los
-              desafíos que plantea la industria de l construcción
+              desafíos que plantea la industria de la construcción
             </Text>
             <Button color="pink" circular className={styles.hero__button}>
               <Button.Content>Unite a la Comunidad</Button.Content>
