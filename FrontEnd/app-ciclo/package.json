@@ -22,6 +22,8 @@
     "eslint-config-next": "13.2.4",
     "fetch": "^1.1.0",
     "next": "13.2.4",
+    "next-compose-plugins": "^2.2.1",
+    "next-with-less": "^2.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.5",
@@ -29,9 +31,12 @@
     "react-input-mask": "^2.0.4",
     "react-redux": "^8.0.5",
     "sass": "^1.59.3",
+    "semantic-ui-less": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
     "typescript": "5.0.2"
   },
   "devDependencies": {
-    "@types/react-input-mask": "^3.0.2"
+    "@types/react-input-mask": "^3.0.2",
+    "url-loader": "^4.1.1"
   }
 }
