@@ -20,12 +20,12 @@ const Layout = ({
   const { asPath } = useRouter();
   const canonicalURL = ` ${
     typeof window !== "undefined" ? window.location.origin : "localhost:3000"
-  }​​​​​​${asPath}​​​​​​`;
+  }${asPath}`;
 
   return (
     <>
       <Head>
-        <title>{title}​​​​​​</title>
+        <title>{title}</title>
         <meta charSet="utf-8" />
         <meta
           name="viewport"
