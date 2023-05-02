@@ -24,7 +24,7 @@
 
 .hero_title {
   margin-top: -360px;
-  margin-bottom: 360px;
+  margin-bottom: 260px;
   position: relative;
 }
 
@@ -49,4 +49,11 @@
       margin-left: 40px !important;
     }
   }
+}
+
+@media (max-width: 500px) {
+  .hero_title {
+    margin-bottom: 160px;
+  }
+  
 }

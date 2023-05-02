@@ -46,6 +46,7 @@ const Info = ({ servicios }: any) => {
             textSize="large"
             colored
             weight="medium"
+            className={styles.resalted}
           >
             Info@ciclosoluciones.com
           </Text>
@@ -65,6 +66,7 @@ const Info = ({ servicios }: any) => {
             textSize="large"
             colored
             weight="medium"
+            className={styles.resalted}
           >
             <a href="tel:+5492612765262">+549 261 276 5262</a>
           </Text>
