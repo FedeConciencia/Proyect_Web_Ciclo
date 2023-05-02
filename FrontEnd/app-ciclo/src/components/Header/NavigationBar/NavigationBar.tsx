@@ -5,11 +5,12 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import styles from "./NavigationBar.module.scss";
+import useDeviceType from "@/hooks/useDeviceType";
 
 const NavigationBar = () => {
+  const { isDesktop } = useDeviceType();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-
   const closeDropdown = () => setDropdownOpen(false);
 
   return (
@@ -87,28 +88,30 @@ const NavigationBar = () => {
         </ul>
       </div>
 
-      <div className={styles.navbarSocial}>
-        <ul className={styles.socialLinksList}>
-          <li>
-            <Link href="/">
-              <FacebookIcon className={styles.socialMediaIcon} />
-            </Link>
-          </li>
-          <li>
-            <Link href="/">
-              <InstagramIcon className={styles.socialMediaIcon} />
-            </Link>
-          </li>
-          <li>
-            <Link href="/">
-              <LinkedInIcon className={styles.socialMediaIcon} />
-            </Link>
-          </li>
-        </ul>
-      </div>
+      {isDesktop && (
+        <div className={styles.navbarSocial}>
+          <ul className={styles.socialLinksList}>
+            <li>
+              <Link href="/">
+                <FacebookIcon className={styles.socialMediaIcon} />
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <InstagramIcon className={styles.socialMediaIcon} />
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <LinkedInIcon className={styles.socialMediaIcon} />
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
 
-NavigationBar.displayName = 'NavigationBar';
+NavigationBar.displayName = "NavigationBar";
 export default NavigationBar;
