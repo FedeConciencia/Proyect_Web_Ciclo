@@ -5,14 +5,14 @@ import styles from "./formunirme.module.scss";
 const FormUnirme = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    return console.log("KAKAKA");
+    return console.log("submiting");
   };
   return (
     <form className={styles.form} noValidate onSubmit={handleSubmit}>
       <Input
         id="1"
         name="fullname"
-        placeholder="Luis Esteban Graso"
+        placeholder="Ciclo Soluciones Constructivas"
         required
         title="Nombre y Apellido"
         className="fullWidth"
@@ -26,7 +26,7 @@ const FormUnirme = () => {
         id="2"
         name="telefono"
         placeholder="+54 9 261 3871088"
-        title="Telefono"
+        title="Teléfono"
         className="halfWidth"
         br="hard"
         filled
@@ -37,8 +37,8 @@ const FormUnirme = () => {
       <Input
         id="3"
         name="email"
-        placeholder="email"
-        title="luis@laproa.com"
+        placeholder="info@ciclosoluciones.com"
+        title="Email"
         type="email"
         className="halfWidth"
         br="hard"
@@ -63,7 +63,7 @@ const FormUnirme = () => {
         id="5"
         name="localidad"
         required
-        placeholder="Rodeo del Medio"
+        placeholder="Godoy Cruz"
         title="Elija una Localidad"
         className="halfWidth"
         br="hard"
