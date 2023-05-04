@@ -1,29 +1,43 @@
-.home {
-  max-width: 1920px;
-  background-color: #2f1893;
-  position: relative;
-  margin-top: -220px;
-  padding-top: 200px;
-  z-index: -10;
-  transition: all 0.3s ease-in-out;
-}
-
 .hero {
-  padding: 30px 0 0 100px;
-}
-.hero_background {
-  margin-top: -340px;
-  text-align: right;
+  margin-top: -220px;
+  z-index: -10;
+  text-align: left;
+  background-color: #2f1893;
+  margin-bottom: 100px;
 }
 
-.title {
+.hero_background {
+  height: 700px;
+}
+.hero_title {
+  margin-top: -380px;
+  max-width: 1100px;
+  position: relative;
+  z-index: 100;
+}
+
+.hero__button {
+  height: 60px;
+  font-family: "Montserrat" !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+.title_buttons {
+  margin-top: 20px;
+  margin-left: 300px;
+}
+
+.title_text {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1px;
   font-family: "Poppins" !important;
-  max-width: 800px;
+  max-width: 1000px;
+  padding-left: 300px;
   h1 {
     color: #e93a7d !important;
+    line-height: 46px;
   }
   span {
     letter-spacing: -1px;
@@ -31,51 +45,19 @@
   }
 }
 
-.title__text {
-  padding-left: 200px;
+.hero_background_image {
+  margin-top: -340px;
+  text-align: right;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-  padding-left: 200px;
-  align-items: center;
-  margin-top: 20px;
-  font-family: 'Montserrat' !important;
+.unirme_button {
+  box-shadow: 0px 0px 0px 1px #fff inset !important;
 }
 
-.learn_more__button {
-  width: 249.6px;
-  height: 60px;
-  margin: 57px 48.7px 0 0;
-  padding: 17px 29.6px 17px 30px;
-  border-radius: 100px;
-  background-color: #e93a7d;
-}
-.sign_up__button {
-  width: 250px;
-  height: 60px;
-  padding: 17px 29.6px 17px 30px;
-  border-radius: 100px;
-  border: solid 2px #fff;
-}
-
-.vector {
-  width: 350px;
-  height: 708.8px;
-  margin: 152px 0 575.2px 1050px;
-  padding: 173.6px 0px 173.6px 176.4px;
-  background-image: linear-gradient(
-    to bottom,
-    #fff 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.form {
-  width: 580px;
-  height: 750px;
+@media (max-width: 1000px) {
+  .hero {
+    padding: 0 0 0 3rem;
+  }
 }
 
 @media (max-width: 800px) {

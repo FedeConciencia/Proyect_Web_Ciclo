@@ -5,6 +5,11 @@ import CicloSlider from "./CicloSlider/CicloSlider";
 import CicloEstrategico from "./CicloSlider/CicloEstrategico";
 import CicloActivo from "./CicloSlider/CicloActivo";
 import Image from "next/image";
+import FormContacto from "../FormContacto/FormContacto";
+import FormUnirmeModal from "../FormUnirme/FormUnirmeModal";
+import { Button } from "semantic-ui-react";
+import { useState } from "react";
+import useDeviceType from "@/hooks/useDeviceType";
 
 type option_ciclo_list = {
   key: string;
@@ -79,7 +84,7 @@ const sliders = [
       height: 700,
       width: 860,
     },
-    rem: '1rem',
+    rem: "1rem",
   },
   {
     key: "2",
@@ -149,7 +154,7 @@ const sliders = [
       height: 700,
       width: 860,
     },
-    rem: '3rem',
+    rem: "2rem",
   },
 ];
 
@@ -234,14 +239,81 @@ const ciclo_activo = {
     ] as option_ciclo_list[],
   },
 };
-function Home() {
+
+const Home = () => {
+  const { isDesktop } = useDeviceType();
+  const [openContacto, setOpenContacto] = useState(isDesktop);
+  const [openUnirme, setOpenUnirme] = useState(false);
+  const openFormContacto = () => {
+    setOpenContacto(true);
+    setOpenUnirme(false);
+  };
+  const openFormUnirme = () => {
+    setOpenUnirme(true);
+    setOpenContacto(false);
+  };
+
   return (
     <Layout
       title="Ciclo"
       description="Somos un equipo joven. interdisciplinario y comprometido con los desafíos que plantea la industria de la construcción"
     >
       <MaxContainer>
-        <div className={styles.home}>
+        <div className={styles.hero}>
+          <div className={styles.hero_background}></div>
+          <div className={styles.hero_title}>
+            <div className={styles.title_text}>
+              <Text
+                variant="h1"
+                textCase="capitalize"
+                colored
+                textColor="#fff"
+                textSize="xxxl"
+                weight="bold"
+                left
+              >
+                Comienza un nuevo ciclo
+              </Text>
+              <Text
+                variant="span"
+                left
+                weight="bold"
+                textColor="#fff"
+                textSize="xxxl"
+              >
+                para la construcción en Mendoza.
+              </Text>
+            </div>
+            <div className={styles.title_buttons}>
+              <Button
+                color="pink"
+                circular
+                className={styles.hero__button}
+                onClick={() => openFormContacto()}
+              >
+                <Button.Content>Empezá tu proyecto</Button.Content>
+              </Button>
+              <Button
+                basic
+                circular
+                className={`${styles.hero__button} ${styles.unirme_button}`}
+                onClick={() => openFormUnirme()}
+              >
+                <Button.Content>Unite a la Comunidad</Button.Content>
+              </Button>
+            </div>
+          </div>
+          <div className={styles.hero_background_image}>
+            <Image
+              src={"/ciclos/ciclo_detail.png"}
+              alt="Unite a la comunidad"
+              width={400}
+              height={700}
+              priority
+            />
+          </div>
+        </div>
+        {/* <div className={styles.home}>
           <div className={styles.hero}>
             <div className={styles.title}>
               <Text
@@ -266,11 +338,14 @@ function Home() {
               </Text>
             </div>
             <div className={styles.buttons}>
-              <Text className={styles.learn_more__button}>
-                <Text variant="span" center={true} weight="bold" colored>
-                  Empezá tu proyecto
-                </Text>
-              </Text>
+              <Button
+                circular
+                color="pink"
+                onClick={() => handleButtonClick()}
+                className={styles.learn_more__button}
+              >
+                Empezá tu proyecto
+              </Button>
               <Text className={styles.sign_up__button}>
                 <Text variant="span" center={true} weight="bold" colored>
                   Unite a la Comunidad
@@ -287,7 +362,9 @@ function Home() {
               priority
             />
           </div>
-        </div>
+        </div> */}
+        {openContacto && <FormContacto stateChanger={setOpenContacto} />}
+        {openUnirme && <FormUnirmeModal stateChanger={setOpenUnirme} />}
         <Slider hightlight>
           {sliders.map(
             ({
@@ -331,6 +408,6 @@ function Home() {
       </MaxContainer>
     </Layout>
   );
-}
+};
 
 export default Home;

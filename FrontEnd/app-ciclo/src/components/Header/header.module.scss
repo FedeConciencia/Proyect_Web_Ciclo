@@ -1,11 +1,5 @@
 .container {
-  display: flex; 
-  justify-content: center; /* center everything */
-  align-items: center;
-  margin-top: 20px;
-  padding: 0 260px; /* prevent crawling on the logo */
   height: 200px;
-  padding: 40px;
   background-color: transparent;
   position: relative;
 }
