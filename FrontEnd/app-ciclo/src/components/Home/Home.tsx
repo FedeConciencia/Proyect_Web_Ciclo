@@ -45,7 +45,10 @@ const sliders = [
           key: "ciclo_integral_3",
           text: "Falta de coordinación y transparencia entre partes interesadas.",
         },
-        { key: "ciclo_integral_4", text: "Gran cantidad de retrabajos." },
+        {
+          key: "ciclo_integral_4",
+          text: "Gran cantidad de retrabajos.",
+        },
         {
           key: "ciclo_integral_5",
           text: "Incumplimiento sistemático de los plazos de entrega.",
@@ -160,8 +163,7 @@ const sliders = [
 
 const ciclo_estrategico = {
   key: "3",
-  title: "Un Ciclo Estrategico",
-  subtitle: "",
+  title: "Un Ciclo Estratégico",
   description:
     "Red colaborativa de empresas e instituciones referentes de la construcción en Mendoza. Conece nuestros aliados.",
   first_list: {
@@ -174,7 +176,7 @@ const ciclo_estrategico = {
       },
       {
         key: "ciclo_estrategico_2",
-        title: "Mision",
+        title: "Misión",
         text: "Acompañarte en tu proyecto constructivo para que vivas una experiencia única.",
       },
       {
@@ -313,56 +315,6 @@ const Home = () => {
             />
           </div>
         </div>
-        {/* <div className={styles.home}>
-          <div className={styles.hero}>
-            <div className={styles.title}>
-              <Text
-                variant="h1"
-                left={true}
-                weight="bold"
-                textColor="#e93a7d"
-                textSize={"xxxl"}
-                className={styles.title__text}
-              >
-                Comienza un nuevo ciclo
-              </Text>
-              <Text
-                variant="span"
-                left={true}
-                weight="bold"
-                textColor="#fff"
-                textSize={"xxxl"}
-                className={styles.title__text}
-              >
-                para la construcción en Mendoza.
-              </Text>
-            </div>
-            <div className={styles.buttons}>
-              <Button
-                circular
-                color="pink"
-                onClick={() => handleButtonClick()}
-                className={styles.learn_more__button}
-              >
-                Empezá tu proyecto
-              </Button>
-              <Text className={styles.sign_up__button}>
-                <Text variant="span" center={true} weight="bold" colored>
-                  Unite a la Comunidad
-                </Text>
-              </Text>
-            </div>
-          </div>
-          <div className={styles.hero_background}>
-            <Image
-              src={"/ciclos/ciclo_detail.png"}
-              alt="Unite a la comunidad"
-              width={400}
-              height={700}
-              priority
-            />
-          </div>
-        </div> */}
         {openContacto && <FormContacto stateChanger={setOpenContacto} />}
         {openUnirme && <FormUnirmeModal stateChanger={setOpenUnirme} />}
         <Slider hightlight>
@@ -392,7 +344,6 @@ const Home = () => {
           <CicloEstrategico
             key={ciclo_estrategico.key}
             title={ciclo_estrategico.title}
-            subtitle={ciclo_estrategico.subtitle}
             description={ciclo_estrategico.description}
             first_list={ciclo_estrategico.first_list}
           />

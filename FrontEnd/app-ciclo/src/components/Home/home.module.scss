@@ -54,6 +54,17 @@
   box-shadow: 0px 0px 0px 1px #fff inset !important;
 }
 
+@media (max-width: 767px) { /* adjust padding for mobile */
+  
+  .title_buttons {
+    margin-left: 20px;
+  }
+  .title_text {
+    max-width: 300px;
+    padding-left: 20px;
+  }
+}
+
 @media (max-width: 1000px) {
   .hero {
     padding: 0 0 0 3rem;
@@ -61,6 +72,9 @@
 }
 
 @media (max-width: 800px) {
+  .hero_title{
+    margin-top: 0;
+  }
   .title {
     max-width: 400px;
   }
@@ -108,5 +122,8 @@
   .hero_background {
     margin-top: -600px;
     opacity: 0.2;
+  }
+  .hero_background_image{
+    margin-top: -550px !important;
   }
 }
