@@ -3,7 +3,7 @@ import useDeviceType from "@/hooks/useDeviceType";
 import styles from "./cicloslider.module.scss";
 import Image from "next/image";
 import { useState } from "react";
-import Listado from "../Listado/Listado";
+import Listado from "@/components/Home/Listado/Listado";
 
 type ciclo_list = {
   title?: string;
