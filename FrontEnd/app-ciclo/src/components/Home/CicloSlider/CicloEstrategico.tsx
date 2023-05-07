@@ -1,6 +1,5 @@
 import { Text } from "@/components/mixins";
 import useDeviceType from "@/hooks/useDeviceType";
-import { BiChevronDown } from "react-icons/bi";
 import styles from "./cicloslider.module.scss";
 import Image from "next/image";
 
@@ -16,19 +15,15 @@ type ciclo_list = {
 
 type props = {
   title?: string;
-  subtitle?: string;
   description?: string;
   className?: string;
   first_list?: ciclo_list;
 };
-function CicloEstrategico({ title, subtitle, description, first_list }: props) {
+function CicloEstrategico({ title, description, first_list }: props) {
   const { isDesktop } = useDeviceType();
 
   return (
-    <div
-      className={`${styles.container} ${styles.estrategico}`}
-      style={{ padding: "0 0 0 5rem" }}
-    >
+    <div className={`${styles.container} ${styles.estrategico}`}>
       <div className={styles.first_column}>
         <div className={styles.title}>
           <Text
@@ -39,31 +34,27 @@ function CicloEstrategico({ title, subtitle, description, first_list }: props) {
           >
             {title}
           </Text>
-          <Text variant="h2" textSize="s" left>
-            {subtitle}
-          </Text>
           <br />
-          <Text variant="p" textSize="s" left>
+          <Text variant="p" className={styles.title__description} left>
             {description}
           </Text>
           <br />
         </div>
-        <div className={styles.first_list}>
-          <div className={styles.list_title_with_icon}>
+        <div>
+          <div>
             <Text className={styles.list_title} left textCase="uppercase">
               {first_list?.title}
             </Text>
-            <BiChevronDown color={"#ffb71b"} fontSize={20} />
           </div>
           <ul>
             {first_list?.options.map((option) => {
               return (
                 <li key={option.key} className={styles.estrategic_list}>
-                  <Text variant="h3" textSize="s" weight="bold">
+                  <Text variant="h3" className={styles.list} weight="bold">
                     {option.title}
                   </Text>
                   <br />
-                  <Text variant="p" textSize="s">
+                  <Text variant="span" className={styles.list} weight="medium">
                     {option.text}
                   </Text>
                 </li>
@@ -76,44 +67,56 @@ function CicloEstrategico({ title, subtitle, description, first_list }: props) {
         <div className={styles.second_column_with_images}>
           <div className={styles.second_column_images}>
             <div>
-              <Image
-                src="/aliados/grupo_ltn.png"
-                alt="Grupo LTN"
-                width={170}
-                height={100}
-              />
-              <Image
-                src="/aliados/extra_brut.png"
-                alt="Extra Brut Construir Mejor"
-                width={170}
-                height={100}
-              />
-              <Image
-                src="/aliados/extra_brut.png"
-                alt="Extra Brut Construir Mejor"
-                width={170}
-                height={100}
-              />
+              <div className={styles.card_brand}>
+                <Image
+                  src="/ciclos/ltn_brand_dark.png"
+                  alt="Grupo LTN"
+                  width={120}
+                  height={50}
+                />
+              </div>
+              <div className={styles.card_brand}>
+                <Image
+                  src="/ciclos/itu_brand_dark.png"
+                  alt="Instituto Tecnologico Universitario"
+                  width={120}
+                  height={50}
+                />
+              </div>
+              <div className={styles.card_brand}>
+                <Image
+                  src="/ciclos/newpanel_brand_dark.png"
+                  alt="Sistema de construcción sismotermica"
+                  width={120}
+                  height={50}
+                />
+              </div>
             </div>
             <div>
-              <Image
-                src="/aliados/extra_brut.png"
-                alt="Extra Brut Construir Mejor"
-                width={170}
-                height={100}
-              />
-              <Image
-                src="/aliados/extra_brut.png"
-                alt="Extra Brut Construir Mejor"
-                width={170}
-                height={100}
-              />
-              <Image
-                src="/aliados/colegio_tecnicos_mdz.png"
-                alt="Colegios Tecnicos Mendoza"
-                width={170}
-                height={100}
-              />
+              <div className={styles.card_brand}>
+                <Image
+                  src="/ciclos/extrabrut_brand_dark.png"
+                  alt="Extra Brut Construir Mejor"
+                  width={120}
+                  height={50}
+                />
+              </div>
+              <div className={styles.card_brand}>
+                <Image
+                  src="/ciclos/cassaforma_brand_dark.png"
+                  alt="Sistema Constructivo Integral"
+                  width={120}
+                  height={50}
+                />
+              </div>
+              <div className={styles.card_brand}>
+                <Image
+                  src="/ciclos/ctm_brand_dark.png"
+                  alt="Colegios Tecnicos Mendoza"
+                  width={120}
+                  height={50}
+                />
+              </div>
             </div>
           </div>
         </div>
