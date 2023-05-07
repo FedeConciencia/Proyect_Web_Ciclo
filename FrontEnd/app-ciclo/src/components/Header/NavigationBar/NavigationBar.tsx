@@ -17,13 +17,14 @@ const NavigationBar = () => {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const closeDropdown = () => setDropdownOpen(false);
   const changeBackground = () => {
-    if (window.scrollY >= 600) {
+    if (window.scrollY >= 200) {
       setScrolled(true);
     } else {
       setScrolled(false);
     }
   };
   useEffect(() => {
+    changeBackground()
     window.addEventListener("scroll", changeBackground);
     return () => {
       window.removeEventListener("scroll", changeBackground);
