@@ -1,0 +1,24 @@
+.list_title {
+  color: #ffb71b;
+  font-family: "Montserrat" !important;
+  line-height: 1.63;
+  letter-spacing: 2px;
+}
+
+.list_title_with_icon {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.list_option {
+  color: #15143966;
+  font-family: "Montserrat" !important;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: left;
+}

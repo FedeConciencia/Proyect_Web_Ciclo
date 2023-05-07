@@ -1,10 +1,9 @@
 import { Text } from "@/components/mixins";
 import useDeviceType from "@/hooks/useDeviceType";
-import { BiChevronDown } from "react-icons/bi";
 import styles from "./cicloslider.module.scss";
 import styles2 from "./cicloactivo.module.scss";
 import FormUnirme from "@/components/FormUnirme/FormUnirme";
-import Listado from "../Listado/Listado";
+import Listado from "@/components/Home/Listado/Listado";
 
 type option_ciclo_list = {
   key: string;
