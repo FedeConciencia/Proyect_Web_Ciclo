@@ -10,11 +10,10 @@
   border-radius: 8px;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
   right: 0;
-  background-color: #2f1893;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff !important;
   form {
     padding: 20px;
     font-family: "Montserrat" !important;
@@ -22,6 +21,7 @@
       text-align: left;
       font-size: 15px;
       font-weight: 500;
+      color: rgba(0, 0, 0, 1) !important;
     }
     button {
       width: 350px;
