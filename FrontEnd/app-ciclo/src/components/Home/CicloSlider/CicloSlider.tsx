@@ -28,6 +28,7 @@ type props = {
   first_list: ciclo_list;
   second_list: ciclo_list;
   second_column?: second_column;
+  id: string;
 };
 
 function CicloSlider({
@@ -37,11 +38,12 @@ function CicloSlider({
   first_list,
   second_list,
   second_column,
+  id,
 }: props) {
   const { isDesktop } = useDeviceType();
 
   return (
-    <div className={`${styles.container} ${styles.slider}`}>
+    <div className={`${styles.container} ${styles.slider}`} id={id}>
       <div className={styles.first_column}>
         <div className={styles.title}>
           <Text

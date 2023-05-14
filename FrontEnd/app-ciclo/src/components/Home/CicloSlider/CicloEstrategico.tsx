@@ -14,16 +14,17 @@ type ciclo_list = {
 };
 
 type props = {
+  id: string;
   title?: string;
   description?: string;
   className?: string;
   first_list?: ciclo_list;
 };
-function CicloEstrategico({ title, description, first_list }: props) {
+function CicloEstrategico({ title, description, first_list, id }: props) {
   const { isDesktop } = useDeviceType();
 
   return (
-    <div className={`${styles.container} ${styles.estrategico}`}>
+    <div className={`${styles.container} ${styles.estrategico}`} id={id}>
       <div className={styles.first_column}>
         <div className={styles.title}>
           <Text

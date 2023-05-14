@@ -8,10 +8,9 @@ import Image from "next/image";
 import FormContacto from "../FormContacto/FormContacto";
 import FormUnirmeModal from "../FormUnirme/FormUnirmeModal";
 import { Button } from "semantic-ui-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import useDeviceType from "@/hooks/useDeviceType";
 import FormUnirme from "../FormUnirme/FormUnirme";
-import React, { Children } from "react";
 import Aliados from "./Aliados/Aliados";
 
 type option_ciclo_list = {
@@ -27,6 +26,7 @@ type option_ciclo_estrategico_list = {
 
 const sliders = [
   {
+    id: "slider_1",
     key: "1",
     title: "Un Ciclo Integral",
     subtitle:
@@ -92,6 +92,7 @@ const sliders = [
     },
   },
   {
+    id: "slider_2",
     key: "2",
     title: "Un Ciclo Colaborativo",
     subtitle: "",
@@ -163,6 +164,7 @@ const sliders = [
 ];
 
 const ciclo_estrategico = {
+  id: "slider_3",
   key: "3",
   title: "Un Ciclo Estratégico",
   description:
@@ -190,6 +192,7 @@ const ciclo_estrategico = {
 };
 
 const ciclo_activo = {
+  id: "slider_4",
   key: "4",
   title: "Un Ciclo Activo",
   subtitle: "",
@@ -318,51 +321,100 @@ const Home = () => {
         </div>
         {openContacto && <FormContacto stateChanger={setOpenContacto} />}
         {openUnirme && <FormUnirmeModal stateChanger={setOpenUnirme} />}
-        <Slider>
-          {sliders.map(
-            ({
-              key,
-              title,
-              subtitle,
-              description,
-              first_list,
-              second_list,
-              second_column,
-            }) => (
-              <CicloSlider
-                key={key}
-                title={title}
-                subtitle={subtitle}
-                description={description}
-                first_list={first_list}
-                second_list={second_list}
-                second_column={second_column}
-              />
-            )
-          )}
-          <CicloEstrategico
-            key={ciclo_estrategico.key}
-            title={ciclo_estrategico.title}
-            description={ciclo_estrategico.description}
-            first_list={ciclo_estrategico.first_list}
-          />
-          {!isDesktop && <Aliados />}
+        {isDesktop ? (
+          <Slider>
+            {sliders.map(
+              ({
+                id,
+                key,
+                title,
+                subtitle,
+                description,
+                first_list,
+                second_list,
+                second_column,
+              }) => (
+                <CicloSlider
+                  id={id}
+                  key={key}
+                  title={title}
+                  subtitle={subtitle}
+                  description={description}
+                  first_list={first_list}
+                  second_list={second_list}
+                  second_column={second_column}
+                />
+              )
+            )}
+            <CicloEstrategico
+              id={ciclo_estrategico.id}
+              key={ciclo_estrategico.key}
+              title={ciclo_estrategico.title}
+              description={ciclo_estrategico.description}
+              first_list={ciclo_estrategico.first_list}
+            />
 
-          <CicloActivo
-            key={ciclo_activo.key}
-            title={ciclo_activo.title}
-            subtitle={ciclo_activo.subtitle}
-            description={ciclo_activo.description}
-            first_list={ciclo_activo.first_list}
-            second_list={ciclo_activo.second_list}
-          />
+            <CicloActivo
+              id={ciclo_activo.id}
+              key={ciclo_activo.key}
+              title={ciclo_activo.title}
+              subtitle={ciclo_activo.subtitle}
+              description={ciclo_activo.description}
+              first_list={ciclo_activo.first_list}
+              second_list={ciclo_activo.second_list}
+            />
+          </Slider>
+        ) : (
+          <Slider>
+            {sliders.map(
+              ({
+                id,
+                key,
+                title,
+                subtitle,
+                description,
+                first_list,
+                second_list,
+                second_column,
+              }) => (
+                <CicloSlider
+                  id={id}
+                  key={key}
+                  title={title}
+                  subtitle={subtitle}
+                  description={description}
+                  first_list={first_list}
+                  second_list={second_list}
+                  second_column={second_column}
+                />
+              )
+            )}
+            <CicloEstrategico
+              id={ciclo_estrategico.id}
+              key={ciclo_estrategico.key}
+              title={ciclo_estrategico.title}
+              description={ciclo_estrategico.description}
+              first_list={ciclo_estrategico.first_list}
+            />
+            {!isDesktop && <Aliados />}
 
-          {!isDesktop && (
-            <div className={styles.form_background}>
-              <FormUnirme />
-            </div>
-          )}
-        </Slider>
+            <CicloActivo
+              id={ciclo_activo.id}
+              key={ciclo_activo.key}
+              title={ciclo_activo.title}
+              subtitle={ciclo_activo.subtitle}
+              description={ciclo_activo.description}
+              first_list={ciclo_activo.first_list}
+              second_list={ciclo_activo.second_list}
+            />
+
+            {!isDesktop && (
+              <div className={styles.form_background}>
+                <FormUnirme />
+              </div>
+            )}
+          </Slider>
+        )}
       </MaxContainer>
     </Layout>
   );

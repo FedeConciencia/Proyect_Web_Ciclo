@@ -15,6 +15,7 @@ type ciclo_list = {
 };
 
 type props = {
+  id: string;
   title?: string;
   subtitle?: string;
   description?: string;
@@ -28,11 +29,12 @@ function CicloActivo({
   description,
   first_list,
   second_list,
+  id,
 }: props) {
   const { isDesktop } = useDeviceType();
 
   return (
-    <div className={`${styles.container} ${styles.slider}`}>
+    <div className={`${styles.container} ${styles.slider}`} id={id}>
       <div className={styles.first_column}>
         <div className={styles.title}>
           <Text
