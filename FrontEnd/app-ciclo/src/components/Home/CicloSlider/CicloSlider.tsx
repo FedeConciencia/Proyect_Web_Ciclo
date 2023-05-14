@@ -28,8 +28,8 @@ type props = {
   first_list: ciclo_list;
   second_list: ciclo_list;
   second_column?: second_column;
-  rem: string;
 };
+
 function CicloSlider({
   title,
   subtitle,
@@ -37,15 +37,8 @@ function CicloSlider({
   first_list,
   second_list,
   second_column,
-  rem,
 }: props) {
   const { isDesktop } = useDeviceType();
-  const [showFirstList, setFirstList] = useState(false);
-  const [showSecondList, setSecondList] = useState(false);
-
-  const toggleList = (changedFunction: Function, changedValue: boolean) => {
-    changedFunction(!changedValue);
-  };
 
   return (
     <div className={`${styles.container} ${styles.slider}`}>
