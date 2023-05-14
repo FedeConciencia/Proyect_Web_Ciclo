@@ -62,14 +62,16 @@ const NosotrosWrapper = () => {
                   impacto tecnológico en la provincia de Mendoza.
                 </Text>
 
-                <Text
-                  variant="span"
-                  textSize="xs"
-                  className={styles.view_more}
-                  center
-                >
-                  Leer Mas
-                </Text>
+                <div className={styles.view_more_wrapper}>
+                  <Text
+                    variant="span"
+                    textSize="xs"
+                    className={styles.view_more}
+                    center
+                  >
+                    Leer Mas
+                  </Text>
+                </div>
               </div>
               <div className={styles.image_right}>
                 <Image
@@ -107,14 +109,16 @@ const NosotrosWrapper = () => {
                   construcción en seco, junto a otras compañeras.
                 </Text>
 
-                <Text
-                  variant="span"
-                  textSize="xs"
-                  className={styles.view_more}
-                  center
-                >
-                  Leer Mas
-                </Text>
+                <div className={styles.view_more_wrapper}>
+                  <Text
+                    variant="span"
+                    textSize="xs"
+                    className={styles.view_more}
+                    center
+                  >
+                    Leer Mas
+                  </Text>
+                </div>
               </div>
               <div className={styles.image_right}>
                 <Image
@@ -151,15 +155,16 @@ const NosotrosWrapper = () => {
                   a los nuevos métodos de construcción, con técnicas que
                   garanticen un servicio de alta calidad.
                 </Text>
-
-                <Text
-                  variant="span"
-                  textSize="xs"
-                  className={styles.view_more}
-                  center
-                >
-                  Leer Mas
-                </Text>
+                <div className={styles.view_more_wrapper}>
+                  <Text
+                    variant="span"
+                    textSize="xs"
+                    className={styles.view_more}
+                    center
+                  >
+                    Leer Mas
+                  </Text>
+                </div>
               </div>
               <div className={styles.image_right}>
                 <Image
