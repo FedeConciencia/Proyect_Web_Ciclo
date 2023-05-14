@@ -28,7 +28,7 @@ const Obra = (props: any) => (
         <div className={styles.brand_button}>
           <Link href={props.href}>
             <Text variant="span" textSize="s" textColor="#ffffff">
-              Leer Mas...
+              Leer Más
             </Text>
           </Link>
         </div>
