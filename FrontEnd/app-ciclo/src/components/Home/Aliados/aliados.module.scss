@@ -1,0 +1,44 @@
+.container {
+  width: 100vw;
+}
+.second_column_with_images {
+  width: 40%;
+}
+
+.second_column_images {
+  width: 40%;
+  height: 700px;
+  display: flex;
+  padding-top: 100px;
+  background-image: url("/ciclos/ciclo_estrategico.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+@media (max-width: 500px) {
+  .second_column_images {
+    flex-direction: column;
+    background-image: none;
+    padding-left: 20px;
+  }
+}
+
+.card_brand {
+  width: 173.5px;
+  height: 102.8px;
+  border-radius: 16px;
+  border: solid 0.1px rgba(220, 219, 219, 0.4);
+  margin: 30px;
+  padding: 30px;
+  opacity: 0.8;
+  img {
+    object-fit: contain;
+  }
+  transition: opacity 0.2s ease-in-out;
+
+  /* Apply a hover effect to the icons */
+  &:hover {
+    opacity: 1;
+    background-color: rgb(216, 216, 216);
+  }
+}

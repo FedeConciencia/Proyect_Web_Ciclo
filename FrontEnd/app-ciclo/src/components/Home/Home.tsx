@@ -10,6 +10,9 @@ import FormUnirmeModal from "../FormUnirme/FormUnirmeModal";
 import { Button } from "semantic-ui-react";
 import { useState } from "react";
 import useDeviceType from "@/hooks/useDeviceType";
+import FormUnirme from "../FormUnirme/FormUnirme";
+import React, { Children } from "react";
+import Aliados from "./Aliados/Aliados";
 
 type option_ciclo_list = {
   key: string;
@@ -87,7 +90,6 @@ const sliders = [
       height: 700,
       width: 860,
     },
-    rem: "1rem",
   },
   {
     key: "2",
@@ -157,7 +159,6 @@ const sliders = [
       height: 700,
       width: 860,
     },
-    rem: "2rem",
   },
 ];
 
@@ -317,7 +318,7 @@ const Home = () => {
         </div>
         {openContacto && <FormContacto stateChanger={setOpenContacto} />}
         {openUnirme && <FormUnirmeModal stateChanger={setOpenUnirme} />}
-        <Slider hightlight>
+        <Slider>
           {sliders.map(
             ({
               key,
@@ -327,7 +328,6 @@ const Home = () => {
               first_list,
               second_list,
               second_column,
-              rem,
             }) => (
               <CicloSlider
                 key={key}
@@ -337,7 +337,6 @@ const Home = () => {
                 first_list={first_list}
                 second_list={second_list}
                 second_column={second_column}
-                rem={rem}
               />
             )
           )}
@@ -347,6 +346,8 @@ const Home = () => {
             description={ciclo_estrategico.description}
             first_list={ciclo_estrategico.first_list}
           />
+          {!isDesktop && <Aliados />}
+
           <CicloActivo
             key={ciclo_activo.key}
             title={ciclo_activo.title}
@@ -355,6 +356,12 @@ const Home = () => {
             first_list={ciclo_activo.first_list}
             second_list={ciclo_activo.second_list}
           />
+
+          {!isDesktop && (
+            <div className={styles.form_background}>
+              <FormUnirme />
+            </div>
+          )}
         </Slider>
       </MaxContainer>
     </Layout>

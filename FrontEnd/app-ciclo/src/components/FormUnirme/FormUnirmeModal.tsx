@@ -10,7 +10,6 @@ const FormUnirmeModal = (props: any) => {
   const [isOpen, setIsOpen] = useState(true);
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(e);
     return console.log("Submitting");
   };
 
