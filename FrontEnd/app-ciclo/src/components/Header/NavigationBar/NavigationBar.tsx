@@ -2,29 +2,34 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { AiFillInstagram } from "react-icons/ai";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import styles from "./NavigationBar.module.scss";
 import useDeviceType from "@/hooks/useDeviceType";
 import { Container } from "semantic-ui-react";
-import { MaxContainer } from "@/components/mixins";
+import { Button } from "@/components/mixins";
+import { FiMenu } from "react-icons/fi";
 
-
-const NavigationBar = () => {
+const NavigationBar = (props: any) => {
+  const { sideMenuFunction } = props;
   const { isDesktop } = useDeviceType();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(false);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const closeDropdown = () => setDropdownOpen(false);
   const changeBackground = () => {
-    if (window.scrollY >= 200) {
+    if (window.scrollY >= 80) {
       setScrolled(true);
     } else {
       setScrolled(false);
     }
   };
+  const toggleSideBar = () => {
+    setShowSideBar(!showSideBar);
+  };
   useEffect(() => {
-    changeBackground()
+    changeBackground();
     window.addEventListener("scroll", changeBackground);
     return () => {
       window.removeEventListener("scroll", changeBackground);
@@ -50,80 +55,98 @@ const NavigationBar = () => {
                 alt="Ciclo"
                 width={200}
                 height={120}
+                priority
               />
             </Link>
           </div>
-
-          <div className={styles.navbarLinks}>
-            <ul className={styles.navLinksList}>
-              <li>
-                <div
-                  className={
-                    dropdownOpen
-                      ? `${styles.dropdown} ${styles.opened}`
-                      : styles.dropdown
-                  }
-                >
-                  <a
-                    className={styles.navLink}
-                    onClick={toggleDropdown}
-                    href="#"
+          {isDesktop ? (
+            <div className={styles.navbarLinks}>
+              <ul className={styles.navLinksList}>
+                <li>
+                  <div
+                    className={
+                      dropdownOpen
+                        ? `${styles.dropdown} ${styles.opened}`
+                        : styles.dropdown
+                    }
                   >
-                    Nuestra Propuesta
-                  </a>
-                  {dropdownOpen && (
-                    <div
-                      className={`${styles.dropdown} ${styles.open} ${styles.list}`}
-                    >
-                      <Link
-                        href="/#slider_1"
-                        className={styles.dropdownLink}
-                        onClick={closeDropdown}
+                    <a className={styles.navLink} onClick={toggleDropdown}>
+                      Nuestra Propuesta
+                    </a>
+                    {dropdownOpen && (
+                      <div
+                        className={`${styles.dropdown} ${styles.open} ${styles.list}`}
                       >
-                        Ciclo Integral
-                      </Link>
-                      <Link
-                        href="/#slider_2"
-                        className={styles.dropdownLink}
-                        onClick={closeDropdown}
-                      >
-                        Ciclo Colaborativo
-                      </Link>
-                      <Link
-                        href="/#slider_3"
-                        className={styles.dropdownLink}
-                        onClick={closeDropdown}
-                      >
-                        Ciclo Estratégico
-                      </Link>
-                      <Link
-                        href="/#slider_4"
-                        className={styles.dropdownLink}
-                        onClick={closeDropdown}
-                      >
-                        Ciclo Activo
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </li>
-              <li>
-                <Link href="/nosotros" className={styles.navLink}>
-                  Nosotros
-                </Link>
-              </li>
-              <li>
-                <Link href="/obras" className={styles.navLink}>
-                  Obras
-                </Link>
-              </li>
-              <li>
-                <Link href="#contacto" className={styles.navLink}>
-                  Contacto
-                </Link>
-              </li>
-            </ul>
-          </div>
+                        <Link
+                          href="/#slider_1"
+                          className={styles.dropdownLink}
+                          onClick={closeDropdown}
+                          scroll={false}
+                        >
+                          Ciclo Integral
+                        </Link>
+                        <Link
+                          href="/#slider_2"
+                          className={styles.dropdownLink}
+                          onClick={closeDropdown}
+                          scroll={false}
+                        >
+                          Ciclo Colaborativo
+                        </Link>
+                        <Link
+                          href="/#slider_3"
+                          className={styles.dropdownLink}
+                          onClick={closeDropdown}
+                          scroll={false}
+                        >
+                          Ciclo Estratégico
+                        </Link>
+                        <Link
+                          href="/#slider_4"
+                          className={styles.dropdownLink}
+                          onClick={closeDropdown}
+                          scroll={false}
+                        >
+                          Ciclo Activo
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                </li>
+                <li>
+                  <Link href="/nosotros" className={styles.navLink}>
+                    Nosotros
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/obras" className={styles.navLink}>
+                    Obras
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#contacto"
+                    className={styles.navLink}
+                    scroll={false}
+                  >
+                    Contacto
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className={styles.navbarMenu}>
+              <Button
+                id="close-sidemenu"
+                withOutPadding
+                variant="icon"
+                onClick={sideMenuFunction}
+                startIcon={<FiMenu fontSize={50} color="white" />}
+                width="fullWidth"
+                className=""
+              />
+            </div>
+          )}
         </div>
 
         {isDesktop && (
@@ -136,7 +159,7 @@ const NavigationBar = () => {
               </li>
               <li>
                 <Link href="/">
-                  <InstagramIcon className={styles.socialMediaIcon} />
+                  <AiFillInstagram className={styles.socialMediaIcon} />
                 </Link>
               </li>
               <li>

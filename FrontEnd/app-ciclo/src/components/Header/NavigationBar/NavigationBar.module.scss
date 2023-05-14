@@ -1,10 +1,10 @@
-.container{
+.container {
   position: fixed;
   z-index: 200;
   background-color: transparent;
 }
 
-.scrolled{
+.scrolled {
   background-color: #2f1893;
 }
 
@@ -14,11 +14,10 @@
   align-items: center;
   background-color: transparent;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
-
-.navbar_container{
+.navbar_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,14 +70,13 @@
   border-radius: 8px;
   border-top: none;
 }
-.dropdown.opened{
-  top: 80px;
+.dropdown.opened {
+  top: 75px;
 }
 
-.dropdown.list{
+.dropdown.list {
   background-color: #ffffff;
 }
-
 
 .socialMediaIcon {
   color: #ffffff;
@@ -98,6 +96,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 200px;
 }
 
 .socialLinksList {
@@ -119,7 +118,7 @@
     align-items: flex-start;
   }
 
-  .navbar_container{
+  .navbar_container {
     max-width: 100%;
     width: 768px;
     flex-direction: column;
@@ -128,11 +127,22 @@
     padding-right: 1rem;
   }
 
-  .navbarBrand{
+  .navbarBrand {
     z-index: 10;
     top: 0;
     left: 20px;
   }
+
+  .navbarMenu {
+    z-index: 10;
+    top: 40px;
+    right: 20px;
+    position: absolute;
+    color: #fff;
+    transform: rotate(0deg);
+    transition: all 0.5s ease-in-out;
+  }
+
   .navbarLinks {
     z-index: 20;
   }
