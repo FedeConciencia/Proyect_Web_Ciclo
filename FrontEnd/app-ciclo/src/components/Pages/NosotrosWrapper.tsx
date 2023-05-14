@@ -2,9 +2,14 @@ import Layout from "../Layout/Layout";
 import { MaxContainer, Text } from "@/components/mixins";
 import { Button } from "semantic-ui-react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./nosotros.module.scss";
+import FormUnirmeModal from "../FormUnirme/FormUnirmeModal";
+import { useState } from "react";
 
 const NosotrosWrapper = () => {
+  const [openUnirme, setOpenUnirme] = useState(false);
+
   return (
     <Layout title="Ciclo" description="Sobre Nosotros" servicios={false}>
       <MaxContainer>
@@ -29,11 +34,17 @@ const NosotrosWrapper = () => {
               Somos un equipo joven, interdisciplinario y comprometido con los
               desafíos que plantea la industria de la construcción
             </Text>
-            <Button color="pink" circular className={styles.hero__button}>
+            <Button
+              color="pink"
+              circular
+              className={styles.hero__button}
+              onClick={() => setOpenUnirme(!openUnirme)}
+            >
               <Button.Content>Unite a la Comunidad</Button.Content>
             </Button>
           </div>
         </div>
+        {openUnirme && <FormUnirmeModal stateChanger={setOpenUnirme} />}
         <div className={styles.container}>
           <div className={styles.about_us}>
             <div className={styles.wrapper}>
@@ -63,14 +74,16 @@ const NosotrosWrapper = () => {
                 </Text>
 
                 <div className={styles.view_more_wrapper}>
-                  <Text
-                    variant="span"
-                    textSize="xs"
-                    className={styles.view_more}
-                    center
-                  >
-                    Leer Mas
-                  </Text>
+                  <Link href="">
+                    <Text
+                      variant="span"
+                      textSize="xs"
+                      className={styles.view_more}
+                      center
+                    >
+                      Leer Mas
+                    </Text>
+                  </Link>
                 </div>
               </div>
               <div className={styles.image_right}>
@@ -156,14 +169,16 @@ const NosotrosWrapper = () => {
                   garanticen un servicio de alta calidad.
                 </Text>
                 <div className={styles.view_more_wrapper}>
-                  <Text
-                    variant="span"
-                    textSize="xs"
-                    className={styles.view_more}
-                    center
-                  >
-                    Leer Mas
-                  </Text>
+                  <Link href="https://itu.uncuyo.edu.ar/sector-de-la-construccion-en-seco-se-interesaron-por-las-micro-credenciales-para-la-formacion-en-oficios">
+                    <Text
+                      variant="span"
+                      textSize="xs"
+                      className={styles.view_more}
+                      center
+                    >
+                      Leer Mas
+                    </Text>
+                  </Link>
                 </div>
               </div>
               <div className={styles.image_right}>

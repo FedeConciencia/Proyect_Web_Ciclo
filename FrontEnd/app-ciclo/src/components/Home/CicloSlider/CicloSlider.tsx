@@ -2,7 +2,6 @@ import { Text } from "@/components/mixins";
 import useDeviceType from "@/hooks/useDeviceType";
 import styles from "./cicloslider.module.scss";
 import Image from "next/image";
-import { useState } from "react";
 import Listado from "@/components/Home/Listado/Listado";
 
 type ciclo_list = {

@@ -4,6 +4,8 @@ import styles from "./obras.module.scss";
 import Obra from "../Obra/Obra";
 import { Button } from "semantic-ui-react";
 import Image from "next/image";
+import { useState } from "react";
+import FormContacto from "../FormContacto/FormContacto";
 
 const first_row_obras = [
   {
@@ -23,7 +25,7 @@ const first_row_obras = [
     title: "vivienda los teros",
     technology: "Sistema S.I.P",
     city: "Guaymallen, Mendoza",
-    href: "",
+    href: "https://newpanel.com.ar/casa-en-los-teros/",
   },
   {
     key: "second_obra",
@@ -88,6 +90,8 @@ const second_row_obras = [
 ];
 
 const ObrasWrapper = () => {
+  const [openContacto, setOpenContacto] = useState(false);
+
   return (
     <Layout title="Ciclo" description="Nuestras Obras">
       <MaxContainer>
@@ -110,11 +114,18 @@ const ObrasWrapper = () => {
             >
               Obras realizadas
             </Text>
-            <Button color="pink" circular className={styles.hero__button}>
+            <Button
+              color="pink"
+              circular
+              className={styles.hero__button}
+              onClick={() => setOpenContacto(!openContacto)}
+            >
               <Button.Content>Empezá tu Proyecto</Button.Content>
             </Button>
           </div>
         </div>
+        {openContacto && <FormContacto stateChanger={setOpenContacto} />}
+
         <div className={styles.container}>
           <div>
             {first_row_obras.map((obra) => (
