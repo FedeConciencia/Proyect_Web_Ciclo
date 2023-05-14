@@ -2,8 +2,9 @@ import styles from "./info.module.scss";
 import { MaxContainer, Text, Link } from "@/components/mixins";
 import Servicios from "../Servicios/Servicios";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaLinkedinIn } from "react-icons/fa";
+
 import Image from "next/image";
 
 const Info = ({ servicios }: any) => {
@@ -80,10 +81,10 @@ const Info = ({ servicios }: any) => {
             <FacebookIcon className={styles.logo} />
           </Link>
           <Link href="" noWidth target="_blank">
-            <InstagramIcon className={styles.logo} />
+            <AiFillInstagram className={styles.logo} />
           </Link>
           <Link href="" noWidth target="_blank">
-            <LinkedInIcon className={styles.logo} />
+            <FaLinkedinIn className={styles.logo} />
           </Link>
         </div>
       </MaxContainer>
