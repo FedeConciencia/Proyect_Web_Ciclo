@@ -24,7 +24,7 @@ const Slider = ({ children }: sliderProps) => {
     });
   };
 
-  useEffect(() => {
+  const check_location_hash = () => {
     const hash = window.location.hash;
     if (hash.startsWith("#slider_")) {
       const indice = parseInt(hash.split("_")[1]);
@@ -32,6 +32,9 @@ const Slider = ({ children }: sliderProps) => {
         goTo(indice - 1);
       }
     }
+  };
+  useEffect(() => {
+    check_location_hash();
   }, [container, ref]);
 
   return (

@@ -35,15 +35,15 @@
   }
 
   &.secondary {
-    background-color: transparent;
-    border-color: var(--color-primary);
-    color: var(--color-text-on-secondary);
+    background-color: #5ffc7b;
+    border-color: #28d146;
+    color: #fff;
   }
 
   &.terciary {
-    background-color: var(--color-grey);
-    border-color: var(--color-grey);
-    color: var(--color-text-on-terciary);
+    background-color: #e93a7d;
+    border: #e93a7d;
+    color: #fff;
   }
 
   &.disabled {

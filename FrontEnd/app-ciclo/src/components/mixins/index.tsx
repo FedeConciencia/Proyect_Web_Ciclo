@@ -8,3 +8,4 @@ export const Text = dynamic(() => import("./Text/Text"));
 export const Button = dynamic(() => import("./Button/Button"));
 export const Slider = dynamic(() => import("./Slider/Slider"));
 export const Input = dynamic(() => import("./Input/Input"));
+export const Divider = dynamic(() => import("./Divider/Divider"));
