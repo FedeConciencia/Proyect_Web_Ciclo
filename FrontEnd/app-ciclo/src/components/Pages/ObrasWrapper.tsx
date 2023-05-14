@@ -70,7 +70,7 @@ const second_row_obras = [
     key: "fourth_obra",
     hero_image: {
       src: "/ciclos/cassaforma_img.png",
-      alt: "sistema SIP",
+      alt: "sistema Cassaforma",
       width: 570,
       height: 247,
     },
@@ -94,7 +94,7 @@ const ObrasWrapper = () => {
         <div className={styles.hero}>
           <Image
             src={"/ciclos/obras_hero.jpg"}
-            alt="Unite a la comunidad"
+            alt="Obras Realizadas"
             width={1920}
             height={700}
             priority

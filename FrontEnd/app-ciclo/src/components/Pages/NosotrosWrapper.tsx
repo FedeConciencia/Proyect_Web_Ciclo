@@ -74,7 +74,7 @@ const NosotrosWrapper = () => {
               <div className={styles.image_right}>
                 <Image
                   src={"/teclab.jpg"}
-                  alt="Unite a la comunidad"
+                  alt="TECLAB"
                   width={560}
                   height={350}
                   priority
@@ -119,7 +119,7 @@ const NosotrosWrapper = () => {
               <div className={styles.image_right}>
                 <Image
                   src={"/desarrollo_emprendedor.jpg"}
-                  alt="Unite a la comunidad"
+                  alt="Desarrollo Emprendedor"
                   width={560}
                   height={350}
                   priority
@@ -164,7 +164,7 @@ const NosotrosWrapper = () => {
               <div className={styles.image_right}>
                 <Image
                   src={"/vinculacion_itu.jpg"}
-                  alt="Unite a la comunidad"
+                  alt="VINCULACIÓN ITU"
                   width={560}
                   height={350}
                   priority
