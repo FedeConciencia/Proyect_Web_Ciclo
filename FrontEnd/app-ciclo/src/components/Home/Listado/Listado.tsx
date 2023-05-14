@@ -16,36 +16,38 @@ const Listado = (props: props) => {
 
   return (
     <div>
-      <div className={styles.list_title_with_icon}>
-        <Text className={styles.list_title} left textCase="uppercase" weight="bold">
+      <div
+        className={styles.list_title_with_icon}
+        onClick={() => {
+          toggleShowList();
+        }}
+      >
+        <Text
+          className={styles.list_title}
+          left
+          textCase="uppercase"
+          weight="bold"
+        >
           {title}
         </Text>
         {showList ? (
           <div>
-            <BiChevronUp
-              color={"#ffb71b"}
-              fontSize={20}
-              onClick={() => {
-                toggleShowList();
-              }}
-            />
+            <BiChevronUp color={"#ffb71b"} fontSize={20} />
           </div>
         ) : (
           <div>
-            <BiChevronDown
-              color={"#ffb71b"}
-              fontSize={20}
-              onClick={() => {
-                toggleShowList();
-              }}
-            />
+            <BiChevronDown color={"#ffb71b"} fontSize={20} />
           </div>
         )}
       </div>
       {showList && (
         <ul>
           {options?.map((option) => {
-            return <li key={option.key} className={styles.list_option}>{option.text}</li>;
+            return (
+              <li key={option.key} className={styles.list_option}>
+                {option.text}
+              </li>
+            );
           })}
         </ul>
       )}
