@@ -1,62 +1,54 @@
-
 package com.proyecto.ciclo.entities;
 
-import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "form_projects")
-public class FormProject extends Base{
-    
-    @Column(name = "name")
-    private String name;
+public class FormProject extends BaseEntity {
+    @NotBlank
+    @Column(name = "first_name")
+    private String firstName;
+
+    @NotBlank
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
+
+    @NotBlank
+    @Email
     @Column(name = "email")
     private String email;
-    @Column(name = "cell_phone")
-    private String cell_phone;
+
+    @NotBlank
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     @Column(name = "project_type")
-    private String project_type;
+    @Enumerated(EnumType.STRING)
+    private ProjectType projectType;
 
-    public FormProject() {
-    }
-    
-    
-    public FormProject(String name, String last_name, String email, String cell_phone, String project_type, Long id, LocalDate date_create, LocalDate date_update, LocalDate date_delete, String state) {
-        super(id, date_create, date_update, date_delete, state);
-        this.name = name;
-        this.last_name = last_name;
-        this.email = email;
-        this.cell_phone = cell_phone;
-        this.project_type = project_type;
+    // Constructors, getters, and setters
+
+    public String getFirstName() {
+        return firstName;
     }
 
-    public FormProject(String name, String last_name, String email, String cell_phone, String project_type, LocalDate date_create, LocalDate date_update, LocalDate date_delete, String state) {
-        super(date_create, date_update, date_delete, state);
-        this.name = name;
-        this.last_name = last_name;
-        this.email = email;
-        this.cell_phone = cell_phone;
-        this.project_type = project_type;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -67,28 +59,35 @@ public class FormProject extends Base{
         this.email = email;
     }
 
-    public String getCell_phone() {
-        return cell_phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setCell_phone(String cell_phone) {
-        this.cell_phone = cell_phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getProject_type() {
-        return project_type;
+    public ProjectType getProjectType() {
+        return projectType;
     }
 
-    public void setProject_type(String project_type) {
-        this.project_type = project_type;
+    public void setProjectType(ProjectType projectType) {
+        this.projectType = projectType;
     }
 
-    @Override
-    public String toString() {
-        return  "name: " + name + "\nlast_name: " + last_name + "\nemail: " + email + 
-                "\ncell_phone: " + cell_phone + "\nproject_type: " + project_type;
+    // Enum for project type
+    public enum ProjectType {
+        CONSTRUCCION_DE_CERO("Construcción de cero"),
+        REMODELACION("Remodelación");
+
+        private final String value;
+
+        ProjectType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
     }
-    
-    
-    
 }

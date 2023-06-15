@@ -1,6 +1,5 @@
 package com.proyecto.ciclo.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.ParamDef;
@@ -14,7 +13,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
@@ -28,28 +26,16 @@ public class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "date_create")
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    private LocalDate date_create;
-
-
     @NotNull
     @Column(nullable = false, name = "created_at")
     private OffsetDateTime createdAt;
 
-
-    @Column(name = "updated_at")
+    @NotNull
+    @Column(nullable = false, name = "updated_at")
     private OffsetDateTime updatedAt;
-
 
     @Column(name = "deleted_at")
     private OffsetDateTime deletedAt;
-
-
-    @Column(name = "state")
-    private String state;
-
-
 
     public Long getId() {
         return id;
@@ -86,10 +72,15 @@ public class BaseEntity implements Serializable {
     @PrePersist
     protected void onCreate() {
         createdAt = OffsetDateTime.now(ZoneOffset.UTC);
+        updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
     }
 
     @PreUpdate
     protected void onUpdate() {
+        // Extra validation, Just in Case
+        if (createdAt == null) {
+            createdAt = this.getCreatedAt();
+        }
         updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
     }
 
@@ -100,7 +91,7 @@ public class BaseEntity implements Serializable {
     public boolean isDeleted() {
         return deletedAt != null;
     }
-    
+
     @Override
     public String toString() {
         return "BaseEntity [id=" + id + ", createdAt=" + createdAt + ", updatedAt="
