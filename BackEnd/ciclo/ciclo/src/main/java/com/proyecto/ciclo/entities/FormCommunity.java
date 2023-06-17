@@ -1,124 +1,71 @@
-
 package com.proyecto.ciclo.entities;
 
-import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "form_communities")
-public class FormCommunity extends Base{
-    
-    @Column(name = "name")
-    private String name;
-    @Column(name = "last_name")
-    private String last_name;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "cell_phone")
-    private String cell_phone;
-    @Column(name = "location")
-    private String location;
-    @Column(name = "province")
-    private String province;
-    @Column(name = "occupation")
-    private String occupation;
+public class FormCommunity extends BaseEntity {
 
+  @NotBlank
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    public FormCommunity() {
-    }
-    
-   
-    public FormCommunity(String name, String last_name, String email, String cell_phone, String location, String province, String occupation, Long id, LocalDate date_create, LocalDate date_update, LocalDate date_delete, String state) {
-        super(id, date_create, date_update, date_delete, state);
-        this.name = name;
-        this.last_name = last_name;
-        this.email = email;
-        this.cell_phone = cell_phone;
-        this.location = location;
-        this.province = province;
-        this.occupation = occupation;
+  @NotBlank
+  @Column(name = "email", nullable = false)
+  private String email;
 
-    }
+  @NotBlank
+  @Column(name = "phone_number", nullable = false)
+  private String phoneNumber;
 
-    public FormCommunity(String name, String last_name, String email, String cell_phone, String location, String province, String occupation, LocalDate date_create, LocalDate date_update, LocalDate date_delete, String state) {
-        super(date_create, date_update, date_delete, state);
-        this.name = name;
-        this.last_name = last_name;
-        this.email = email;
-        this.cell_phone = cell_phone;
-        this.location = location;
-        this.province = province;
-        this.occupation = occupation;
-       
-    }
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "city_id")
+  private CityEntity city;
 
-    public String getName() {
-        return name;
-    }
+  @NotBlank
+  @Column(name = "occupation", nullable = false)
+  private String occupation;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  // Constructors, getters, and setters
 
-    public String getLast_name() {
-        return last_name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public String getCell_phone() {
-        return cell_phone;
-    }
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
 
-    public void setCell_phone(String cell_phone) {
-        this.cell_phone = cell_phone;
-    }
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
 
-    public String getLocation() {
-        return location;
-    }
+  public CityEntity getCity() {
+    return city;
+  }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+  public void setCity(CityEntity city) {
+    this.city = city;
+  }
 
-    public String getProvince() {
-        return province;
-    }
+  public String getOccupation() {
+    return occupation;
+  }
 
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    
-
-    @Override
-    public String toString() {
-        return  "name: " + name + "\nlast_name: " + last_name + "\nemail: " + email + 
-                "\ncell_phone: " + cell_phone + "\nlocation: " + location + "\nprovince: " + province + 
-                "\noccupation: " + occupation;
-    }
-    
-    
-    
+  public void setOccupation(String occupation) {
+    this.occupation = occupation;
+  }
 }

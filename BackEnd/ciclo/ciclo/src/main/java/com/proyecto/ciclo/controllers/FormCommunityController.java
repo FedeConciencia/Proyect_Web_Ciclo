@@ -1,38 +1,63 @@
-
 package com.proyecto.ciclo.controllers;
 
 import com.proyecto.ciclo.entities.FormCommunity;
 import com.proyecto.ciclo.services.FormCommunityService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/formCommunity")
+@RequestMapping("/api/v1/form-communities")
 public class FormCommunityController {
-    
-    @Autowired
-    private FormCommunityService formService;
-    
-    @PostMapping("/")
-    public ResponseEntity<?> create(@RequestBody FormCommunity entity){
-        
-        try{
-            
-            return ResponseEntity.status(HttpStatus.OK).body(formService.createRecurso(entity));
-            
-        }catch(Exception e){
-            
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por Favor intente mas tarde.\"}");
-                
-        }
-        
+  private final FormCommunityService formCommunityService;
+
+  public FormCommunityController(FormCommunityService formCommunityService) {
+    this.formCommunityService = formCommunityService;
+  }
+
+  @GetMapping
+  public List<FormCommunity> getAllFormCommunities() {
+    return formCommunityService.findAllNonDeleted();
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<FormCommunity> getFormCommunityById(@PathVariable Long id) {
+    return formCommunityService.findById(id)
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build());
+  }
+
+  @PostMapping
+  public ResponseEntity<FormCommunity> createFormCommunity(@RequestBody FormCommunity formCommunity) {
+    FormCommunity createdFormCommunity = formCommunityService.save(formCommunity);
+    return ResponseEntity.status(HttpStatus.CREATED).body(createdFormCommunity);
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<FormCommunity> updateFormCommunity(@PathVariable Long id, @RequestBody FormCommunity formCommunity) {
+    Optional<FormCommunity> existingFormCommunity = formCommunityService.findById(id);
+    if (existingFormCommunity.isEmpty()) {
+      return ResponseEntity.notFound().build();
     }
-    
+
+    FormCommunity originalFormCommunity = existingFormCommunity.get();
+    formCommunity.setId(id);
+    formCommunity.setCreatedAt(originalFormCommunity.getCreatedAt());
+
+    FormCommunity updatedFormCommunity = formCommunityService.save(formCommunity);
+    return ResponseEntity.ok(updatedFormCommunity);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteFormCommunity(@PathVariable Long id) {
+    if (!formCommunityService.findById(id).isPresent()) {
+      return ResponseEntity.notFound().build();
+    }
+
+    formCommunityService.delete(id);
+    return ResponseEntity.noContent().build();
+  }
 }
