@@ -1,7 +1,6 @@
 package com.proyecto.ciclo.controllers;
 
 import com.proyecto.ciclo.dto.StateWithCitiesDTO;
-import com.proyecto.ciclo.entities.StateEntity;
 import com.proyecto.ciclo.services.StateService;
 
 import java.util.List;
