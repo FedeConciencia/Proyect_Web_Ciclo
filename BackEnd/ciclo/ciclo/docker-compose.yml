@@ -1,0 +1,44 @@
+version: '3'
+services:
+  db:
+    image: arm64v8/mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: '12345'
+      MYSQL_DATABASE: 'proyecto_ciclo'
+      MYSQL_USER: 'ciclos'
+      MYSQL_PASSWORD: '12345'
+      TZ: 'UTC'
+    ports:
+      - '127.0.0.1:3306:3306'
+    networks:
+      - mysql-db
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    links:
+      - db
+  
+  phpmyadmin:
+    depends_on:
+      - db
+    image: arm64v8/phpmyadmin
+    restart: always
+    ports:
+      - '8090:80'
+    networks:
+      - mysql-db
+    environment:
+      PMA_HOST: db
+      UPLOAD_LIMIT: 512M
+
+volumes:
+  db:
+
+networks:
+  mysql-db:
+    driver: bridge
