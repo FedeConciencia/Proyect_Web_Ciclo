@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/form-communities")
 public class FormCommunityController {
   private final FormCommunityService formCommunityService;
