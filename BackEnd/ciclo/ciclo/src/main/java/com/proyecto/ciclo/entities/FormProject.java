@@ -1,6 +1,5 @@
 package com.proyecto.ciclo.entities;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,12 +12,8 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "form_projects")
 public class FormProject extends BaseEntity {
     @NotBlank
-    @Column(name = "first_name")
-    private String firstName;
-
-    @NotBlank
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "name")
+    private String name;
 
     @NotBlank
     @Email
@@ -35,20 +30,12 @@ public class FormProject extends BaseEntity {
 
     // Constructors, getters, and setters
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
