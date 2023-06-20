@@ -24,7 +24,7 @@
 }
 
 .title_buttons {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 300px;
 }
 
@@ -69,6 +69,11 @@
 
   .title_buttons {
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    padding-right: 20%;
   }
   .title_text {
     max-width: 300px;
