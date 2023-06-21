@@ -175,6 +175,18 @@ const FormUnirmeModal = (props: any) => {
           required
           label="Ocupación/Actividad"
           placeholder="Tecnico"
+          type="text"
+          id="occupation"
+          {...register("occupation")}
+          error={
+            formErrors["occupation"] && {
+              content: formErrors["occupation"],
+              point: "below",
+            }
+          }
+          onChange={(e: any, { value }: any) =>
+            handleChange("occupation", value)
+          }
         />
         <Form.Field required>
           <label>
