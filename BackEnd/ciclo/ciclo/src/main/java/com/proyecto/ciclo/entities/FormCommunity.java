@@ -1,21 +1,25 @@
 package com.proyecto.ciclo.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+
+import com.proyecto.ciclo.validations.FormCommunityValidationGroup;
 
 @Entity
 @Table(name = "form_communities")
 public class FormCommunity extends BaseEntity {
 
-  @NotBlank
+  @NotBlank(groups = FormCommunityValidationGroup.class)
   @Column(name = "name", nullable = false)
   private String name;
 
-  @NotBlank
+  @NotBlank(groups = FormCommunityValidationGroup.class)
+  @Email(groups = FormCommunityValidationGroup.class)
   @Column(name = "email", nullable = false)
   private String email;
 
-  @NotBlank
+  @NotBlank(groups = FormCommunityValidationGroup.class)
   @Column(name = "phone_number", nullable = false)
   private String phoneNumber;
 
@@ -23,7 +27,7 @@ public class FormCommunity extends BaseEntity {
   @JoinColumn(name = "city_id")
   private CityEntity city;
 
-  @NotBlank
+  @NotBlank(groups = FormCommunityValidationGroup.class)
   @Column(name = "occupation", nullable = false)
   private String occupation;
 
