@@ -1,13 +1,19 @@
 package com.proyecto.ciclo.controllers;
 
 import com.proyecto.ciclo.entities.FormProject;
+import com.proyecto.ciclo.exceptions.ValidationError;
 import com.proyecto.ciclo.services.FormProjectService;
+import com.proyecto.ciclo.validations.FormProjectValidationGroup;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -32,7 +38,16 @@ public class FormProjectController {
     }
 
     @PostMapping
-    public ResponseEntity<FormProject> createFormProject(@RequestBody FormProject formProject) {
+    public ResponseEntity<?> createFormProject(@Validated(FormProjectValidationGroup.class)  @RequestBody FormProject formProject, BindingResult result) {
+        if (result.hasErrors()) {
+            // Handle validation errors
+            List<ValidationError> errors = result.getFieldErrors().stream()
+                    .map(error -> new ValidationError(error.getField(), error.getDefaultMessage()))
+                    .collect(Collectors.toList());
+            return ResponseEntity.badRequest().body(errors);
+        }
+
+        // Validations passed, proceed with saving the entity
         FormProject createdFormProject = formProjectService.save(formProject);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdFormProject);
     }

@@ -8,19 +8,21 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.proyecto.ciclo.validations.FormProjectValidationGroup;
+
 @Entity
 @Table(name = "form_projects")
 public class FormProject extends BaseEntity {
-    @NotBlank
+    @NotBlank(groups = FormProjectValidationGroup.class)
     @Column(name = "name")
     private String name;
 
-    @NotBlank
-    @Email
+    @NotBlank(groups = FormProjectValidationGroup.class)
+    @Email(groups = FormProjectValidationGroup.class)
     @Column(name = "email")
     private String email;
 
-    @NotBlank
+    @NotBlank(groups = FormProjectValidationGroup.class)
     @Column(name = "phone_number")
     private String phoneNumber;
 
