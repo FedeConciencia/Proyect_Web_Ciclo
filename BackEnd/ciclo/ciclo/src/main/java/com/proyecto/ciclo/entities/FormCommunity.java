@@ -72,4 +72,17 @@ public class FormCommunity extends BaseEntity {
   public void setOccupation(String occupation) {
     this.occupation = occupation;
   }
+
+  @Override
+  public String toString() {
+    return "FormCommunity{" +
+        "id=" + getId() +
+        ", name='" + getName() + '\'' +
+        ", email='" + getEmail() + '\'' +
+        ", phoneNumber='" + getPhoneNumber() + '\'' +
+        ", city='" + getCity() + '\'' +
+        ", occupation='" + getOccupation() + '\'' +
+        // ", cityId='" + getCityId() + '\'' +
+        '}';
+  }
 }
