@@ -18,12 +18,12 @@ public class CityEntity extends BaseEntity {
   @Column(name = "abbreviation", nullable = false)
   private String abbreviation;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JsonIgnore
   @JoinColumn(name = "state_id", nullable = false)
   private StateEntity state;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "city", cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "city", cascade = CascadeType.ALL)
   private List<FormCommunity> formCommunities;
 
   public CityEntity() {
