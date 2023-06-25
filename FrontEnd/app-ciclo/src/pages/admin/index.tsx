@@ -14,7 +14,7 @@ export default function Admin() {
       : "";
     return (
       <>
-        <Table.Row>
+        <Table.Row key={formCommunity.id}>
           <Table.Cell>{formCommunity.name}</Table.Cell>
           <Table.Cell>{formCommunity.phoneNumber}</Table.Cell>
           <Table.Cell>{formCommunity.email}</Table.Cell>
@@ -61,17 +61,14 @@ export default function Admin() {
     );
   };
 
-  const FormProjectRow = (formCommunity: any) => {
-    const city = formCommunity.city
-      ? `${formCommunity.city.name} - ${formCommunity.city.zipCode}`
-      : "";
+  const FormProjectRow = (formProject: any) => {
     return (
       <>
-        <Table.Row>
-          <Table.Cell>{formCommunity.name}</Table.Cell>
-          <Table.Cell>{formCommunity.phoneNumber}</Table.Cell>
-          <Table.Cell>{formCommunity.email}</Table.Cell>
-          <Table.Cell>{formCommunity.projectType}</Table.Cell>
+        <Table.Row key={formProject.id}>
+          <Table.Cell>{formProject.name}</Table.Cell>
+          <Table.Cell>{formProject.phoneNumber}</Table.Cell>
+          <Table.Cell>{formProject.email}</Table.Cell>
+          <Table.Cell>{formProject.projectType}</Table.Cell>
         </Table.Row>
       </>
     );
@@ -125,6 +122,7 @@ export default function Admin() {
                     setter(index);
                   }}
                   active={index === currentIndex ? true : false}
+                  key={`${_}_${index}`}
                 >
                   {index + 1}
                 </Menu.Item>
