@@ -13,9 +13,26 @@
   padding-top: 10px;
 }
 
-
 .buttonWrapper {
   padding-top: 10px;
   grid-column: 2/4;
   justify-self: center;
+}
+
+.container {
+  padding: 33px;
+  margin: 30px;
+  border-radius: 8px;
+  form {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      border-radius: 16px !important;
+    }
+  }
+}
+.dropdown {
+  [role="listbox"] {
+    border-radius: 16px !important;
+  }
 }

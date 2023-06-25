@@ -10,7 +10,7 @@ interface InputProps {
   error?: string;
   id: string;
   inLineStyles?: React.CSSProperties;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: any;
   onClick?: React.MouseEventHandler<HTMLInputElement>;
   placeholder?: string;
   startIcon?: React.ReactNode;
