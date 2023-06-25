@@ -89,7 +89,6 @@ const FormUnirme = () => {
           placeholder="Ciclo Soluciones Constructivas"
           type="text"
           id="name"
-          circular
           {...register("name")}
           error={
             formErrors["name"] && {
@@ -107,7 +106,6 @@ const FormUnirme = () => {
             placeholder="+549 261 276 5262"
             type="text"
             id="phoneNumber"
-            circular
             {...register("phoneNumber")}
             error={
               formErrors["phoneNumber"] && {
@@ -126,7 +124,6 @@ const FormUnirme = () => {
             placeholder="info@ciclosoluciones.com"
             type="email"
             id="email"
-            circular
             {...register("email")}
             error={
               formErrors["email"] && {
@@ -145,7 +142,6 @@ const FormUnirme = () => {
             options={states}
             placeholder="Mendoza"
             defaultValue={4}
-            circular
             className={styles.dropdown}
           />
 
@@ -156,7 +152,7 @@ const FormUnirme = () => {
             label="Elija una Localidad"
             options={cities}
             placeholder="Godoy Cruz"
-            circular
+            className={styles.dropdown}
             error={
               formErrors["city_id"] && {
                 content: formErrors["city_id"],
@@ -173,7 +169,6 @@ const FormUnirme = () => {
           placeholder="Tecnico"
           type="text"
           id="occupation"
-          circular
           {...register("occupation")}
           error={
             formErrors["occupation"] && {
@@ -213,7 +208,12 @@ const FormUnirme = () => {
         {(errorHeader || errorMessage) && (
           <Message error header={errorHeader} content={errorMessage} />
         )}
-        <Form.Button content="Quiero Unirme" circular color="pink" />
+        <Form.Button
+          content="Quiero Unirme"
+          circular
+          color="pink"
+          className={styles.button}
+        />
       </Form>
     </div>
   );
