@@ -13,15 +13,13 @@ export default function Admin() {
       ? `${formCommunity.city.name} - ${formCommunity.city.zipCode}`
       : "";
     return (
-      <>
-        <Table.Row key={formCommunity.id}>
-          <Table.Cell>{formCommunity.name}</Table.Cell>
-          <Table.Cell>{formCommunity.phoneNumber}</Table.Cell>
-          <Table.Cell>{formCommunity.email}</Table.Cell>
-          <Table.Cell>{city}</Table.Cell>
-          <Table.Cell>{formCommunity.occupation}</Table.Cell>
-        </Table.Row>
-      </>
+      <Table.Row key={formCommunity.id}>
+        <Table.Cell>{formCommunity.name}</Table.Cell>
+        <Table.Cell>{formCommunity.phoneNumber}</Table.Cell>
+        <Table.Cell>{formCommunity.email}</Table.Cell>
+        <Table.Cell>{city}</Table.Cell>
+        <Table.Cell>{formCommunity.occupation}</Table.Cell>
+      </Table.Row>
     );
   };
 
@@ -63,14 +61,12 @@ export default function Admin() {
 
   const FormProjectRow = (formProject: any) => {
     return (
-      <>
-        <Table.Row key={formProject.id}>
-          <Table.Cell>{formProject.name}</Table.Cell>
-          <Table.Cell>{formProject.phoneNumber}</Table.Cell>
-          <Table.Cell>{formProject.email}</Table.Cell>
-          <Table.Cell>{formProject.projectType}</Table.Cell>
-        </Table.Row>
-      </>
+      <Table.Row key={formProject.id}>
+        <Table.Cell>{formProject.name}</Table.Cell>
+        <Table.Cell>{formProject.phoneNumber}</Table.Cell>
+        <Table.Cell>{formProject.email}</Table.Cell>
+        <Table.Cell>{formProject.projectType}</Table.Cell>
+      </Table.Row>
     );
   };
 
@@ -112,7 +108,7 @@ export default function Admin() {
     const pages = Math.ceil(length / 5);
     return (
       <Table.Row>
-        <Table.HeaderCell colSpan="3">
+        <Table.HeaderCell colSpan="5">
           <Menu floated="right" pagination>
             {Array.from({ length: pages }, (_, index) => {
               return (
