@@ -19,12 +19,12 @@ const FormUnirmeModal = (props: any) => {
   const [cities, setCities] = useState([]);
 
   const onSubmit = async (data: any) => {
-    if (!data.terms || !data.city_id) {
+    if (!data.terms || !data.city?.id) {
       let errors: any = {};
       data.terms
         ? ""
         : (errors["terms"] = "Debe aceptar los terminos y condiciones");
-      data.city_id ? "" : (errors["city_id"] = "Debe seleccionar una Ciudad");
+      data.city?.id ? "" : (errors["city_id"] = "Debe seleccionar una Ciudad");
 
       setError(true);
       setSuccess(false);
@@ -78,7 +78,7 @@ const FormUnirmeModal = (props: any) => {
   }, [fetchData, formErrors]);
 
   const handleSelectChange = (value: any) => {
-    setValue("city_id", value); // Set the value of the "projectType" field
+    setValue("city.id", value); // Set the value of the "projectType" field
   };
 
   const handleCheckChange = (evt: any, value: any) => {

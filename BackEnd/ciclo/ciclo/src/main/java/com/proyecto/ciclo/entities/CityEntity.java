@@ -1,5 +1,7 @@
 package com.proyecto.ciclo.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,6 +22,9 @@ public class CityEntity extends BaseEntity {
   @JsonIgnore
   @JoinColumn(name = "state_id", nullable = false)
   private StateEntity state;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "city", cascade = CascadeType.ALL)
+  private List<FormCommunity> formCommunities;
 
   public CityEntity() {
     // Default constructor required by JPA

@@ -23,8 +23,8 @@ public class FormCommunity extends BaseEntity {
   @Column(name = "phone_number", nullable = false)
   private String phoneNumber;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "city_id")
+  @JoinColumn(name = "city_id", nullable = false, referencedColumnName = "id")
+  @ManyToOne(fetch = FetchType.EAGER)
   private CityEntity city;
 
   @NotBlank(groups = FormCommunityValidationGroup.class)
@@ -82,7 +82,6 @@ public class FormCommunity extends BaseEntity {
         ", phoneNumber='" + getPhoneNumber() + '\'' +
         ", city='" + getCity() + '\'' +
         ", occupation='" + getOccupation() + '\'' +
-        // ", cityId='" + getCityId() + '\'' +
         '}';
   }
 }
