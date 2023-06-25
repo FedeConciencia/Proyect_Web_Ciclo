@@ -1,0 +1,29 @@
+version: '3'
+services:
+  nextjs:
+    build:
+      context: ./
+      target: production
+    ports:
+      - 127.0.0.1:3000:3000
+    networks:
+      - web_server
+      - api
+    environment:
+      PORT: 3000
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    networks:
+      - web_server
+      - api
+    depends_on:
+      - nextjs
+    restart: always
+
+networks:
+  web_server:
+    driver: bridge
+  api:
+    external: true

@@ -1,0 +1,12 @@
+.dockerignore
+.ebignore
+.eslintignore
+.eslintrc.js
+.prettierrc
+.stylelintrc.json
+docker-compose.yml
+Dockerfile
+.gitignore
+.git/
+.next/                  # Existing Next.js builds
+node_modules/           # Installed inside container
