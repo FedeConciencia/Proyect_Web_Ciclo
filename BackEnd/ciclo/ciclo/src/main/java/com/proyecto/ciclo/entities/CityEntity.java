@@ -70,6 +70,14 @@ public class CityEntity extends BaseEntity {
     this.state = state;
   }
 
+  public List<FormCommunity> getFormCommunities() {
+    return formCommunities;
+  }
+
+  public void setFormCommunities(List<FormCommunity> formCommunities) {
+    this.formCommunities = formCommunities;
+  }
+
   @Override
   public String toString() {
     return "CityEntity{" +
