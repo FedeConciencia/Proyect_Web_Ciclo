@@ -1,0 +1,21 @@
+.container {
+  background-color: #062a39;
+  width: 100%;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 1000px;
+}
+
+.icon_yellow {
+  text-align: center;
+  padding: 30px 0 30px 0;
+}
+.title {
+  color: #ffffff;
+}
+
+.form{
+  margin-top: 5%;
+}
