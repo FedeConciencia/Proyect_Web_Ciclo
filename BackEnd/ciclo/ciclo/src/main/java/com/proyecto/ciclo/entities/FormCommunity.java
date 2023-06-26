@@ -4,10 +4,12 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.proyecto.ciclo.validations.FormCommunityValidationGroup;
 
 @Entity
 @Table(name = "form_communities")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class FormCommunity extends BaseEntity {
 
   @NotBlank(groups = FormCommunityValidationGroup.class)
