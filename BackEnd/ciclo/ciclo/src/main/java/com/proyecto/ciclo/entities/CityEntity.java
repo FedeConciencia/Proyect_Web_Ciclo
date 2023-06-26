@@ -24,6 +24,7 @@ public class CityEntity extends BaseEntity {
   private StateEntity state;
 
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "city", cascade = CascadeType.ALL)
+  @JsonIgnore
   private List<FormCommunity> formCommunities;
 
   public CityEntity() {
