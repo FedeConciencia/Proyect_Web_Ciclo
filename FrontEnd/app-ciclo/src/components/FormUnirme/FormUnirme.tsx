@@ -151,7 +151,7 @@ const FormUnirme = () => {
             control={Select}
             label="Elija una Localidad"
             options={cities}
-            placeholder="Godoy Cruz"
+            placeholder="Elija una Localidad"
             className={styles.dropdown}
             error={
               formErrors["city_id"] && {

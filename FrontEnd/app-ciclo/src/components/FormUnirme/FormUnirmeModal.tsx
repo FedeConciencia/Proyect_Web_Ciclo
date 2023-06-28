@@ -160,7 +160,7 @@ const FormUnirmeModal = (props: any) => {
             control={Select}
             label="Elija una Localidad"
             options={cities}
-            placeholder="Godoy Cruz"
+            placeholder="Elija una Localidad"
             error={
               formErrors["city_id"] && {
                 content: formErrors["city_id"],
