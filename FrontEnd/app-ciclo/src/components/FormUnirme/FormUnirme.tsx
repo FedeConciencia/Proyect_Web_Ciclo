@@ -4,10 +4,33 @@ import { useForm } from "react-hook-form";
 import styles from "./formunirme.module.scss";
 import api from "../../api";
 import { Input, Text } from "../mixins";
+
+type city = {
+  id: string;
+};
+
+interface UseFormInputs {
+  name: string;
+  phoneNumber: string;
+  email: string;
+  terms: boolean;
+  occupation: string;
+  city: city;
+}
+
+const defaultValues: UseFormInputs = {
+  name: "",
+  phoneNumber: "",
+  email: "",
+  terms: false,
+  occupation: "",
+  city: { id: "" },
+};
+
 const FormUnirme = () => {
-  const { register, handleSubmit, setValue, reset } = useForm();
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errorHeader, setErrorHeader] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [formErrors, setFormErrors] = useState<any>({});
@@ -16,14 +39,20 @@ const FormUnirme = () => {
   ]);
   const [cities, setCities] = useState([]);
 
+  const [formValues, setFormValues] = useState<UseFormInputs>(defaultValues);
+  const { register, handleSubmit, setValue, reset } = useForm<UseFormInputs>({
+    defaultValues: defaultValues,
+  });
   const onSubmit = async (data: any) => {
-    console.log("DATA", data);
+    setLoading(true);
     if (!data.terms || !data.city?.id) {
       let errors: any = {};
       data.terms
         ? ""
         : (errors["terms"] = "Debe aceptar los terminos y condiciones");
-      data.city?.id ? "" : (errors["city_id"] = "Debe seleccionar una Ciudad");
+      data.city?.id
+        ? ""
+        : (errors["city_id"] = "Debe seleccionar una Localidad");
 
       setError(true);
       setSuccess(false);
@@ -34,6 +63,7 @@ const FormUnirme = () => {
         setError(false);
         setSuccess(true);
         setFormErrors({});
+        setFormValues(defaultValues);
         reset();
       } else {
         setFormErrors(response.error);
@@ -41,6 +71,7 @@ const FormUnirme = () => {
         setErrorMessage(response.data);
       }
     }
+    setLoading(false);
   };
 
   const fetchData = useCallback(async () => {
@@ -69,14 +100,21 @@ const FormUnirme = () => {
     fetchData().catch(console.error);
   }, [fetchData, formErrors]);
 
-  const handleChange = (type: string, value: any) => {
+  const handleChange = (type: any, value: any) => {
+    let values: any = {};
+    values[`${type}`] = value;
     setValue(type, value);
+    setFormValues({ ...formValues, ...values });
   };
-  const handleSelectChange = (value: any) => {
-    setValue("city.id", value); // Set the value of the "projectType" field
+
+  const handleSelectChange = (value: string) => {
+    setFormValues({ ...formValues, ...{ city: { id: value } } });
+    setValue("city.id", value);
   };
+
   const handleCheckChange = (value: any) => {
-    setValue("terms", value); // Set the value of the "projectType" field
+    setFormValues({ ...formValues, ...{ terms: value } });
+    setValue("terms", value);
   };
 
   return (
@@ -89,6 +127,7 @@ const FormUnirme = () => {
           placeholder="Ciclo Soluciones Constructivas"
           type="text"
           id="name"
+          value={formValues.name}
           {...register("name")}
           error={
             formErrors["name"] && {
@@ -106,6 +145,7 @@ const FormUnirme = () => {
             placeholder="+549 261 276 5262"
             type="text"
             id="phoneNumber"
+            value={formValues.phoneNumber}
             {...register("phoneNumber")}
             error={
               formErrors["phoneNumber"] && {
@@ -124,6 +164,7 @@ const FormUnirme = () => {
             placeholder="info@ciclosoluciones.com"
             type="email"
             id="email"
+            value={formValues.email}
             {...register("email")}
             error={
               formErrors["email"] && {
@@ -152,6 +193,7 @@ const FormUnirme = () => {
             label="Elija una Localidad"
             options={cities}
             placeholder="Elija una Localidad"
+            value={formValues.city.id}
             className={styles.dropdown}
             error={
               formErrors["city_id"] && {
@@ -170,6 +212,7 @@ const FormUnirme = () => {
           type="text"
           id="occupation"
           {...register("occupation")}
+          value={formValues.occupation}
           error={
             formErrors["occupation"] && {
               content: formErrors["occupation"],
@@ -213,6 +256,7 @@ const FormUnirme = () => {
           circular
           color="pink"
           className={styles.button}
+          loading={loading}
         />
       </Form>
     </div>

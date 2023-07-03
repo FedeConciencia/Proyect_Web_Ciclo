@@ -4,12 +4,34 @@ import { useForm } from "react-hook-form";
 import styles from "./formunirmemodal.module.scss";
 import api from "../../api";
 
+type city = {
+  id: string;
+};
+
+interface UseFormInputs {
+  name: string;
+  phoneNumber: string;
+  email: string;
+  terms: boolean;
+  occupation: string;
+  city: city;
+}
+
+const defaultValues: UseFormInputs = {
+  name: "",
+  phoneNumber: "",
+  email: "",
+  terms: false,
+  occupation: "",
+  city: { id: "" },
+};
+
 const FormUnirmeModal = (props: any) => {
   const { stateChanger } = props;
-  const { register, handleSubmit, setValue, reset } = useForm();
   const [isOpen, setIsOpen] = useState(true);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errorHeader, setErrorHeader] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [formErrors, setFormErrors] = useState<any>({});
@@ -18,13 +40,20 @@ const FormUnirmeModal = (props: any) => {
   ]);
   const [cities, setCities] = useState([]);
 
-  const onSubmit = async (data: any) => {
+  const [formValues, setFormValues] = useState<UseFormInputs>(defaultValues);
+  const { register, handleSubmit, setValue, reset } = useForm<UseFormInputs>({
+    defaultValues: defaultValues,
+  });
+  const onSubmit = async (data: UseFormInputs) => {
+    setLoading(true);
     if (!data.terms || !data.city?.id) {
       let errors: any = {};
       data.terms
         ? ""
         : (errors["terms"] = "Debe aceptar los terminos y condiciones");
-      data.city?.id ? "" : (errors["city_id"] = "Debe seleccionar una Ciudad");
+      data.city?.id
+        ? ""
+        : (errors["city_id"] = "Debe seleccionar una Localidad");
 
       setError(true);
       setSuccess(false);
@@ -35,6 +64,7 @@ const FormUnirmeModal = (props: any) => {
         setError(false);
         setSuccess(true);
         setFormErrors({});
+        setFormValues(defaultValues);
         reset();
       } else {
         setFormErrors(response.error);
@@ -42,6 +72,7 @@ const FormUnirmeModal = (props: any) => {
         setErrorMessage(response.data);
       }
     }
+    setLoading(false);
   };
 
   const handleClose = () => {
@@ -77,17 +108,23 @@ const FormUnirmeModal = (props: any) => {
     fetchData().catch(console.error);
   }, [fetchData, formErrors]);
 
-  const handleSelectChange = (value: any) => {
-    setValue("city.id", value); // Set the value of the "projectType" field
+  const handleSelectChange = (value: string) => {
+    setFormValues({ ...formValues, ...{ city: { id: value } } });
+    setValue("city.id", value);
   };
 
   const handleCheckChange = (evt: any, value: any) => {
-    setValue("terms", value.checked); // Set the value of the "projectType" field
+    setFormValues({ ...formValues, ...{ terms: value.checked } });
+    setValue("terms", value.checked);
   };
 
-  const handleChange = (type: string, value: any) => {
+  const handleChange = (type: any, value: any) => {
+    let values: any = {};
+    values[`${type}`] = value;
     setValue(type, value);
+    setFormValues({ ...formValues, ...values });
   };
+
   return isOpen ? (
     <div className={styles.container}>
       <div className={styles.cross} onClick={() => handleClose()}></div>
@@ -99,6 +136,7 @@ const FormUnirmeModal = (props: any) => {
           placeholder="Ciclo Soluciones Constructivas"
           type="text"
           id="name"
+          value={formValues.name}
           {...register("name")}
           error={
             formErrors["name"] && {
@@ -116,6 +154,7 @@ const FormUnirmeModal = (props: any) => {
             placeholder="+549 261 276 5262"
             type="text"
             id="phoneNumber"
+            value={formValues.phoneNumber}
             {...register("phoneNumber")}
             error={
               formErrors["phoneNumber"] && {
@@ -134,6 +173,7 @@ const FormUnirmeModal = (props: any) => {
             placeholder="info@ciclosoluciones.com"
             type="email"
             id="email"
+            value={formValues.email}
             {...register("email")}
             error={
               formErrors["email"] && {
@@ -161,6 +201,7 @@ const FormUnirmeModal = (props: any) => {
             label="Elija una Localidad"
             options={cities}
             placeholder="Elija una Localidad"
+            value={formValues.city.id}
             error={
               formErrors["city_id"] && {
                 content: formErrors["city_id"],
@@ -177,6 +218,7 @@ const FormUnirmeModal = (props: any) => {
           placeholder="Tecnico"
           type="text"
           id="occupation"
+          value={formValues.occupation}
           {...register("occupation")}
           error={
             formErrors["occupation"] && {
@@ -196,6 +238,7 @@ const FormUnirmeModal = (props: any) => {
           </label>
           <Form.Checkbox
             label="Sí, cumplo con los requisitos requeridos."
+            checked={formValues.terms}
             {...register("terms")}
             error={
               formErrors["terms"] && {
@@ -214,7 +257,12 @@ const FormUnirmeModal = (props: any) => {
         {(errorHeader || errorMessage) && (
           <Message error header={errorHeader} content={errorMessage} />
         )}
-        <Form.Button content="Quiero Unirme" circular color="pink" />
+        <Form.Button
+          content="Quiero Unirme"
+          circular
+          color="pink"
+          loading={loading}
+        />
       </Form>
     </div>
   ) : null;

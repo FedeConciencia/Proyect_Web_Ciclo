@@ -1,33 +1,65 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Select, Message } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
 import styles from "./formcontacto.module.scss";
 import api from "../../api";
+
 const options = [
   { key: "1", text: "Construcción de cero", value: "CONSTRUCCION_DE_CERO" },
   { key: "2", text: "Remodelación", value: "REMODELACION" },
 ];
 
+interface UseFormInputs {
+  name: string;
+  phoneNumber: string;
+  email: string;
+  projectType: string;
+}
+const defaultValues: UseFormInputs = {
+  name: "",
+  phoneNumber: "",
+  email: "",
+  projectType: "",
+};
+
 const FormContacto = (props: any) => {
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const [formValues, setFormValues] = useState<UseFormInputs>(defaultValues);
+  const { register, handleSubmit, setValue, reset } = useForm<UseFormInputs>({
+    defaultValues: defaultValues,
+  });
   const { stateChanger } = props;
   const [isOpen, setIsOpen] = useState(true);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [formErrors, setFormErrors] = useState<any>({});
   const onSubmit = async (data: any) => {
+    setLoading(true);
     const response = await api.formProjects.create(data);
-    if (response.success) {
-      setError(false);
-      setSuccess(true);
-      setFormErrors({});
-      reset();
-    } else {
-      setFormErrors(response.error);
+    if (!data.projectType) {
+      let errors: any = {};
+      data.terms
+        ? ""
+        : (errors["projectType"] = "Debe indicar el tipo de proyecto");
+
       setError(true);
-      setErrorMessage(response.data);
+      setSuccess(false);
+      setFormErrors(errors);
+    } else {
+      if (response.success) {
+        setError(false);
+        setSuccess(true);
+        setFormErrors({});
+        setFormValues(defaultValues);
+        reset();
+      } else {
+        setFormErrors(response.error);
+        setError(true);
+        setErrorMessage(response.data);
+      }
     }
+    setLoading(false);
   };
 
   const handleClose = () => {
@@ -36,9 +68,14 @@ const FormContacto = (props: any) => {
     stateChanger(false);
   };
 
-  const handleChange = (type: string, value: any) => {
-    setValue(type, value); // Set the value of the "projectType" field
+  const handleChange = (type: any, value: any) => {
+    let values: any = {};
+    values[`${type}`] = value;
+    setValue(type, value);
+    setFormValues({ ...formValues, ...values });
   };
+
+  useEffect(() => {}, [formErrors]);
 
   return isOpen ? (
     <div className={styles.container}>
@@ -51,6 +88,7 @@ const FormContacto = (props: any) => {
           placeholder="Ciclo Soluciones Constructivas"
           type="text"
           id="name"
+          value={formValues.name}
           {...register("name")}
           error={
             formErrors["name"] && {
@@ -67,6 +105,7 @@ const FormContacto = (props: any) => {
           placeholder="+549 261 276 5262"
           type="text"
           id="phoneNumber"
+          value={formValues.phoneNumber}
           {...register("phoneNumber")}
           error={
             formErrors["phoneNumber"] && {
@@ -86,6 +125,7 @@ const FormContacto = (props: any) => {
           placeholder="info@ciclosoluciones.com"
           type="email"
           id="email"
+          value={formValues.email}
           {...register("email")}
           error={
             formErrors["email"] && {
@@ -102,11 +142,17 @@ const FormContacto = (props: any) => {
           label="INDICANOS EL TIPO DE PROYECTO"
           options={options}
           placeholder="Tipo de Proyecto"
+          value={formValues.projectType}
           onChange={(e: any, { value }: any) =>
             handleChange("projectType", value)
           } // Pass the selected value to the handler function
+          error={
+            formErrors["projectType"] && {
+              content: formErrors["projectType"],
+              point: "below",
+            }
+          }
         />
-        <Form.Button content="Iniciar Proyecto" circular color="pink" />
         {success && (
           <Message
             success
@@ -114,6 +160,12 @@ const FormContacto = (props: any) => {
             content="Pronto estaremos en contacto!"
           />
         )}
+        <Form.Button
+          content="Iniciar Proyecto"
+          circular
+          color="pink"
+          loading={loading}
+        />
       </Form>
     </div>
   ) : null;
