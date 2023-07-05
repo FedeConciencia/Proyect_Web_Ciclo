@@ -39,7 +39,7 @@ const FormContacto = (props: any) => {
     const response = await api.formProjects.create(data);
     if (!data.projectType) {
       let errors: any = {};
-      data.terms
+      data.projectType
         ? ""
         : (errors["projectType"] = "Debe indicar el tipo de proyecto");
 

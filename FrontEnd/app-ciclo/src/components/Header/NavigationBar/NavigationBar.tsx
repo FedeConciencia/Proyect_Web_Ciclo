@@ -9,6 +9,7 @@ import useDeviceType from "@/hooks/useDeviceType";
 import { Container } from "semantic-ui-react";
 import { Button } from "@/components/mixins";
 import { FiMenu } from "react-icons/fi";
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
 const NavigationBar = (props: any) => {
   const { sideMenuFunction } = props;
@@ -70,8 +71,16 @@ const NavigationBar = (props: any) => {
                         : styles.dropdown
                     }
                   >
-                    <a className={styles.navLink} onClick={toggleDropdown}>
+                    <a
+                      className={`${styles.navLink} ${styles.chevron}`}
+                      onClick={toggleDropdown}
+                    >
                       Nuestra Propuesta
+                      {dropdownOpen ? (
+                        <BiChevronUp color={"#ffffff"} fontSize={20} className={styles.bi_chevron}/>
+                      ) : (
+                        <BiChevronDown color={"#ffffff"} fontSize={20} className={styles.bi_chevron} />
+                      )}
                     </a>
                     {dropdownOpen && (
                       <div
