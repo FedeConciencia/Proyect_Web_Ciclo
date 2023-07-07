@@ -16,7 +16,7 @@ body {
   scroll-behavior: smooth !important;
 }
 
-.ui.success{
+.ui.success {
   margin-top: 20px;
 }
 
@@ -27,4 +27,8 @@ a {
 
 footer {
   min-height: 50px;
+}
+
+html {
+  scroll-padding-top: 150px; /* height of sticky header */
 }
