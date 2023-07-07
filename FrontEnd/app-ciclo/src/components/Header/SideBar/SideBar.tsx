@@ -30,7 +30,7 @@ const SideMenu = (props: any) => {
       key: "4",
     },
     { link: "/nosotros", title: "Nosotros", key: "5" },
-    { link: "/obras", title: "Obras", key: "5" },
+    { link: "/obras", title: "Obras", key: "6" },
   ];
 
   const sidemenuClass = cn({

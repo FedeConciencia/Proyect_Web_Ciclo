@@ -123,7 +123,7 @@ const sliders = [
         },
         ,
         {
-          key: "ciclo_colaborativol_5",
+          key: "ciclo_colaborativol_6",
           text: "Implementar prácticas de sostenibilidad y economia circular.",
         },
       ] as option_ciclo_list[],

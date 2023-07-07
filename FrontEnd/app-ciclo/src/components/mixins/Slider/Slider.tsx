@@ -9,6 +9,7 @@ const Slider = ({ children }: sliderProps) => {
   const ref = useRef<any>(null);
   const container = useRef<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const hash = typeof window !== "undefined" ? window.location.hash : "";
   const childrenLength = Children.count(children);
 
   const goTo = (index: number) => {
@@ -25,7 +26,6 @@ const Slider = ({ children }: sliderProps) => {
   };
 
   const check_location_hash = () => {
-    const hash = window.location.hash;
     if (hash.startsWith("#slider_")) {
       const indice = parseInt(hash.split("_")[1]);
       if (container.current && ref.current) {
@@ -36,6 +36,10 @@ const Slider = ({ children }: sliderProps) => {
   useEffect(() => {
     check_location_hash();
   }, [container, ref]);
+
+  useEffect(() => {
+    check_location_hash();
+  }, [hash]);
 
   return (
     <div className={sliderStyles.container} ref={container}>
