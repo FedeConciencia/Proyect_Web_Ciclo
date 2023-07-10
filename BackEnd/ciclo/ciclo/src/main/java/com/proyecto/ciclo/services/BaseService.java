@@ -29,6 +29,12 @@ public abstract class BaseService<T extends BaseEntity> {
         return repository.findAllByDeletedAtIsNull();
     }
 
+    // The findByCreatedAtAfter() method returns a list of all entities,
+    // filter by date
+    public List<T> findByCreatedAtAfter(OffsetDateTime filterDate) {
+        return repository.findByCreatedAtAfter(filterDate);
+    }
+
     // The findById method retrieves an entity by its ID, including deleted
     // entities.
     public Optional<T> findById(Long id) {
