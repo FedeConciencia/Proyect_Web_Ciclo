@@ -5,12 +5,15 @@ import com.proyecto.ciclo.exceptions.ValidationError;
 import com.proyecto.ciclo.services.FormCommunityService;
 import com.proyecto.ciclo.validations.FormCommunityValidationGroup;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,8 +28,12 @@ public class FormCommunityController {
   }
 
   @GetMapping
-  public List<FormCommunity> getAllFormCommunities() {
-    return formCommunityService.findAllNonDeleted();
+  public List<FormCommunity> getAllFormCommunities(@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createdAtFilter) {
+    if (createdAtFilter != null) {
+      return formCommunityService.findByCreatedAt(createdAtFilter.atStartOfDay().atOffset(ZoneOffset.ofHours(-3)));
+    } else {
+      return formCommunityService.findAllNonDeleted();
+    }
   }
 
   @GetMapping("/{id}")
