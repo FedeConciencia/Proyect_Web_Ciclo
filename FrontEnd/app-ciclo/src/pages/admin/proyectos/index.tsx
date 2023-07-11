@@ -45,7 +45,7 @@ const Proyectos = () => {
   );
 
   // Crear un array de números de página
-  const numerosPaginas = [];
+  const numerosPaginas: any[] = [];
   for (let i = 1; i <= numeroTotalPaginas; i++) {
     numerosPaginas.push(i);
   }
