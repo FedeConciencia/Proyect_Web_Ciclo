@@ -14,4 +14,7 @@ public interface FormProjectRepository extends BaseRepository<FormProject, Long>
     // Return all the FormProject created in specific Date
     @Query("SELECT fp FROM FormProject fp WHERE DATE(fp.createdAt) = DATE(:createdAt)")
     List<FormProject> findByCreatedAt(@Param("createdAt") OffsetDateTime createdAt);
+
+    @Query("SELECT fp FROM FormProject fp WHERE DATE(fp.createdAt) BETWEEN DATE(:startDate) AND DATE(:endDate)")
+    List<FormProject> findByCreatedAtRange(@Param("startDate") OffsetDateTime startDate, @Param("endDate") OffsetDateTime endDate);
 }

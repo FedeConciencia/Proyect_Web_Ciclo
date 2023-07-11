@@ -17,4 +17,8 @@ public class FormCommunityService extends BaseService<FormCommunity> {
   public List<FormCommunity> findByCreatedAt(OffsetDateTime createdAt) {
     return ((FormCommunityRepository) repository).findByCreatedAt(createdAt);
   }
+
+  public List<FormCommunity> findByCreatedAtRange(OffsetDateTime startDate, OffsetDateTime endDate) {
+      return ((FormCommunityRepository) repository).findByCreatedAtRange(startDate, endDate);
+  }
 }

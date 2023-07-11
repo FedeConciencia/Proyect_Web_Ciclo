@@ -19,6 +19,8 @@ import java.time.ZoneOffset;
 @MappedSuperclass
 @FilterDef(name = "deletedEntityFilter", parameters = @ParamDef(name = "deleted", type = "boolean"))
 @Filter(name = "deletedEntityFilter", condition = "deleted_at IS NULL OR deleted = :deleted")
+@FilterDef(name = "createdAtFilter", parameters = @ParamDef(name = "createdAt", type = "java.time.OffsetDateTime"))
+@Filter(name = "createdAtFilter", condition = "DATE(created_at) = DATE(:createdAt)")
 public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 

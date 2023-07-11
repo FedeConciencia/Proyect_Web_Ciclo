@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
 @RestController
@@ -28,9 +29,16 @@ public class FormProjectController {
 	}
 
 	@GetMapping
-	public List<FormProject> getAllFormProjects(@RequestParam(required = false, name = "createdAtFilter") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createdAtFilter) {
+	public List<FormProject> getAllFormProjects(
+			@RequestParam(required = false, name = "createdAtFilter") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createdAtFilter,
+			@RequestParam(required = false, name = "startDateFilter") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDateFilter,
+			@RequestParam(required = false, name = "endDateFilter") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDateFilter) {
 		if (createdAtFilter != null) {
 			return formProjectService.findByCreatedAt(createdAtFilter.atStartOfDay().atOffset(ZoneOffset.ofHours(-3)));
+		} else if (startDateFilter != null && endDateFilter != null) {
+			OffsetDateTime startDate = startDateFilter.atStartOfDay().atOffset(ZoneOffset.ofHours(-3));
+			OffsetDateTime endDate = endDateFilter.atStartOfDay().atOffset(ZoneOffset.ofHours(-3));
+			return formProjectService.findByCreatedAtRange(startDate, endDate);
 		} else {
 			// No filter applied, return all non-deleted form projects
 			return formProjectService.findAllNonDeleted();
@@ -45,7 +53,8 @@ public class FormProjectController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> createFormProject(@Validated(FormProjectValidationGroup.class) @RequestBody FormProject formProject, BindingResult result) {
+	public ResponseEntity<?> createFormProject(
+			@Validated(FormProjectValidationGroup.class) @RequestBody FormProject formProject, BindingResult result) {
 		if (result.hasErrors()) {
 			// Handle validation errors
 			List<ValidationError> errors = result.getFieldErrors().stream()

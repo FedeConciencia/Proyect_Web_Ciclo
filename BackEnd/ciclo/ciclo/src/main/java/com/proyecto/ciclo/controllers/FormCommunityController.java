@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
@@ -28,9 +29,16 @@ public class FormCommunityController {
   }
 
   @GetMapping
-  public List<FormCommunity> getAllFormCommunities(@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createdAtFilter) {
+  public List<FormCommunity> getAllFormCommunities(
+      @RequestParam(required = false, name = "createdAtFilter") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createdAtFilter,
+      @RequestParam(required = false, name = "startDateFilter") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDateFilter,
+      @RequestParam(required = false, name = "endDateFilter") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDateFilter) {
     if (createdAtFilter != null) {
       return formCommunityService.findByCreatedAt(createdAtFilter.atStartOfDay().atOffset(ZoneOffset.ofHours(-3)));
+    } else if (startDateFilter != null && endDateFilter != null) {
+      OffsetDateTime startDate = startDateFilter.atStartOfDay().atOffset(ZoneOffset.ofHours(-3));
+      OffsetDateTime endDate = endDateFilter.atStartOfDay().atOffset(ZoneOffset.ofHours(-3));
+      return formCommunityService.findByCreatedAtRange(startDate, endDate);
     } else {
       return formCommunityService.findAllNonDeleted();
     }
@@ -44,7 +52,8 @@ public class FormCommunityController {
   }
 
   @PostMapping
-  public ResponseEntity<?> createFormProject(@Validated(FormCommunityValidationGroup.class) @RequestBody FormCommunity formCommunity, BindingResult result) {
+  public ResponseEntity<?> createFormProject(
+      @Validated(FormCommunityValidationGroup.class) @RequestBody FormCommunity formCommunity, BindingResult result) {
     if (result.hasErrors()) {
       // Handle validation errors
       List<ValidationError> errors = result.getFieldErrors().stream()
@@ -59,7 +68,8 @@ public class FormCommunityController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<FormCommunity> updateFormCommunity(@PathVariable Long id, @RequestBody FormCommunity formCommunity) {
+  public ResponseEntity<FormCommunity> updateFormCommunity(@PathVariable Long id,
+      @RequestBody FormCommunity formCommunity) {
     Optional<FormCommunity> existingFormCommunity = formCommunityService.findById(id);
     if (existingFormCommunity.isEmpty()) {
       return ResponseEntity.notFound().build();

@@ -14,4 +14,7 @@ public interface FormCommunityRepository extends BaseRepository<FormCommunity, L
   // Return all the FormCommunity created in specific Date
   @Query("SELECT fp FROM FormCommunity fp WHERE DATE(fp.createdAt) = DATE(:createdAt)")
   List<FormCommunity> findByCreatedAt(@Param("createdAt") OffsetDateTime createdAt);
+
+  @Query("SELECT fp FROM FormCommunity fp WHERE DATE(fp.createdAt) BETWEEN DATE(:startDate) AND DATE(:endDate)")
+  List<FormCommunity> findByCreatedAtRange(@Param("startDate") OffsetDateTime startDate, @Param("endDate") OffsetDateTime endDate);
 }

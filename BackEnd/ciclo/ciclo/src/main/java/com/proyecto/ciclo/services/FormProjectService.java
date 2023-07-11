@@ -17,4 +17,8 @@ public class FormProjectService extends BaseService<FormProject> {
     public List<FormProject> findByCreatedAt(OffsetDateTime createdAt) {
         return ((FormProjectRepository) repository).findByCreatedAt(createdAt);
     }
+
+    public List<FormProject> findByCreatedAtRange(OffsetDateTime startDate, OffsetDateTime endDate) {
+        return ((FormProjectRepository) repository).findByCreatedAtRange(startDate, endDate);
+    }
 }

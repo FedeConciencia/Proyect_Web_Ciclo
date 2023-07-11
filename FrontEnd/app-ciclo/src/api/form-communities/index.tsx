@@ -21,7 +21,9 @@ const getAll = async () => {
 
 const getByDate = async (date: string) => {
   try {
-    const response = await axios.get(`/form-communities?createdAtFilter=${date}`);
+    const response = await axios.get(
+      `/form-communities?createdAtFilter=${date}`
+    );
     return {
       success: true,
       data: response.data,
@@ -36,6 +38,24 @@ const getByDate = async (date: string) => {
   }
 };
 
+const getByRangeDate = async (startDate: string, endDate: string) => {
+  try {
+    const response = await axios.get(
+      `/form-communities?startDateFilter=${startDate}&endDateFilter=${endDate}`
+    );
+    return {
+      success: true,
+      data: response.data,
+    };
+  } catch (err) {
+    const message = errorHandler(err);
+
+    return {
+      success: false,
+      error: message,
+    };
+  }
+};
 // Params should be an object with this
 type city = {
   id: string | number;
@@ -69,5 +89,6 @@ const create = async (params: formCommunity) => {
 export default {
   getAll,
   getByDate,
+  getByRangeDate,
   create,
 };
