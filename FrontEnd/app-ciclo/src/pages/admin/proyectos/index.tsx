@@ -6,11 +6,11 @@ import proyectos from "./proyectos.module.scss";
 
 import api from "../../../api";
 import { useState, useEffect, useCallback } from "react";
-import { height } from "@mui/system";
 
 const Proyectos = () => {
   const [formProjects, setFormProjects] = useState<any>([]);
-  const [filtroFecha, setFiltroFecha] = useState<string>("");
+  const [filtroFechaDesde, setFiltroFechaDesde] = useState<string>("");
+  const [filtroFechaHasta, setFiltroFechaHasta] = useState<string>("");
   const [paginaActual, setPaginaActual] = useState<number>(1);
   const elementosPorPagina = 10;
 
@@ -19,14 +19,15 @@ const Proyectos = () => {
     // Formatear la fecha a 'yyyy-mm-dd'
 
     // Realizar llamada a la API para obtener los datos filtrados por fecha
-    const datosFiltrados = await api.formProjects.getByDate(filtroFecha);
+    const datosFiltrados = await api.formProjects.getByDate(filtroFechaDesde);
 
     // Actualizar los datos de la tabla con los datos filtrados
     setFormProjects(datosFiltrados.data);
   };
 
   const cleanFecha = async () => {
-    setFiltroFecha("");
+    setFiltroFechaDesde("");
+    setFiltroFechaHasta("");
     const datosFiltrados = await api.formProjects.getAll();
 
     setFormProjects(datosFiltrados.data);
@@ -57,12 +58,15 @@ const Proyectos = () => {
 
   const fetchData = useCallback(async () => {
     const responseProjects =
-      filtroFecha != ""
-        ? await api.formProjects.getByDate(filtroFecha)
+      filtroFechaDesde != "" && filtroFechaHasta != ""
+        ? await api.formProjects.getByRangeDate(
+            filtroFechaDesde,
+            filtroFechaHasta
+          )
         : await api.formProjects.getAll();
 
     setFormProjects(responseProjects.data);
-  }, [filtroFecha]);
+  }, [filtroFechaDesde, filtroFechaHasta]);
 
   useEffect(() => {
     fetchData().catch(console.error);
@@ -79,17 +83,28 @@ const Proyectos = () => {
                 <tr>
                   <th colSpan={2}>
                     Total inscriptos en Formulario Proyecto (
-                    {formProjects?.length}){" "}
+                    {formProjects?.length})
                   </th>
                   <th>
-                    Fecha Seleccionada:{" "}
-                    {filtroFecha != "" ? filtroFecha : "Todas"}
-                  </th>{" "}
+                    {!filtroFechaDesde &&
+                      !filtroFechaHasta &&
+                      "Todas las fechas"}
+                    {filtroFechaDesde && `Desde: ${filtroFechaDesde}`}
+                    <br></br>
+                    {filtroFechaHasta && `Hasta: ${filtroFechaHasta}`}
+                  </th>
                   <th>
+                    Desde
                     <input
                       type="date"
-                      value={filtroFecha}
-                      onChange={(e) => setFiltroFecha(e.target.value)}
+                      value={filtroFechaDesde}
+                      onChange={(e) => setFiltroFechaDesde(e.target.value)}
+                    />
+                    Hasta
+                    <input
+                      type="date"
+                      value={filtroFechaHasta}
+                      onChange={(e) => setFiltroFechaHasta(e.target.value)}
                     />
                   </th>
                   <th>
