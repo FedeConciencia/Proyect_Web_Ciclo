@@ -18,6 +18,23 @@ const getAll = async () => {
   }
 };
 
+const getByDate = async (date: string) => {
+  try {
+    const response = await axios.get(`/form-projects?createdAtFilter=${date}`);
+    return {
+      success: true,
+      data: response.data,
+    };
+  } catch (err) {
+    const message = errorHandler(err);
+
+    return {
+      success: false,
+      error: message,
+    };
+  }
+};
+
 // Params should be an object with this
 type projectType = "CONSTRUCCION_DE_CERO" | "REMODELACION";
 type formProject = {
@@ -47,5 +64,6 @@ const create = async (params: formProject) => {
 
 export default {
   getAll,
+  getByDate,
   create,
 };
