@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-const isPasswordEnabled = !!process.env.PASSWORD_PROTECT;
-const password = process.env.PASSWORD_PROTECT
-const encryptKey = process.env.ENCRYPT_KEY || '';
 import CryptoJS from "crypto-js";
 
 
 export async function middleware(req: NextRequest) {
+  const isPasswordEnabled = !!process.env.PASSWORD_PROTECT;
+  const password = process.env.PASSWORD_PROTECT
+  const encryptKey = process.env.ENCRYPT_KEY || '';
   const isLoggedIn = req.cookies.has("login");
   const loginValue = req.cookies.get("login")?.value || ''
 
