@@ -33,7 +33,7 @@ COPY package.json package-lock.json ./
 # Fix Node gyp ERR! find Python
 RUN apk add --no-cache --virtual g++ make py3-pip
 # We install npm.
-RUN npm i --frozen-lockfile --prod
+RUN npm i
 
 
 # Build target builder #
@@ -45,7 +45,7 @@ COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 
 
-RUN npm run build && NODE_ENV=production npm prune --prod
+RUN npm run build
 
 # Build target production #
 ###########################
@@ -53,6 +53,7 @@ FROM base AS production
 WORKDIR /app
 ENV HOST=0.0.0.0
 ENV NODE_ENV=production
+COPY --chown=node --from=builder /app/.env ./.env
 COPY --chown=node --from=builder /app/next.config.js ./
 COPY --chown=node --from=builder /app/public ./public
 COPY --chown=node --from=builder /app/.next ./.next
