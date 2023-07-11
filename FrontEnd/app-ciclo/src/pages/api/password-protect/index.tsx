@@ -23,10 +23,13 @@ export default async function handler(
       encryptKey
     );
     // Y la guardamos en las cookies
+    const expires = new Date(Date.now() + 3600 * 1000);
     const cookie = serialize("login", passwordEnctrypted.toString(), {
       path: "/",
       httpOnly: true,
+      expires,
     });
+
     res.setHeader("Set-Cookie", cookie);
     res.redirect(302, "/admin");
   } else {
