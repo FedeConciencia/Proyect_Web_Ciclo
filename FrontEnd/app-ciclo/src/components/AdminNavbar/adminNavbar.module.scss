@@ -1,0 +1,40 @@
+.container {
+  display: block;
+  align-items: center;
+  position: relative;
+  justify-content: flex-start;
+  flex-direction: row;
+  background-color: #2f1893;
+  width: 100%;
+  li {
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+  }
+  top: 0;
+}
+
+.navbarLinks ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  flex-direction: row;
+  padding-left: 20px;
+}
+
+.navLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 72px 0 0;
+}
+
+.navLink:hover,
+.navLink:focus,
+.navLink.active {
+  color: #ffb71b;
+}

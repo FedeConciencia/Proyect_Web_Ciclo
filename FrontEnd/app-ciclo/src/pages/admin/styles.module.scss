@@ -1,0 +1,80 @@
+.ciclo__table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ciclo__table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ciclo__table th,
+.ciclo__table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.ciclo__table input[type="date"],
+.ciclo__table button {
+  margin: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.ciclo__table button {
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.ciclo__table button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.ciclo__table .paginador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.ciclo__table .paginador button {
+  margin: 0 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.ciclo__table .paginador button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.ciclo__table .paginador .paginaActual {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.ciclo__table .paginador .notActualPage {
+  background-color: #e3e3e3;
+  color: #000000;
+}
+
+
+@media (max-width: 768px) {
+  .ciclo__table table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .ciclo__table th,
+  .ciclo__table td {
+    white-space: nowrap;
+  }
+}
