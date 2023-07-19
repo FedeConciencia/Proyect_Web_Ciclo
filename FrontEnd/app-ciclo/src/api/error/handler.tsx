@@ -8,10 +8,10 @@ export default function handler(err: any) {
   // client received response
   if (err.response) {
     const errors = err.response.data;
-    if (errors) {
+    if (errors && Array.isArray(errors)) {
       let mappedErrors: any = {};
       errors.map((x: any) => {
-        mappedErrors[x.field] = x.message;
+        mappedErrors[x?.field] = x.message;
       });
 
       errorsList = mappedErrors;
