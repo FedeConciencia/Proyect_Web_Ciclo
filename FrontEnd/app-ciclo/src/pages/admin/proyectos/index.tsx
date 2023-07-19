@@ -6,6 +6,63 @@ import proyectos from "./proyectos.module.scss";
 
 import api from "../../../api";
 import { useState, useEffect, useCallback } from "react";
+import ExcelJS from "exceljs";
+
+const generateExcel = (formProjects: any): any => {
+  // Crear un nuevo libro de Excel
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet("Formulario Unite a la Comunidad");
+
+  // Agregamos Titulos
+  worksheet.columns = [
+    { header: "Nombre", key: "name", width: 32 },
+    { header: "Correo", key: "email", width: 32 },
+    { header: "Telefono", key: "phoneNumber", width: 32, outlineLevel: 1 },
+    {
+      header: "Tipo de Proyecto",
+      key: "projectType",
+      width: 32,
+      outlineLevel: 1,
+    },
+    {
+      header: "Fecha de creacion",
+      key: "createdAt",
+      width: 42,
+      outlineLevel: 1,
+    },
+  ];
+  // Agregar datos a la hoja de cálculo (tabla)
+  const data = formProjects.map((formProject) => {
+    return [
+      formProject.name,
+      formProject.email,
+      formProject.phoneNumber,
+      formProject.projectType,
+      formProject.createdAt,
+    ];
+  });
+  worksheet.addRows(data);
+
+  // Generar el archivo Excel
+  workbook.xlsx.writeBuffer().then((buffer) => {
+    // Crear un blob a partir del buffer
+    const blob = new Blob([buffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+
+    // Crear un objeto URL para descargar el archivo
+    const url = window.URL.createObjectURL(blob);
+
+    // Crear un enlace para descargar el archivo
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "formularios_proyecto.xlsx";
+    a.click();
+
+    // Liberar el objeto URL
+    window.URL.revokeObjectURL(url);
+  });
+};
 
 const Proyectos = () => {
   const [formProjects, setFormProjects] = useState<any>([]);
@@ -82,8 +139,13 @@ const Proyectos = () => {
               <thead>
                 <tr>
                   <th colSpan={2}>
-                    Total inscriptos en Formulario Proyecto (
-                    {formProjects?.length})
+                    <div>
+                      <button onClick={() => generateExcel(formProjects)}>
+                        Exportar Excel
+                      </button>
+                      Total inscriptos en Formulario Proyecto (
+                      {formProjects?.length})
+                    </div>
                   </th>
                   <th>
                     {!filtroFechaDesde &&
