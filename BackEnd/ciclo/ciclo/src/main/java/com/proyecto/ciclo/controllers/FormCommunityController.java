@@ -1,6 +1,7 @@
 package com.proyecto.ciclo.controllers;
 
 import com.proyecto.ciclo.entities.FormCommunity;
+import com.proyecto.ciclo.exceptions.DuplicateEmailException;
 import com.proyecto.ciclo.exceptions.ValidationError;
 import com.proyecto.ciclo.services.FormCommunityService;
 import com.proyecto.ciclo.validations.FormCommunityValidationGroup;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -52,7 +54,7 @@ public class FormCommunityController {
   }
 
   @PostMapping
-  public ResponseEntity<?> createFormProject(
+  public ResponseEntity<?> createFormCommunity(
       @Validated(FormCommunityValidationGroup.class) @RequestBody FormCommunity formCommunity, BindingResult result) {
     if (result.hasErrors()) {
       // Handle validation errors
@@ -61,10 +63,16 @@ public class FormCommunityController {
           .collect(Collectors.toList());
       return ResponseEntity.badRequest().body(errors);
     }
-
-    // Validations passed, proceed with saving the entity
-    FormCommunity createdFormCommunity = formCommunityService.save(formCommunity);
-    return ResponseEntity.status(HttpStatus.CREATED).body(createdFormCommunity);
+    try {
+      // Validations passed, proceed with saving the entity
+      FormCommunity createdFormCommunity = formCommunityService.save(formCommunity);
+      return ResponseEntity.status(HttpStatus.CREATED).body(createdFormCommunity);
+    } catch (DuplicateEmailException ex) {
+      // Handle duplicate email exception
+      List<ValidationError> error = new ArrayList<>();
+      error.add(new ValidationError("email", "Correo Ya Existente"));
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
   }
 
   @PutMapping("/{id}")

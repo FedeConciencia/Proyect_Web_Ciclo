@@ -1,6 +1,7 @@
 package com.proyecto.ciclo.controllers;
 
 import com.proyecto.ciclo.entities.FormProject;
+import com.proyecto.ciclo.exceptions.DuplicateEmailException;
 import com.proyecto.ciclo.exceptions.ValidationError;
 import com.proyecto.ciclo.services.FormProjectService;
 import com.proyecto.ciclo.validations.FormProjectValidationGroup;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -62,10 +64,16 @@ public class FormProjectController {
 					.collect(Collectors.toList());
 			return ResponseEntity.badRequest().body(errors);
 		}
-
-		// Validations passed, proceed with saving the entity
-		FormProject createdFormProject = formProjectService.save(formProject);
-		return ResponseEntity.status(HttpStatus.CREATED).body(createdFormProject);
+		try {
+			// Validations passed, proceed with saving the entity
+			FormProject createdFormProject = formProjectService.save(formProject);
+			return ResponseEntity.status(HttpStatus.CREATED).body(createdFormProject);
+		} catch (DuplicateEmailException ex) {
+			// Handle duplicate email exception
+			List<ValidationError> error = new ArrayList<>();
+			error.add(new ValidationError("email", "Correo Ya Existente"));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+		}
 	}
 
 	@PutMapping("/{id}")

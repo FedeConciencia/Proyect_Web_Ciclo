@@ -19,7 +19,7 @@ public class FormProject extends BaseEntity {
 
     @NotBlank(groups = FormProjectValidationGroup.class)
     @Email(groups = FormProjectValidationGroup.class)
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @NotBlank(groups = FormProjectValidationGroup.class)

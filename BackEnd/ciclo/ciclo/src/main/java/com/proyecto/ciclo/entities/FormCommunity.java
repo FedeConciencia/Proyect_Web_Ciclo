@@ -18,7 +18,7 @@ public class FormCommunity extends BaseEntity {
 
   @NotBlank(groups = FormCommunityValidationGroup.class)
   @Email(groups = FormCommunityValidationGroup.class)
-  @Column(name = "email", nullable = false)
+  @Column(name = "email", nullable = false, unique = true)
   private String email;
 
   @NotBlank(groups = FormCommunityValidationGroup.class)
