@@ -6,12 +6,16 @@ import PropTypes from "prop-types";
 import { IoIosArrowForward } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { Divider, Link, Button } from "@/components/mixins";
 import styles from "./SideBar.module.scss";
 import Image from "next/image";
+import { useState } from "react";
 
 const SideMenu = (props: any) => {
   const { close, open, mounted } = props;
+  const [openPropuesta, setOpenPropuesta] = useState(false);
+  const [openConocenos, setOpenConocenos] = useState(false);
   const categorias = [
     {
       link: "/#slider_1",
@@ -25,12 +29,12 @@ const SideMenu = (props: any) => {
     },
     { link: "#slider_3", title: "Ciclo Estratégico", key: "3" },
     {
-      link: "#slider_4",
+      link: "#slider_5",
       title: "Ciclo Activo",
       key: "4",
     },
-    { link: "/nosotros", title: "Nosotros", key: "5" },
-    { link: "/obras", title: "Obras", key: "6" },
+    // { link: "/nosotros", title: "Nosotros", key: "5" },
+    // { link: "/obras", title: "Obras", key: "6" },
   ];
 
   const sidemenuClass = cn({
@@ -46,7 +50,7 @@ const SideMenu = (props: any) => {
           onClick={close}
           label={title}
           textColor="#fff"
-          endIcon={<IoIosArrowForward color="white" fontSize={23} />}
+          endIcon={<IoIosArrowForward color="white" fontSize={15} />}
           variant="terciary"
           justify="space-between"
           id={title}
@@ -70,65 +74,125 @@ const SideMenu = (props: any) => {
               marginBottom: "15px",
             }}
           >
-            <Link href="/">
-              <Image
-                src="/logo_navbar.png"
-                alt="Ciclo"
-                width={200}
-                height={120}
-                priority
-              />
-            </Link>
-
-            <div className={styles.close_button}>
-              <Button
-                id="logo"
-                variant="icon"
-                onClick={close}
-                startIcon={
-                  <MdClose color="var(--color-primary)" fontSize={30} />
-                }
-                withOutPadding
-                width="fullWidth"
-                className=""
-              />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-arund",
+                alignItems: "center",
+                gap: "20px",
+              }}
+            >
+              <div className={styles.close_button}>
+                <Button
+                  id="logo"
+                  variant="icon"
+                  onClick={close}
+                  startIcon={<MdClose color="#ffffff" fontSize={30} />}
+                  withOutPadding
+                  width="fullWidth"
+                  className=""
+                />
+              </div>
+              <Link href="/">
+                <Image
+                  src="/logo_navbar.png"
+                  alt="Ciclo"
+                  width={200}
+                  height={120}
+                  priority
+                />
+              </Link>
             </div>
           </div>
-          <Divider size={20} color="#fff" />
         </div>
         <div className={styles.section}>
-          <div className={styles.navbar}>
-            <Link key="Contactanos" href="tel: +5492612765262" passHref>
-              <Button
-                onClick={() => {}}
-                label="Contactanos"
-                textColor="#fff"
-                startIcon={
-                  <FaWhatsapp
-                    className={styles.phoneLogo}
-                    color="#fff"
-                    fontSize={30}
-                  />
-                }
-                variant="secondary"
-                justify="center"
-                id="centro-de-ayuda"
-                style={{ gap: "1rem" }}
-                width="fullWidth"
-                className=""
-              />
-            </Link>
+          <h2
+            className={styles.primary_title}
+            onClick={() => {
+              setOpenPropuesta(!openPropuesta);
+            }}
+          >
+            Nuestra Propuesta
+            {openPropuesta ? (
+              <div>
+                <BiChevronUp color={"#e93a7d"} fontSize={20} />
+              </div>
+            ) : (
+              <div>
+                <BiChevronDown color={"#e93a7d"} fontSize={20} />
+              </div>
+            )}
+          </h2>
+          <div>
+            <Divider size={100} color="#fff" />
           </div>
+          {openPropuesta && (
+            <div className={styles.navbar}>
+              {categorias.map((c) => (
+                <div key={c.key}>
+                  {renderCategories(c.link, c.title, c.key)}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className={styles.section}>
-          <div className={styles.navbar}>
-            {categorias.map((c) => (
-              <div key={c.key}>{renderCategories(c.link, c.title, c.key)}</div>
-            ))}
+          <h2
+            className={styles.secondary_title}
+            onClick={() => {
+              setOpenConocenos(!openConocenos);
+            }}
+          >
+            Conocenos
+            {openConocenos ? (
+              <div>
+                <BiChevronUp color={"#ffb71b"} fontSize={20} />
+              </div>
+            ) : (
+              <div>
+                <BiChevronDown color={"#ffb71b"} fontSize={20} />
+              </div>
+            )}
+          </h2>
+
+          <div>
+            <Divider size={100} color="#fff" />
           </div>
-        </div>
-        <div className={styles.section}>
-          <div className={styles.stores}></div>
+          {openConocenos && (
+            <div className={styles.stores}>
+              <Link href={"/nosotros"} passHref>
+                <Button
+                  onClick={close}
+                  label={"Nosotros"}
+                  textColor="#fff"
+                  endIcon={<IoIosArrowForward color="white" fontSize={15} />}
+                  variant="terciary"
+                  justify="space-between"
+                  id={"Nosotros"}
+                  key={"Nosotros"}
+                  width="fullWidth"
+                  className={styles.button__about_us}
+                  border="#ffb71b"
+                />
+              </Link>
+
+              <Link href={"/obras"} passHref>
+                <Button
+                  onClick={close}
+                  label={"Obras"}
+                  textColor="#fff"
+                  endIcon={<IoIosArrowForward color="white" fontSize={15} />}
+                  variant="terciary"
+                  justify="space-between"
+                  id={"Obras"}
+                  key={"Obras"}
+                  width="fullWidth"
+                  className={styles.button__about_us}
+                  border="#ffb71b"
+                />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

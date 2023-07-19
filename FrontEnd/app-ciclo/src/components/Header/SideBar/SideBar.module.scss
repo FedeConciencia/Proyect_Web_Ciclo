@@ -6,13 +6,16 @@
   transition: transform 0.4s;
   overflow-x: hidden;
   z-index: 1000;
-  padding: 30px;
+  padding: 10px;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
 }
 
+.container {
+  z-index: 1000;
+}
 .open {
   animation: 0.2s linear 0s forwards openAnimation;
   display: block;
@@ -23,8 +26,24 @@
   border: #e93a7d;
 }
 
+.button__about_us {
+  background-color: #ffb71b !important;
+  border: #ffb71b !important;
+}
+
+.primary_title {
+  color: #e93a7d;
+  display: flex;
+  gap: 20px;
+}
+.secondary_title {
+  color: #ffb71b;
+  display: flex;
+  gap: 20px;
+}
+
 .close_button {
-  color: #fff;
+  color: #ffffff !important;
 }
 
 .close {
@@ -50,20 +69,20 @@
 }
 
 .container .section:nth-child(2) {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  margin-bottom: 3rem;
+  gap: 10px;
+  margin-bottom: 1rem;
 }
 
 .stores {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
 }
 
 .navbar {

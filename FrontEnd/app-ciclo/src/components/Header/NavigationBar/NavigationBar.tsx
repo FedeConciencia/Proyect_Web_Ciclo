@@ -16,7 +16,6 @@ const NavigationBar = (props: any) => {
   const { isDesktop } = useDeviceType();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showSideBar, setShowSideBar] = useState(false);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const closeDropdown = () => setDropdownOpen(false);
   const changeBackground = () => {
@@ -25,9 +24,6 @@ const NavigationBar = (props: any) => {
     } else {
       setScrolled(false);
     }
-  };
-  const toggleSideBar = () => {
-    setShowSideBar(!showSideBar);
   };
   useEffect(() => {
     changeBackground();
@@ -77,9 +73,17 @@ const NavigationBar = (props: any) => {
                     >
                       Nuestra Propuesta
                       {dropdownOpen ? (
-                        <BiChevronUp color={"#ffffff"} fontSize={20} className={styles.bi_chevron}/>
+                        <BiChevronUp
+                          color={"#ffffff"}
+                          fontSize={20}
+                          className={styles.bi_chevron}
+                        />
                       ) : (
-                        <BiChevronDown color={"#ffffff"} fontSize={20} className={styles.bi_chevron} />
+                        <BiChevronDown
+                          color={"#ffffff"}
+                          fontSize={20}
+                          className={styles.bi_chevron}
+                        />
                       )}
                     </a>
                     {dropdownOpen && (
