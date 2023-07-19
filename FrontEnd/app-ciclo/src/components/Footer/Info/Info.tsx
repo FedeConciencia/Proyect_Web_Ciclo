@@ -69,7 +69,9 @@ const Info = ({ servicios }: any) => {
             weight="medium"
             className={styles.resalted}
           >
-            <a href="tel:+5492612765262">+549 261 276 5262</a>
+            <a href="tel:+5492612765262" id="contacto">
+              +549 261 276 5262
+            </a>
           </Text>
           <Text weight="bold" center={true} colored>
             Redes Sociales:
