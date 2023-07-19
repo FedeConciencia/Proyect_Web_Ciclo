@@ -5,6 +5,7 @@ import useDeviceType from "@/hooks/useDeviceType";
 import { useState } from "react";
 
 const Header = () => {
+  const { isDesktop } = useDeviceType();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   let body;
@@ -25,7 +26,9 @@ const Header = () => {
 
   return (
     <>
-      <SideMenu close={closeMenu} open={open} mounted={mounted} />
+      {!isDesktop && (
+        <SideMenu close={closeMenu} open={open} mounted={mounted} />
+      )}
       <header className={styles.container}>
         <NavigationBar sideMenuFunction={openMenu} />
       </header>
