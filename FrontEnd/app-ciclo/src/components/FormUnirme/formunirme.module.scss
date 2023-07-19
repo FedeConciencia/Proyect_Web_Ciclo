@@ -19,12 +19,28 @@
   justify-self: center;
 }
 
+.labeled {
+  min-width: 2em;
+  min-height: 2em;
+  display: flex !important;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  border-top-left-radius: 500rem !important;
+  border-bottom-left-radius: 500rem !important;
+}
+
+.circular_labeled_input {
+  border-top-right-radius: 500rem !important;
+  border-bottom-right-radius: 500rem !important;
+}
+
 .container {
-  padding: 33px;
-  margin: 30px;
-  border-radius: 8px;
+  width: 80vw;
+  right: 0;
+  position: relative;
   form {
-    input[type="text"],
+    input[type="text"]:not(.circular_labeled_input),
     input[type="password"],
     input[type="email"] {
       border-radius: 16px !important;

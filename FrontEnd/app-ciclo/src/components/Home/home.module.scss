@@ -12,7 +12,6 @@
   margin-top: -380px;
   max-width: 1100px;
   position: relative;
-  z-index: 100;
 }
 
 .hero__button {
@@ -55,12 +54,12 @@
 
 .form_background {
   width: 100vw;
-  form {
-    background-color: #2f1893;
-    border-radius: 16px;
-    margin: 25px;
-  }
+  background-color: #2f1893;
   margin: auto;
+  padding-left: 70px;
+  form {
+    border-radius: 16px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -113,6 +112,9 @@
 }
 
 @media (max-width: 500px) {
+  .hero {
+    padding: 0;
+  }
   .buttons {
     flex-direction: column;
   }
@@ -135,7 +137,7 @@
     margin: 0 60px 0 0;
   }
   .hero_background {
-    margin-top: -600px;
+    margin-top: -740px;
     opacity: 0.2;
   }
   .hero_background_image {

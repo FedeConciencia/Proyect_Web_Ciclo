@@ -31,6 +31,7 @@
     "react-hook-form": "^7.43.5",
     "react-icons": "4.6.0",
     "react-input-mask": "^2.0.4",
+    "react-modal": "^3.16.1",
     "react-redux": "^8.0.5",
     "sass": "^1.59.3",
     "semantic-ui-less": "^2.5.0",

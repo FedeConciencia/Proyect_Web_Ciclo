@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import useDeviceType from "@/hooks/useDeviceType";
 import FormUnirme from "../FormUnirme/FormUnirme";
 import Aliados from "./Aliados/Aliados";
+import SuccessModal from "../SuccessModal/SuccessModal";
 
 type option_ciclo_list = {
   key: string;
@@ -250,6 +251,9 @@ const Home = () => {
   const { isDesktop } = useDeviceType();
   const [openContacto, setOpenContacto] = useState(isDesktop);
   const [openUnirme, setOpenUnirme] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("Exitoso");
+
   const openFormContacto = () => {
     setOpenContacto(true);
     setOpenUnirme(false);
@@ -259,11 +263,32 @@ const Home = () => {
     setOpenContacto(false);
   };
 
+  // Función que se activa cuando recibes una respuesta exitosa desde la API
+  const handleSuccessResponse = (message) => {
+    setSuccessMessage(message);
+    setShowModal(true);
+  };
+
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
   return (
     <Layout
       title="Ciclo"
       description="Somos un equipo joven. interdisciplinario y comprometido con los desafíos que plantea la industria de la construcción"
     >
+      <div>
+        {/* Aquí debes tener tu lógica y código para interactuar con la API */}
+        {/* Por ejemplo, puedes tener un formulario o un botón que llame a handleSuccessResponse() */}
+        {/* Al recibir una respuesta exitosa desde la API, se activará el modal */}
+        <SuccessModal
+          isOpen={showModal}
+          onClose={closeModal}
+          header={"Registrado con Exito!"}
+          message={successMessage}
+        />
+      </div>
       <MaxContainer>
         <div className={styles.hero}>
           <div className={styles.hero_background}></div>
@@ -319,8 +344,18 @@ const Home = () => {
             />
           </div>
         </div>
-        {openContacto && <FormContacto stateChanger={setOpenContacto} />}
-        {openUnirme && <FormUnirmeModal stateChanger={setOpenUnirme} />}
+        {openContacto && (
+          <FormContacto
+            stateChanger={setOpenContacto}
+            handleSuccessResponse={handleSuccessResponse}
+          />
+        )}
+        {openUnirme && (
+          <FormUnirmeModal
+            stateChanger={setOpenUnirme}
+            handleSuccessResponse={handleSuccessResponse}
+          />
+        )}
         {isDesktop ? (
           <Slider>
             {sliders.map(
@@ -397,7 +432,6 @@ const Home = () => {
               first_list={ciclo_estrategico.first_list}
             />
             {!isDesktop && <Aliados />}
-
             <CicloActivo
               id={ciclo_activo.id}
               key={ciclo_activo.key}

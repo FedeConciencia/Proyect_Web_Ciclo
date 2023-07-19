@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
-import { Form, Select, Message } from "semantic-ui-react";
+import { Form, Select, Message, Label } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
+import { formatValue } from "@/utils/utils";
 import styles from "./formunirme.module.scss";
 import api from "../../api";
 import { Input, Text } from "../mixins";
@@ -11,6 +12,7 @@ type city = {
 
 interface UseFormInputs {
   name: string;
+  areaCode: string;
   phoneNumber: string;
   email: string;
   terms: boolean;
@@ -20,6 +22,7 @@ interface UseFormInputs {
 
 const defaultValues: UseFormInputs = {
   name: "",
+  areaCode: "",
   phoneNumber: "",
   email: "",
   terms: false,
@@ -58,6 +61,7 @@ const FormUnirme = () => {
       setSuccess(false);
       setFormErrors(errors);
     } else {
+      data.phoneNumber = `(${data.areaCode}) ${data.phoneNumber}`;
       const response = await api.formCommunities.create(data);
       if (response.success) {
         setError(false);
@@ -102,7 +106,7 @@ const FormUnirme = () => {
 
   const handleChange = (type: any, value: any) => {
     let values: any = {};
-    values[`${type}`] = value;
+    values[`${type}`] = formatValue(type, value);
     setValue(type, value);
     setFormValues({ ...formValues, ...values });
   };
@@ -141,8 +145,30 @@ const FormUnirme = () => {
           <Form.Input
             fluid
             required
-            label="Teléfono"
-            placeholder="+549 261 276 5262"
+            label="Prefijo sin 0"
+            placeholder="261"
+            type="text"
+            id="areaCode"
+            value={formValues.areaCode}
+            {...register("areaCode")}
+            error={
+              formErrors["areaCode"] && {
+                content: formErrors["areaCode"],
+                point: "below",
+              }
+            }
+            onChange={(e: any, { value }: any) =>
+              handleChange("areaCode", value)
+            }
+          >
+            <Label className={styles.labeled}>0</Label>
+            <input className={styles.circular_labeled_input} />
+          </Form.Input>
+          <Form.Input
+            fluid
+            required
+            label="Teléfono sin 15"
+            placeholder="2765262"
             type="text"
             id="phoneNumber"
             value={formValues.phoneNumber}
@@ -156,7 +182,12 @@ const FormUnirme = () => {
             onChange={(e: any, { value }: any) =>
               handleChange("phoneNumber", value)
             }
-          />
+          >
+            <Label className={styles.labeled}>15</Label>
+            <input className={styles.circular_labeled_input} />
+          </Form.Input>
+        </Form.Group>
+        <Form.Group widths="equal">
           <Form.Input
             fluid
             required

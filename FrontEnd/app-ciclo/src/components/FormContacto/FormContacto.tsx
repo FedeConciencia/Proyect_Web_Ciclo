@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Form, Select, Message } from "semantic-ui-react";
+import { Form, Select, Message, Label } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
+import { formatValue } from "@/utils/utils";
 import styles from "./formcontacto.module.scss";
 import api from "../../api";
 
@@ -11,6 +12,7 @@ const options = [
 
 interface UseFormInputs {
   name: string;
+  areaCode: string;
   phoneNumber: string;
   email: string;
   projectType: string;
@@ -18,6 +20,7 @@ interface UseFormInputs {
 const defaultValues: UseFormInputs = {
   name: "",
   phoneNumber: "",
+  areaCode: "",
   email: "",
   projectType: "",
 };
@@ -27,7 +30,7 @@ const FormContacto = (props: any) => {
   const { register, handleSubmit, setValue, reset } = useForm<UseFormInputs>({
     defaultValues: defaultValues,
   });
-  const { stateChanger } = props;
+  const { stateChanger, handleSuccessResponse } = props;
   const [isOpen, setIsOpen] = useState(true);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -36,6 +39,7 @@ const FormContacto = (props: any) => {
   const [formErrors, setFormErrors] = useState<any>({});
   const onSubmit = async (data: any) => {
     setLoading(true);
+    data.phoneNumber = `(${data.areaCode}) ${data.phoneNumber}`;
     const response = await api.formProjects.create(data);
     if (!data.projectType) {
       let errors: any = {};
@@ -53,6 +57,8 @@ const FormContacto = (props: any) => {
         setFormErrors({});
         setFormValues(defaultValues);
         reset();
+        handleSuccessResponse("Pronto estaremos en contacto!");
+        handleClose();
       } else {
         setFormErrors(response.error);
         setError(true);
@@ -70,7 +76,7 @@ const FormContacto = (props: any) => {
 
   const handleChange = (type: any, value: any) => {
     let values: any = {};
-    values[`${type}`] = value;
+    values[`${type}`] = formatValue(type, value);
     setValue(type, value);
     setFormValues({ ...formValues, ...values });
   };
@@ -98,25 +104,52 @@ const FormContacto = (props: any) => {
           }
           onChange={(e: any, { value }: any) => handleChange("name", value)}
         />
-        <Form.Input
-          fluid
-          required
-          label="TELÉFONO"
-          placeholder="+549 261 276 5262"
-          type="text"
-          id="phoneNumber"
-          value={formValues.phoneNumber}
-          {...register("phoneNumber")}
-          error={
-            formErrors["phoneNumber"] && {
-              content: formErrors["phoneNumber"],
-              point: "below",
+        <Form.Group widths="equal">
+          <Form.Input
+            fluid
+            required
+            label="Prefijo sin 0"
+            placeholder="261"
+            type="text"
+            id="areaCode"
+            value={formValues.areaCode}
+            {...register("areaCode")}
+            error={
+              formErrors["areaCode"] && {
+                content: formErrors["areaCode"],
+                point: "below",
+              }
             }
-          }
-          onChange={(e: any, { value }: any) =>
-            handleChange("phoneNumber", value)
-          }
-        />
+            onChange={(e: any, { value }: any) =>
+              handleChange("areaCode", value)
+            }
+          >
+            <Label className={styles.labeled}>0</Label>
+            <input />
+          </Form.Input>
+          <Form.Input
+            fluid
+            required
+            label="Numero sin 15"
+            placeholder="2765262"
+            type="text"
+            id="phoneNumber"
+            value={formValues.phoneNumber}
+            {...register("phoneNumber")}
+            error={
+              formErrors["phoneNumber"] && {
+                content: formErrors["phoneNumber"],
+                point: "below",
+              }
+            }
+            onChange={(e: any, { value }: any) =>
+              handleChange("phoneNumber", value)
+            }
+          >
+            <Label className={styles.labeled}>15</Label>
+            <input />
+          </Form.Input>
+        </Form.Group>
 
         <Form.Input
           fluid
