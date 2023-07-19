@@ -74,7 +74,7 @@ const NosotrosWrapper = () => {
                 </Text>
 
                 <div className={styles.view_more_wrapper}>
-                  <Link href="">
+                  <Link href="https://www.argentina.gob.ar/noticias/se-presento-el-mendoza-teclab-una-linea-de-financiamiento-para-soluciones-innovadoras-en#:~:text=La%20Agencia%20Nacional%20de%20Promoci%C3%B3n,una%20l%C3%ADnea%20de%20financiamiento%20que">
                     <Text
                       variant="span"
                       textSize="xs"
@@ -123,14 +123,16 @@ const NosotrosWrapper = () => {
                 </Text>
 
                 <div className={styles.view_more_wrapper}>
-                  <Text
-                    variant="span"
-                    textSize="xs"
-                    className={styles.view_more}
-                    center
-                  >
-                    Leer Mas
-                  </Text>
+                  <Link href="https://ecocuyo.com/nota/145094/construcccion-en-seco-la-escuela-de-montajistas-de-grupo-ltn-ya-formo-36-especialistas-y-va-por-mas">
+                    <Text
+                      variant="span"
+                      textSize="xs"
+                      className={styles.view_more}
+                      center
+                    >
+                      Leer Mas
+                    </Text>
+                  </Link>
                 </div>
               </div>
               <div className={styles.image_right}>

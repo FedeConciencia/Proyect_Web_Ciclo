@@ -2,6 +2,8 @@
   max-width: 1920px;
   position: relative;
   text-align: center;
+  padding-top: 50px;
+  background-color: #ffffff;
 }
 
 .hero {
@@ -15,7 +17,7 @@
   button {
     margin-left: 300px !important;
   }
-  margin-bottom: 100px;
+  margin-bottom: 75px;
 }
 .hero_title {
   margin-top: -380px;
@@ -138,7 +140,7 @@
   }
   .hero {
     h1 {
-      font-size: 35px !important;
+      font-size: 34px !important;
       max-width: 340px;
     }
   }
