@@ -44,7 +44,7 @@ const first_row_obras = [
     title: "vivienda unifamliar 2 plantas",
     technology: "Sistema Steel Framing",
     city: "Maipú, Mendoza",
-    href: "",
+    href: "https://www.extrabrut.com.ar/steelframe",
   },
 ];
 
@@ -66,7 +66,7 @@ const second_row_obras = [
     title: "vivienda unifamiliar 1 planta",
     technology: "Paneles Aislantes PUR",
     city: "Lujan de Cuyo, Mendoza",
-    href: "",
+    href: "https://grupoltn.com/proyectos-realizados/",
   },
   {
     key: "fourth_obra",
@@ -85,7 +85,7 @@ const second_row_obras = [
     title: "vivienda unifamiliar 2 plantas",
     technology: "Sistema Cassaforma",
     city: "Godoy Cruz, Mendoza",
-    href: "",
+    href: "http://cassaforma.com/portfolio/",
   },
 ];
 
