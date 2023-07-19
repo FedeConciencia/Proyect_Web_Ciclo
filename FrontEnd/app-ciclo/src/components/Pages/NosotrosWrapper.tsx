@@ -6,12 +6,33 @@ import Link from "next/link";
 import styles from "./nosotros.module.scss";
 import FormUnirmeModal from "../FormUnirme/FormUnirmeModal";
 import { useState } from "react";
+import SuccessModal from "../SuccessModal/SuccessModal";
 
 const NosotrosWrapper = () => {
   const [openUnirme, setOpenUnirme] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  // Función que se activa cuando recibes una respuesta exitosa desde la API
+  const handleSuccessResponse = (message) => {
+    setSuccessMessage(message);
+    setShowModal(true);
+  };
+
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <Layout title="Ciclo" description="Sobre Nosotros" servicios={false}>
+      <div>
+        <SuccessModal
+          isOpen={showModal}
+          onClose={closeModal}
+          header={"Registrado con Exito!"}
+          message={successMessage}
+        />
+      </div>
       <MaxContainer>
         <div className={styles.hero}>
           <Image
@@ -44,7 +65,12 @@ const NosotrosWrapper = () => {
             </Button>
           </div>
         </div>
-        {openUnirme && <FormUnirmeModal stateChanger={setOpenUnirme} />}
+        {openUnirme && (
+          <FormUnirmeModal
+            stateChanger={setOpenUnirme}
+            handleSuccessResponse={handleSuccessResponse}
+          />
+        )}
         <div className={styles.container}>
           <div className={styles.about_us}>
             <div className={styles.wrapper}>

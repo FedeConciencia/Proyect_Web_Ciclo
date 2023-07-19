@@ -252,7 +252,7 @@ const Home = () => {
   const [openContacto, setOpenContacto] = useState(isDesktop);
   const [openUnirme, setOpenUnirme] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("Exitoso");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const openFormContacto = () => {
     setOpenContacto(true);
@@ -279,9 +279,6 @@ const Home = () => {
       description="Somos un equipo joven. interdisciplinario y comprometido con los desafíos que plantea la industria de la construcción"
     >
       <div>
-        {/* Aquí debes tener tu lógica y código para interactuar con la API */}
-        {/* Por ejemplo, puedes tener un formulario o un botón que llame a handleSuccessResponse() */}
-        {/* Al recibir una respuesta exitosa desde la API, se activará el modal */}
         <SuccessModal
           isOpen={showModal}
           onClose={closeModal}

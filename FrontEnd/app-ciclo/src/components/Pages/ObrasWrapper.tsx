@@ -6,6 +6,7 @@ import { Button } from "semantic-ui-react";
 import Image from "next/image";
 import { useState } from "react";
 import FormContacto from "../FormContacto/FormContacto";
+import SuccessModal from "../SuccessModal/SuccessModal";
 
 const first_row_obras = [
   {
@@ -91,9 +92,29 @@ const second_row_obras = [
 
 const ObrasWrapper = () => {
   const [openContacto, setOpenContacto] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  // Función que se activa cuando recibes una respuesta exitosa desde la API
+  const handleSuccessResponse = (message) => {
+    setSuccessMessage(message);
+    setShowModal(true);
+  };
+
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <Layout title="Ciclo" description="Nuestras Obras">
+      <div>
+        <SuccessModal
+          isOpen={showModal}
+          onClose={closeModal}
+          header={"Registrado con Exito!"}
+          message={successMessage}
+        />
+      </div>
       <MaxContainer>
         <div className={styles.hero}>
           <Image
@@ -124,7 +145,12 @@ const ObrasWrapper = () => {
             </Button>
           </div>
         </div>
-        {openContacto && <FormContacto stateChanger={setOpenContacto} />}
+        {openContacto && (
+          <FormContacto
+            stateChanger={setOpenContacto}
+            handleSuccessResponse={handleSuccessResponse}
+          />
+        )}
 
         <div className={styles.container}>
           <div>
