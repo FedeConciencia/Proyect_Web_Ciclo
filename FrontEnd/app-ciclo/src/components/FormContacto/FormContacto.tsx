@@ -7,7 +7,9 @@ import api from "../../api";
 
 const options = [
   { key: "1", text: "Construcción de cero", value: "CONSTRUCCION_DE_CERO" },
-  { key: "2", text: "Remodelación", value: "REMODELACION" },
+  // { key: "2", text: "Remodelación", value: "REMODELACION" },
+  { key: "3", text: "Refacción", value: "REFACCION" },
+  { key: "4", text: "Ampliación", value: "AMPLIACION" },
 ];
 
 interface UseFormInputs {

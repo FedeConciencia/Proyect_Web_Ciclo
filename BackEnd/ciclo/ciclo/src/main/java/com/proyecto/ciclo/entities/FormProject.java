@@ -67,6 +67,8 @@ public class FormProject extends BaseEntity {
     // Enum for project type
     public enum ProjectType {
         CONSTRUCCION_DE_CERO("Construcción de cero"),
+        AMPLIACION("Ampliación"),
+        REFACCION("Refacción"),
         REMODELACION("Remodelación");
 
         private final String value;

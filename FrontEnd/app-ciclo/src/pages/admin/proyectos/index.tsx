@@ -8,6 +8,13 @@ import api from "../../../api";
 import { useState, useEffect, useCallback } from "react";
 import ExcelJS from "exceljs";
 
+const project_types = {
+  CONSTRUCCION_DE_CERO: "Construcción desde cero",
+  REFACCION: "Refacción",
+  REMODELACION: "Refacción",
+  AMPLIACION: "Ampliación",
+};
+
 const generateExcel = (formProjects: any): any => {
   // Crear un nuevo libro de Excel
   const workbook = new ExcelJS.Workbook();
@@ -37,7 +44,7 @@ const generateExcel = (formProjects: any): any => {
       formProject.name,
       formProject.email,
       formProject.phoneNumber,
-      formProject.projectType,
+      project_types[formProject.projectType],
       formProject.createdAt,
     ];
   });
@@ -189,7 +196,7 @@ const Proyectos = () => {
                       <td>{formProject.name}</td>
                       <td>{formProject.phoneNumber}</td>
                       <td>{formProject.email}</td>
-                      <td>{formProject.projectType}</td>
+                      <td>{project_types[formProject.projectType]}</td>
                     </tr>
                   ))}
               </tbody>
