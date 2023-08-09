@@ -139,7 +139,13 @@
 
 @media (min-width: 1900px) {
   .navbar {
-    justify-content: space-around;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1920px) {
+  .navbar {
+    background-color: #2f1893;
   }
 }
 
