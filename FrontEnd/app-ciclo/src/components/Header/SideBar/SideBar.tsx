@@ -33,8 +33,6 @@ const SideMenu = (props: any) => {
       title: "Ciclo Activo",
       key: "4",
     },
-    // { link: "/nosotros", title: "Nosotros", key: "5" },
-    // { link: "/obras", title: "Obras", key: "6" },
   ];
 
   const sidemenuClass = cn({
@@ -188,6 +186,22 @@ const SideMenu = (props: any) => {
                   key={"Obras"}
                   width="fullWidth"
                   className={styles.button__about_us}
+                  border="#ffb71b"
+                />
+              </Link>
+
+              <Link href={"#contacto"} passHref>
+                <Button
+                  onClick={close}
+                  label={"Contactanos"}
+                  textColor="#fff"
+                  endIcon={<FaWhatsapp color="white" fontSize={15} />}
+                  variant="terciary"
+                  justify="space-between"
+                  id={"Obras"}
+                  key={"Obras"}
+                  width="fullWidth"
+                  className={styles.button_contact}
                   border="#ffb71b"
                 />
               </Link>
