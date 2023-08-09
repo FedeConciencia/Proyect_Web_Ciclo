@@ -94,7 +94,6 @@ const NavigationBar = (props: any) => {
                           href="/#slider_1"
                           className={styles.dropdownLink}
                           onClick={closeDropdown}
-                          scroll={false}
                         >
                           Ciclo Integral
                         </Link>
@@ -102,7 +101,6 @@ const NavigationBar = (props: any) => {
                           href="/#slider_2"
                           className={styles.dropdownLink}
                           onClick={closeDropdown}
-                          scroll={false}
                         >
                           Ciclo Colaborativo
                         </Link>
@@ -110,7 +108,6 @@ const NavigationBar = (props: any) => {
                           href="/#slider_3"
                           className={styles.dropdownLink}
                           onClick={closeDropdown}
-                          scroll={false}
                         >
                           Ciclo Estratégico
                         </Link>
@@ -118,7 +115,6 @@ const NavigationBar = (props: any) => {
                           href="/#slider_4"
                           className={styles.dropdownLink}
                           onClick={closeDropdown}
-                          scroll={false}
                         >
                           Ciclo Activo
                         </Link>
@@ -140,7 +136,6 @@ const NavigationBar = (props: any) => {
                   <Link
                     href="#contacto"
                     className={styles.navLink}
-                    scroll={false}
                   >
                     Contacto
                   </Link>
@@ -166,12 +161,18 @@ const NavigationBar = (props: any) => {
           <div className={styles.navbarSocial}>
             <ul className={styles.socialLinksList}>
               <li>
-                <Link href="/">
+                <Link
+                  href="https://www.facebook.com/profile.php?id=100094922780339&mibextid=LQQJ4d"
+                  target="_blank"
+                >
                   <FacebookIcon className={styles.socialMediaIcon} />
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link
+                  href="https://instagram.com/ciclo.soluciones?igshid=MzRlODBiNWFlZA=="
+                  target="_blank"
+                >
                   <AiFillInstagram className={styles.socialMediaIcon} />
                 </Link>
               </li>

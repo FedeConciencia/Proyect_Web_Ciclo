@@ -79,10 +79,18 @@ const Info = ({ servicios }: any) => {
         </div>
         <br />
         <div className={styles.logos}>
-          <Link href="" noWidth target="_blank">
+          <Link
+            href="https://www.facebook.com/profile.php?id=100094922780339&mibextid=LQQJ4d"
+            noWidth
+            target="_blank"
+          >
             <FacebookIcon className={styles.logo} />
           </Link>
-          <Link href="" noWidth target="_blank">
+          <Link
+            href="https://instagram.com/ciclo.soluciones?igshid=MzRlODBiNWFlZA=="
+            noWidth
+            target="_blank"
+          >
             <AiFillInstagram className={styles.logo} />
           </Link>
           <Link href="" noWidth target="_blank">
