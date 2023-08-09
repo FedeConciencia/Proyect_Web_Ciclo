@@ -22,6 +22,7 @@ type props = {
   className?: string;
   first_list?: ciclo_list;
   second_list?: ciclo_list;
+  handleSuccessResponse?: any;
 };
 function CicloActivo({
   title,
@@ -30,6 +31,7 @@ function CicloActivo({
   first_list,
   second_list,
   id,
+  handleSuccessResponse,
 }: props) {
   const { isDesktop } = useDeviceType();
 
@@ -61,7 +63,7 @@ function CicloActivo({
       {isDesktop && (
         <div className={styles2.second_column}>
           <div className={styles2.form_background}>
-            <FormUnirme />
+            <FormUnirme  handleSuccessResponse={handleSuccessResponse}/>
           </div>
         </div>
       )}

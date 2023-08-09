@@ -30,7 +30,8 @@ const defaultValues: UseFormInputs = {
   city: { id: "" },
 };
 
-const FormUnirme = () => {
+const FormUnirme = (props: any) => {
+  const { handleSuccessResponse } = props;
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -69,6 +70,7 @@ const FormUnirme = () => {
         setFormErrors({});
         setFormValues(defaultValues);
         reset();
+        handleSuccessResponse("Ya sos Parte de la comunidad!");
       } else {
         setFormErrors(response.error);
         setError(true);
@@ -273,11 +275,6 @@ const FormUnirme = () => {
           labelColor="#ffffff"
           textSize="s"
           onChange={(evt: any) => handleCheckChange(evt.target.checked)}
-        />
-        <Message
-          success
-          header="Registrado con exito"
-          content="Ya sos Parte de la comunidad!"
         />
         {(errorHeader || errorMessage) && (
           <Message error header={errorHeader} content={errorMessage} />

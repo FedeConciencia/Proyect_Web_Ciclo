@@ -394,6 +394,7 @@ const Home = () => {
               description={ciclo_activo.description}
               first_list={ciclo_activo.first_list}
               second_list={ciclo_activo.second_list}
+              handleSuccessResponse={handleSuccessResponse}
             />
           </Slider>
         ) : (
@@ -441,7 +442,7 @@ const Home = () => {
 
             {!isDesktop && (
               <div className={styles.form_background}>
-                <FormUnirme />
+                <FormUnirme handleSuccessResponse={handleSuccessResponse} />
               </div>
             )}
           </Slider>
